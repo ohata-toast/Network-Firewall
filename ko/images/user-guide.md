@@ -1,3 +1,28 @@
+# 개요
+## Security > Network Firewall > 개요
+
+Network Firewall은 NHN Cloud에서 사용하는 인프라 자산들을 안전하게 보호하기 위해 제공하는 네트워크 보안 서비스입니다.
+NHN Cloud에 특화된 접근제어를 적용할 수 있고, 별도의 방화벽 제품을 사용하지 않아도 간편하게 방화벽 기능을 사용할 수 있습니다.
+
+## 주요 기능
+* 효율적으로 네트워크 통신 정책을 관리할 수 있습니다.
+    * Stateful 방식으로 하나의 정책으로 트래픽을 제어합니다.
+* Hub - Spoke 구조로 외부 공격으로부터 안전하게 인스턴스를 보호할 수 있습니다.
+    * VPC 간 내부 트래픽과 인바운드/아웃바운드 트래픽을 제어합니다.
+      * **리전 간 트래픽은 제어하지 않습니다.**
+* 네트워크 차단과 허용에 대한 실시간 로그 검색과 백업 기능을 제공합니다.
+    * 고객의 환경에 맞춰 여러 가지 백업 방식을 제공합니다(Syslog, Object Storage, Log & Crach Search).
+* 안정적인 운영을 위해 고가용성(이중화)을 제공합니다.
+
+## ~~서비스 구조 (추후 업데이트 예정)~~
+
+~~서비스 구조는 크게 아래의 2가지 형태로 구성할 수 있습니다.~~
+
+* ~~1개의 프로젝트~~
+* ~~1개 이상의 프로젝트~~
+
+---
+
 # 콘솔 사용 가이드
 
 ## Security > Network Firewall > 콘솔 사용 가이드
@@ -93,14 +118,14 @@ Network Firewall 인스턴스를 생성하게 되면 정책 초기 페이지로 
 
 ### 메인 페이지
 
-![main_page.PNG](/ko/images/main_page.png)
+![main_page.PNG](/nfw/main_page.png)
 
 * default-deny 정책은 필수 정책이며, 수정이나 삭제가 불가능합니다.
 * default-deny 정책을 통해 차단된 로그는 **옵션** 탭의 기본 차단 정책 로그 설정을 통해 확인할 수 있습니다.
 
 ### 정책 추가
 
-![acl_add.PNG](/ko/images/acl_add.png)
+![acl_add.PNG](/nfw/acl_add.png)
 
 * 출발지, 목적지, 목적지 포트를 기반으로 정책을 추가할 수 있습니다.
     * 이미 만들어진 객체를 통해 출발지, 목적지, 목적지 포트를 선택합니다.
@@ -108,20 +133,20 @@ Network Firewall 인스턴스를 생성하게 되면 정책 초기 페이지로 
 
 ### 정책 복사
 
-![acl_copy.PNG](/ko/images/acl_copy.png)
+![acl_copy.PNG](/nfw/acl_copy.png)
 
 * 생성된 정책을 클릭하여 **복사** 버튼을 통해 정책을 복사할 수 있습니다.
     * 복사된 정책은 비활성화됩니다.
 
 ### 정책 수정
 
-![acl_edit.PNG](/ko/images/acl_edit.png)
+![acl_edit.PNG](/nfw/acl_edit.png)
 
 * 생성된 정책을 클릭하여 **수정** 버튼을 통해 정책을 수정할 수 있습니다.
 
 ### 정책 이동
 
-![acl_move.PNG](/ko/images/acl_move.png)
+![acl_move.PNG](/nfw/acl_move.png)
 
 * 생성된 정책을 클릭하여 **이동** 버튼을 통해 정책을 이동할 수 있습니다.
     * 이름: defailt-deny 정책 아래로는 이동이 불가능합니다.
@@ -137,7 +162,7 @@ Network Firewall 인스턴스를 생성하게 되면 정책 초기 페이지로 
 
 ### 정책 일괄 등록
 
-![acl_batch.PNG](/ko/images/acl_batch.png)
+![acl_batch.PNG](/nfw/acl_batch.png)
 
 * 내려받은 템플릿을 사용하여 정책을 한 번에 등록할 수 있습니다.
 
@@ -177,7 +202,7 @@ Network Firewall 인스턴스를 생성하게 되면 정책 초기 페이지로 
 
 ### 추가
 
-![nat_add.PNG](/ko/images/nat_add.png)
+![nat_add.PNG](/nfw/nat_add.png)
 
 * **추가(+)** 버튼을 클릭하여 객체를 선택합니다.
     * **선택하고자 하는 객체는 미리 생성되어 있어야 합니다.**
