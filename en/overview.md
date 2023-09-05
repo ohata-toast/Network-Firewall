@@ -1,14 +1,13 @@
-## Security > Network Firewall > 개요
+## Security > Network Firewall > Overview
 
-Network Firewall은 NHN Cloud에서 사용하는 인프라 자산들을 안전하게 보호하기 위해 제공하는 네트워크 보안 서비스입니다.
-NHN Cloud에 특화된 접근제어를 적용할 수 있고, 별도의 방화벽 제품을 사용하지 않아도 간편하게 방화벽 기능을 사용할 수 있습니다.
+Network Firewall is a network security service to safely protect infrastructure assets used by NHN Cloud. You can easily use access control specialized for NHN Cloud and the firewall feature without using a separate firewall product.
 
-## 주요 기능
-* 효율적으로 네트워크 통신 정책을 관리할 수 있습니다.
-    * Stateful 방식으로 하나의 정책으로 트래픽을 제어합니다.
-* Hub - Spoke 구조로 외부 공격으로부터 안전하게 인스턴스를 보호할 수 있습니다.
-    * VPC 간 내부 트래픽과 인바운드/아웃바운드 트래픽을 제어합니다.
-      * **리전 간 트래픽은 제어하지 않습니다.**
-* 네트워크 차단과 허용에 대한 실시간 로그 검색과 백업 기능을 제공합니다.
-    * 고객의 환경에 맞춰 여러 가지 백업 방식을 제공합니다(Syslog, Object Storage, Log & Crach Search).
-* 안정적인 운영을 위해 고가용성(이중화)을 제공합니다.
+## Main Features
+* Allows you to manage network communication policies efficiently.
+    * Controls traffic with a single policy in the stateful manner.
+* Allows for safe protection of instances against external attacks with the Hub-Spoke structure.
+    * Controls internal traffic and inbound/outbound traffic between VPCs.
+      * **Do not control inter-region traffic.**
+* Provides real-time log search and backup for blocking and allowing networks.
+    * Provides several backup methods to suit the customer's environment (Syslog, Object Storage, Log & Crach Search).
+* Provides high availability (redundancy) for reliable operation.

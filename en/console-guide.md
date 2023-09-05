@@ -1,231 +1,231 @@
-## Security > Network Firewall > 콘솔 사용 가이드
+## Security > Network Firewall > Console User Guide
 
-Network Firewall을 생성하기 위한 절차와 생성 이후 콘솔을 사용하는 방법을 설명합니다.
+This guide describes the procedure for creating Network Firewall and how to use the console after creation.
 
-## 시작하기
+## Get Started
 
-Network Firewall을 사용하기 위해서는 가장 먼저 Network Firewall 인스턴스를 먼저 생성합니다.
+To use Network Firewall, first create a Network Firewall instance.
 
-## Network Firewall 생성
+## Create Network Firewall
 
-### 사전 준비
+### Prerequisites
 
-Network Firewall 생성전 아래의 네트워크 자원들이 필요합니다.
+The following network resources are required before creating a Network Firewall.
 
-* 1개의 프로젝트
-* 1개의 VPC
-* 선택된 VPC에 속해있는 3개의 서브넷
-* 선택된 VPC에 연결된 인터넷 게이트웨이
+* 1 project
+* 1 VPC
+* 3 subnets in the selected VPC
+* Internet gateway attached to the selected VPC
 
-**위의 자원은 [Network] 카테고리에서 생성 가능합니다.**
+**The above resources can be created in the [Network] category.**
 
-### Network Firewall 생성
+### Create Network Firewall
 
-1. **Security > Network Firewall**로 이동합니다.
-2. 각 필수 항목을 모두 선택하고 하단의 **Network Firewall 생성** 버튼을 클릭합니다.
+1. Go to **Security > Network Firewall**.
+2. Select all required items and click the **Create Network Firewall** button at the bottom.
 
-* RBAC: 인스턴스 객체 조회, Network Firewall 서비스 제공에 필요한 API 권한을 부여
-* VPC: Network Firewall 인스턴스가 사용할 VPC를 선택
-* 서브넷: Network Firewall 인스턴스가 내부 트래픽 제어를 위해 사용할 서브넷을 선택
-* NAT: Network Firewall 인스턴스가 외부 트래픽 제어를 위해 사용할 서브넷을 선택
-* 외부전송: Network Firewall 인스턴스에 생성된 트래픽과 로그를 전송할 서브넷을 선택
+* RBAC: Assign API permissions to query instance objects and provide the Network Firewall service
+* VPC: Select the VPC that the Network Firewall instance will use
+* Subnet: Select a subnet that Network Firewall instances will use to control internal traffic
+* NAT: Select a subnet that the Network Firewall instances will use to control external traffic
+* External transmission: Select a subnet to which the traffic and logs created in Network Firewall instances are transmitted
 
-**참고**
+**[Note]**
 
-* 서브넷, NAT, 외부전송에 사용하는 서브넷은 모두 다른 서브넷으로 선택해야 합니다.
-    * 가급적 NHN Cloud 콘솔에서 생성할 수 있는 최소단위(28비트)로 생성하는 것을 권고합니다.
-* Network Firewall 인스턴스는 가용 영역을 분리하여 이중화로 기본 제공됩니다.
-* Security Groups 와는 별개의 서비스로 Network Firewall 서비스를 사용할 경우 둘 다 허용해야만 인스턴스에 접근할 수 있습니다.
-* Network Firewall이 소유하고 있는 CIDR 대역과 연결이 필요한 CIDR 대역은 중복되지 않아야 합니다.
+* The subnets used for subnet, NAT, and external transmission must all be selected as different subnets.
+    * It is recommended to create subnets in the minimum unit (28 bits) that can be created in the NHN Cloud console.
+* Network Firewall instances are provided with redundancy by separating availability zones.
+* If you use the Network Firewall service as a separate service from Security Groups, you must allow both to access the instances.
+* The CIDR block owned by Network Firewall and the CIDR block requiring connectivity must not overlap.
 
-### 연결 설정
+### Connection Settings
 
-Network Firewall과 연동하기 위해 피어링 게이트웨이 생성 및 라우팅을 설정합니다.
+Create a peering gateway and configure the routing to integrate with Network Firewall.
 
-[예시]
+[Example]
 
-* Network Firewall이 사용하는 VPC(Hub)는 10.0.0.0/24이고, Network Firewall과 연결이 필요한 VPC(Spoke)는 172.16.0.0/24 일 때
+* When the VPC (Hub) used by Network Firewall is 10.0.0.0/24, and the VPC (Spoke) that needs to be connected to the Network Firewall is 172.16.0.0/24.
 
-1. **Network > Routing**으로 이동하여 Spoke VPC를 선택한 후 라우팅 테이블을 변경합니다.
-    * Spoke VPC를 선택한 후 **라우팅 테이블 변경** 버튼을 눌러 중앙 집중형 라우팅(CVR) 방식으로 변경합니다.
-2. **Network > Peering Gateway**로 이동하여 피어링을 생성합니다.
-    * Spoke VPC가 다른 프로젝트라면 프로젝트 피어링을 연결하고, 같은 프로젝트라면 피어링을 연결합니다.
-        * 피어링 게이트웨이 연결에 대한 자세한 사항은 [사용자 가이드](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/)를 참조해 주세요.
-3. **Network > Routing**으로 이동하여 Hub VPC를 선택한 후 아래의 라우팅을 설정합니다.
-    * 대상 CIDR: 172.16.0.0/24
-    * 게이트웨이: 피어링 연결 후 추가된 피어링 타입의 게이트웨이
-4. **Network > Routing**으로 이동하여 Spoke VPC를 선택한 후 아래의 라우팅을 설정합니다.
-    *  대상 CIDR: 0.0.0.0/0
-    *  게이트웨이: 피어링 연결 후 추가된 피어링 타입의 게이트웨이
-5. **Network > Peering Gateway**로 이동하여 라우팅을 설정합니다.
-    * 생성된 피어링을 선택하여 **라우트** 탭으로 이동합니다.
-    * **피어** 또는 **로컬 라우트 변경** 버튼을 눌러 아래와 같이 라우팅을 설정합니다.
-        * 대상 CIDR: 0.0.0.0/0
-        * 게이트웨이: NFW_TRAFFIC_SUBNET_INTERFACE_VIP
+1. Go to **Network > Routing**, select the Spoke VPC, and change the routing table.
+    * After selecting Spoke VPC, click the **Change Routing Table** button to change to the Centralized Virtual Routing (CVR) method.
+2. Go to **Network > Peering Gateway** to create a peering.
+    * If the spoke VPC is a different project, connect the project peering. If the spoke VPC is the same project, connect the peering.
+        * For more information on connecting a peering gateway, please see the [](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/)user guide[](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/).
+3. Go to **Network > Routing**, select a Hub VPC, and set up the routing as follows.
+    * Destination CIDR: 172.16.0.0/24
+    * Gateway: Gateway of peering type added after peering connection
+4. Go to **Network > Routing**, select a Spoke VPC, and set up the routing as follows.
+    *  Destination CIDR: 0.0.0.0/0
+    *  Gateway: Gateway of peering type added after peering connection
+5. Go to **Network > Peering Gateway > Project Peering**.
+    * Select the created peering and go to the **Route** tab.
+    * Click the **Peer** or **Change Local Route** to set up routing as follows.
+        * Destination CIDR: 0.0.0.0/0
+        * Gateway: NFW_TRAFFIC_SUBNET_INTERFACE_VIP
 
-만약, Spoke VPC의 서브넷이 2개 이상이고, Network Firewall을 통해 트래픽 제어가 필요한 경우 아래의 라우팅을 추가합니다.
+If the Spoke VPC has two or more subnets and traffic control is required through Network Firewall, add the routing as follows.
 
-[예시]
-Spoke VPC(172.16.0.0/24)의 서브넷이 172.16.0.0/25 와 172.16.0.128/25 일 때
-* **Network > Routing**으로 이동하여 Spoke VPC를 선택한 후 아래의 라우팅 2개를 추가합니다.
-    * 대상 CIDR: 172.16.0.0/25 과 172.16.0.128/25
-    * 게이트웨이: 피어링 연결 후 추가된 피어링 타입의 게이트웨이
+[Example]
+When the subnets of Spoke VPC (172.16.0.0/24) are 172.16.0.0/25 and 172.16.0.128/25
+* Go to **Network > Routing**, and select Spoke VPC and add the two routings as follows.
+    * Destination CIDR: 172.16.0.0/25 and 172.16.0.128/25
+    * Gateway: Gateway of peering type added after peering connection
      
-만약, Spoke VPC가 2개 이상이라면 아래의 라우팅을 추가합니다.
+If there are two or more spoke VPCs, add the routing as follows.
 
-[예시]
-Spoke VPC1(172.16.0.0/24)과 Spoke VPC2(192.168.0.0/24) 일 때
-* **Network > Routing**으로 이동하여 Hub VPC를 선택한 후 아래의 라우팅 2개를 추가합니다.
+[Example]
+With Spoke VPC1 (172.16.0.0/24) and Spoke VPC2 (192.168.0.0/24)
+* Go to **Network > Routing** to select a Hub VPC, and add the two routings as follows.
     * Spoke VPC 1
-        * 대상 CIDR: 172.16.0.0/24
-        * 게이트웨이: Hub VPC 와 Spoke VPC1 사이에 추가된 피어링 타입의 게이트웨이
+        * Destination CIDR: 172.16.0.0/24
+        * Gateway: Gateway of peering type added between Hub VPC and Spoke VPC1
     * Spoke VPC 2
-        * 대상 CIDR: 192.168.0.0/24
-        * 게이트웨이: Hub VPC 와 Spokr VPC2 사이에 추가된 피어링 타입의 게이트웨이
+        * Destination CIDR: 192.168.0.0/24
+        * Gateway: Gateway of peering type added between Hub VPC and Spoke VPC2
 
-## 정책
-Network Firewall 인스턴스를 생성하게 되면 정책 초기 페이지로 이동합니다.
+## Policy
+When you create a Network Firewall instance, you will be moved to the initial policy page.
 
 
-* **정책** 탭에서는 Network Firewall 인스턴스와 연결된 VPC 간 트래픽과 인바운드/아웃바운드 트래픽을 제어할 수 있는 정책을 관리할 수 있습니다.
+* In the **Policies** tab, you can manage policies to control inbound/outbound traffic and traffic between the VPCs connected to your Network Firewall instance.
 
-### 메인 페이지
+### Main Page
 
 ![main_page.PNG](/ko/images/main_page.png)
 
-* default-deny 정책은 필수 정책이며, 수정이나 삭제가 불가능합니다.
-* default-deny 정책을 통해 차단된 로그는 **옵션** 탭의 기본 차단 정책 로그 설정을 통해 확인할 수 있습니다.
+* The default-deny policy is a required policy and cannot be modified or deleted.
+* Logs blocked through the default-deny policy can be checked through the default blocking policy log settings in the **Options** tab.
 
-### 정책 추가
+### Add Policy
 
 ![acl_add.PNG](/ko/images/acl_add.png)
 
-* 출발지, 목적지, 목적지 포트를 기반으로 정책을 추가할 수 있습니다.
-    * 이미 만들어진 객체를 통해 출발지, 목적지, 목적지 포트를 선택합니다.
-* 정책의 상태(활성화/비활성화)와 동작(허용/차단), 스케줄을 선택하여 정책을 추가할 수 있습니다.
+* Add policies based on departure, destination, and destination port.
+    * Select the departure, destination, and destination port through already created objects.
+* Add a policy by selecting the policy's status (enabled/disabled), action (allowed/blocked), and schedule.
 
-### 정책 복사
+### Copy Policy
 
 ![acl_copy.PNG](/ko/images/acl_copy.png)
 
-* 생성된 정책을 클릭하여 **복사** 버튼을 통해 정책을 복사할 수 있습니다.
-    * 복사된 정책은 비활성화됩니다.
+* Copy a policy by clicking the created policy and **Copy**.
+    * Copied policies will be disabled.
 
-### 정책 수정
+### Modify Policy
 
 ![acl_edit.PNG](/ko/images/acl_edit.png)
 
-* 생성된 정책을 클릭하여 **수정** 버튼을 통해 정책을 수정할 수 있습니다.
+* Modify a policy by clicking the created policy and **Modify**.
 
-### 정책 이동
+### Move Policy
 
 ![acl_move.PNG](/ko/images/acl_move.png)
 
-* 생성된 정책을 클릭하여 **이동** 버튼을 통해 정책을 이동할 수 있습니다.
-    * 이름: defailt-deny 정책 아래로는 이동이 불가능합니다.
+* Move a policy by clicking the created policy and **Move**.
+    * Name: Could not move below the default-deny policy.
 
-### 정책 삭제
+### Delete Policy
 
-* 생성된 정책을 클릭하여 **삭제** 버튼을 통해 정책을 삭제할 수 있습니다.
-    * **한번 삭제한 정책은 복구할 수 없으며, 이름: defailt-deny 정책은 삭제가 불가능합니다.**
+* Delete a policy by clicking the created policy and **Delete**.
+    * **Once deleted, a policy cannot be restored, and a policy with name: default-deny cannot be deleted.**
 
-### 정책 일괄 다운로드
+### Batch Download of Policies
 
-* 정책 탭에 생성되어 있는 정책 전체를 한번에 다운로드 할 수 있습니다.
+* Download all policies created in the Policies tab at once.
 
-### 정책 일괄 등록
+### Batch Register Policies
 
 ![acl_batch.PNG](/ko/images/acl_batch.png)
 
-* 내려받은 템플릿을 사용하여 정책을 한 번에 등록할 수 있습니다.
+* You can register policies at once using the downloaded template.
 
-## 객체
+## Object
 
-* **객체** 탭에서는 정책을 생성할 때 사용할 IP와 포트를 생성합니다.
-    * 그룹 객체는 서브넷, 포트, 범위 객체에 대해서 다수의 객체로 그룹화하여 관리할 수 있습니다.
+* In the **Object** tab, create IPs and ports to use when creating policies.
+    * Group objects can be managed by grouping subnet, port, and range objects into multiple objects.
 
-### 추가
+### Add
 
-필수 항목을 입력하여 객체를 생성합니다.
+Create an object by entering the required fields.
 
 * IP
-    * 타입: 서브넷, 범위, 그룹
-* 포트
-    * 타입: 포트, 범위, 그룹
-    * 프로토콜: TCP, UDP, ICMP
+    * Type: Subnet, Range, Group
+* Port
+    * Type: Port, Range, Group
+    * Protocol: TCP, UDP, ICMP
 
-### 삭제
+### Delete
 
-생성된 객체를 클릭하여 **삭제** 버튼을 통해 객체를 삭제할 수 있습니다.
+Delete an object by clicking the created object and **Delete**.
 
-* 자동으로 Network Firewall에서 생성한 객체는 수정이나 삭제가 불가능합니다.
-* 정책에서 사용 중인 객체는 삭제 후 ALL 객체로 변경됩니다(주의 필요).
+* Objects automatically created by Network Firewall cannot be modified or deleted.
+* Objects in use by a policy will be changed to ALL objects after deletion (caution required).
 
-### 객체 일괄 다운로드
+### Batch Download of Objects
 
-* **객체** 탭에 생성되어 있는 IP와 포트 객체 전체를 각각 한 번에 다운로드할 수 있습니다.
+* Download all IPs and port objects created in the **Object** tab at once.
 
 ## NAT
 
-* **NAT**(네트워크 주소 변환) 탭에서는 외부에서 접속할 인스턴스를 지정하여 전용 공인 IP를 생성합니다.
-    * **NAT는 목적지 기반 NAT만 제공하며, 1:1 방식의 NAT만 제공합니다.**
-    * **포트 기반의 NAT는 제공하지 않습니다.**
-* 생성된 공인 IP는 **Network > Floating IP**에서 확인 가능합니다.
-* NAT 생성과는 별개로 허용 정책을 추가해야 통신이 가능합니다.
+* In the **NAT** (Network Address Translation) tab, create a dedicated public IP by specifying the instance to be accessed from the outside.
+    * **NAT only provides destination-based NAT and 1:1 NAT.**
+    * **Port-based NAT is not provided.**
+* The created public IP can be checked in **Network > Floating IP**.
+* To enable communication, you must add an allow policy separately from creating NAT.
 
-### 추가
+### Add
 
 ![nat_add.PNG](/ko/images/nat_add.png)
 
-* **추가(+)** 버튼을 클릭하여 객체를 선택합니다.
-    * **선택하고자 하는 객체는 미리 생성되어 있어야 합니다.**
-* **확인** 버튼을 누른 후 연결된 **NAT 전 공인 IP**를 확인할 수 있습니다.
-    * **생성된 NAT 전 공인 IP는 임의로 변경이 불가능합니다.**
+* Click  **Add (+)** to select an object.
+    * **The object you want to select must be created in advance.**
+* Click **Confirm** to check the connected **public IP before NAT**.
+    * **The created public IP before NAT cannot be changed arbitrarily.**
 
-### 삭제
+### Delete
 
-* **삭제** 버튼을 클릭하여 생성된 NAT를 삭제합니다.
-    * **삭제 후 NAT 전 공인 IP는 자동으로 삭제됩니다.**
+* Click **Delete** to delete the created NAT.
+    * **After deletion, the public IP before NAT is automatically deleted.**
 
-## 로그
+## Log
 
-**로그** 탭에서는 Network Firewall에서 생성된 로그를 검색할 수 있습니다.
+In the **Log** tab, search logs created in Network Firewall.
 
-### 검색
+### Search
 
-* 트래픽: Network Firewall을 경유할 때 허용 또는 차단 정책에 의해 생성된 트래픽 로그를 검색
-    * **조회는 1개월 단위로 최대 3개월까지의 과거 데이터만 검색 가능합니다.**
-    * 별도의 데이터 저장이 필요한 경우 **옵션** 탭의 **로그 원격 전송 설정**을 참고하세요.
-* Audit: 정책 생성 및 삭제 등 Network Firewall의 변경사항에 대한 로그를 검색
-    * **조회는 최대 1개월 단위로 검색 가능하며, 조직 서비스인 CloudTrail에서도 검색 가능합니다.**
+* Traffic: Search traffic logs generated by allow or block policies when passing through the Network Firewall.
+    * **You can search only historical data up to 3 months in 1-month increments.**
+    * If separate data storage is required, see the **log remote transmission settings** in the **Options** tab.
+* Audit: Search logs for changes to Network Firewall, including policy creation and deletion.
+    * **You can search for up to one month, and can search through CloudTrail, an organizational service.**
 
-### 엑셀 내려받기
+### Download Excel
 
-* 트래픽과 Audit 로그의 검색 결과를 **엑셀 내려받기** 버튼을 통해 다운로드할 수 있습니다.
+* Download traffic and audit log search results through **Download Excel**.
 
-## 모니터
+## Monitor
 
-* **모니터** 탭에서는 Network Firewall 인스턴스의 상태를 실시간으로 확인할 수 있습니다.
-    * 검색은 최대 24시간(1일) 내에서만 가능합니다.
+* In the **Monitor** tab, check the status of your Network Firewall instances in real time.
+    * Search is only possible within a maximum of 24 hours (1 day).
 
-### 검색
+### Search
 
-* 세션: 현재 Network Firewall을 통해 사용하는 세션의 수량
-* 네트워크 사용량: 현재 Network Firewall을 경유하는 인바운드/아웃바운드 트래픽
+* Sessions: Quantity of sessions currently in use through Network Firewall.
+* Network Usage: Inbound/outbound traffic currently passing through Network Firewall
 
-## 옵션
+## Options
 
-* **옵션** 탭은 Network Firewall 운영에 필요한 옵션을 설정할 수 있습니다.
+* In the **Options** tab, set options required for operation of Network Firewall.
 
-### 로그 설정
+### Log Settings
 
-* 기본 차단정책 로그 설정: Network Firewall 생성 후 필수로 생성되는 기본 차단정책 로그의 저장여부를 선택합니다.
-    * 사용 선택 시 기본 차단 정책으로 생성된 로그는 트래픽 로그에서 검색 가능합니다.
-* 로그 원격 전송 설정: 원격지로 트래픽 로그를 저장할 수 있는 옵션을 선택합니다.
-    * syslog: 최대 2개의 원격지 주소로 로그를 저장
-    * Object Storage: NHN Cloud에서 제공하는 Object Storage 서비스로 로그를 저장
-    * Log & Crash Serach: NHN Cloud에서 제공하는 Log&Crash Serach 서비스로 로그를 저장
+* Default blocking policy log settings: Select whether to save the default blocking policy log that is required after creating a Network Firewall.
+    * When enabled, you can search logs created with the default blocking policy in the traffic log.
+* Log remote transmission settings: Select the option to save traffic logs remotely.
+    * syslog: Save logs with up to 2 remote addresses
+    * Object Storage: Save logs with the Object Storage service provided by NHN Cloud
+    * Log & Crash Serach: Save logs with the Log&Crash Serach service provided by NHN Cloud
 
-### 일반 설정
+### General Settings
 
-* NAT 설정
+* NAT Settings

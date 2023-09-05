@@ -81,7 +81,7 @@ Spoke VPC1(172.16.0.0/24)과 Spoke VPC2(192.168.0.0/24) 일 때
         * 게이트웨이: Hub VPC 와 Spoke VPC1 사이에 추가된 피어링 타입의 게이트웨이
     * Spoke VPC 2
         * 대상 CIDR: 192.168.0.0/24
-        * 게이트웨이: Hub VPC 와 Spokr VPC2 사이에 추가된 피어링 타입의 게이트웨이
+        * 게이트웨이: Hub VPC 와 Spoke VPC2 사이에 추가된 피어링 타입의 게이트웨이
 
 ## 정책
 Network Firewall 인스턴스를 생성하게 되면 정책 초기 페이지로 이동합니다.
