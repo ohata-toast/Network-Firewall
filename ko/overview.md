@@ -1,4 +1,3 @@
-# 개요
 ## Security > Network Firewall > 개요
 
 Network Firewall은 NHN Cloud에서 사용하는 인프라 자산들을 안전하게 보호하기 위해 제공하는 네트워크 보안 서비스입니다.
