@@ -91,14 +91,14 @@ Network Firewall 인스턴스를 생성하게 되면 정책 초기 페이지로 
 
 ### 메인 페이지
 
-![main_page.PNG](/ko/images/main_page.png)
+![main_page.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/main_page_1.png)
 
 * default-deny 정책은 필수 정책이며, 수정이나 삭제가 불가능합니다.
 * default-deny 정책을 통해 차단된 로그는 **옵션** 탭의 기본 차단 정책 로그 설정을 통해 확인할 수 있습니다.
 
 ### 정책 추가
 
-![acl_add.PNG](/ko/images/acl_add.png)
+![acl_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_add_1.png)
 
 * 출발지, 목적지, 목적지 포트를 기반으로 정책을 추가할 수 있습니다.
     * 이미 만들어진 객체를 통해 출발지, 목적지, 목적지 포트를 선택합니다.
@@ -106,20 +106,20 @@ Network Firewall 인스턴스를 생성하게 되면 정책 초기 페이지로 
 
 ### 정책 복사
 
-![acl_copy.PNG](/ko/images/acl_copy.png)
+![acl_copy.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_copy_1.png)
 
 * 생성된 정책을 클릭하여 **복사** 버튼을 통해 정책을 복사할 수 있습니다.
     * 복사된 정책은 비활성화됩니다.
 
 ### 정책 수정
 
-![acl_edit.PNG](/ko/images/acl_edit.png)
+![acl_edit.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_edit_1.png)
 
 * 생성된 정책을 클릭하여 **수정** 버튼을 통해 정책을 수정할 수 있습니다.
 
 ### 정책 이동
 
-![acl_move.PNG](/ko/images/acl_move.png)
+![acl_move.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_move_1.png)
 
 * 생성된 정책을 클릭하여 **이동** 버튼을 통해 정책을 이동할 수 있습니다.
     * 이름: defailt-deny 정책 아래로는 이동이 불가능합니다.
@@ -135,7 +135,7 @@ Network Firewall 인스턴스를 생성하게 되면 정책 초기 페이지로 
 
 ### 정책 일괄 등록
 
-![acl_batch.PNG](/ko/images/acl_batch.png)
+![acl_batch.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_batch_1.png)
 
 * 내려받은 템플릿을 사용하여 정책을 한 번에 등록할 수 있습니다.
 
@@ -175,7 +175,7 @@ Network Firewall 인스턴스를 생성하게 되면 정책 초기 페이지로 
 
 ### 추가
 
-![nat_add.PNG](/ko/images/nat_add.png)
+![nat_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/nat_add_1.png)
 
 * **추가(+)** 버튼을 클릭하여 객체를 선택합니다.
     * **선택하고자 하는 객체는 미리 생성되어 있어야 합니다.**
