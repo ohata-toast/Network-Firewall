@@ -23,12 +23,11 @@ Network Firewall 생성전 아래의 네트워크 자원들이 필요합니다.
 
 1. **Security > Network Firewall**로 이동합니다.
 2. 각 필수 항목을 모두 선택하고 하단의 **Network Firewall 생성** 버튼을 클릭합니다.
-
-* RBAC: 인스턴스 객체 조회, Network Firewall 서비스 제공에 필요한 API 권한을 부여
-* VPC: Network Firewall 인스턴스가 사용할 VPC를 선택
-* 서브넷: Network Firewall 인스턴스가 내부 트래픽 제어를 위해 사용할 서브넷을 선택
-* NAT: Network Firewall 인스턴스가 외부 트래픽 제어를 위해 사용할 서브넷을 선택
-* 외부전송: Network Firewall 인스턴스에 생성된 트래픽과 로그를 전송할 서브넷을 선택
+    * RBAC: 인스턴스 객체 조회, Network Firewall 서비스 제공에 필요한 API 권한을 부여
+    * VPC: Network Firewall 인스턴스가 사용할 VPC를 선택
+    * 서브넷: Network Firewall 인스턴스가 내부 트래픽 제어를 위해 사용할 서브넷을 선택
+    * NAT: Network Firewall 인스턴스가 외부 트래픽 제어를 위해 사용할 서브넷을 선택
+    * 외부전송: Network Firewall 인스턴스에 생성된 트래픽과 로그를 전송할 서브넷을 선택
 
 **참고**
 
@@ -122,12 +121,12 @@ Network Firewall 인스턴스를 생성하게 되면 정책 초기 페이지로 
 ![acl_move.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_move_1.png)
 
 * 생성된 정책을 클릭하여 **이동** 버튼을 통해 정책을 이동할 수 있습니다.
-    * 이름: defailt-deny 정책 아래로는 이동이 불가능합니다.
+    * 이름: default-deny 정책 아래로는 이동이 불가능합니다.
 
 ### 정책 삭제
 
 * 생성된 정책을 클릭하여 **삭제** 버튼을 통해 정책을 삭제할 수 있습니다.
-    * **한번 삭제한 정책은 복구할 수 없으며, 이름: defailt-deny 정책은 삭제가 불가능합니다.**
+    * **한번 삭제한 정책은 복구할 수 없으며, 이름: default-deny 정책은 삭제가 불가능합니다.**
 
 ### 정책 일괄 다운로드
 
@@ -224,8 +223,9 @@ Network Firewall 인스턴스를 생성하게 되면 정책 초기 페이지로 
 * 로그 원격 전송 설정: 원격지로 트래픽 로그를 저장할 수 있는 옵션을 선택합니다.
     * syslog: 최대 2개의 원격지 주소로 로그를 저장
     * Object Storage: NHN Cloud에서 제공하는 Object Storage 서비스로 로그를 저장
-    * Log & Crash Serach: NHN Cloud에서 제공하는 Log&Crash Serach 서비스로 로그를 저장
+    * Log & Crash Search: NHN Cloud에서 제공하는 Log&Crash Search 서비스로 로그를 저장
 
 ### 일반 설정
 
-* NAT 설정
+* NAT 설정 : NAT 사용여부에 대한 옵션을 설정
+    * **NAT를 사용중에 사용 안 함으로 변경하게 되면 NAT 탭에서 설정한 정보는 모두 삭제 됩니다.**
