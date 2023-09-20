@@ -23,12 +23,11 @@ Network Firewallを作成する前に下記のネットワークリソースが�
 
 1. **Security > Network Firewall**に移動します。
 2. 各必須項目を全て選択し、下部の**Network Firewall作成**ボタンをクリックします。
-
-* RBAC:インスタンスオブジェクト照会、 Network Firewallサービスの提供に必要なAPI権限を付与
-* VPC: Network Firewallインスタンスが使用するVPCを選択
-* サブネット: Network Firewallインスタンスが内部トラフィック制御のために使用するサブネットを選択
-* NAT: Network Firewallインスタンスが外部トラフィック制御のために使用するサブネットを選択
-* 外部転送: Network Firewallインスタンスに作成されたトラフィックとログを転送するサブネットを選択
+    * RBAC:インスタンスオブジェクト照会、 Network Firewallサービスの提供に必要なAPI権限を付与
+    * VPC:Network Firewallインスタンスが使用するVPCを選択
+    * サブネット: Network Firewallインスタンスが内部トラフィック制御のために使用するサブネットを選択
+    * NAT:Network Firewallインスタンスが外部トラフィック制御のために使用するサブネットを選択
+    * 外部転送: Network Firewallインスタンスに作成されたトラフィックとログを転送するサブネットを選択
 
 **参考**
 
@@ -122,12 +121,12 @@ Network Firewallインスタンスを作成すると、ポリシー初期ペー�
 ![acl_move.PNG](/ko/images/acl_move.png)
 
 * 作成されたポリシーをクリックして**移動**ボタンを押すとポリシーを移動できます。
-    * 名前: defailt-denyポリシーの下には移動できません。
+    * 名前: default-denyポリシーの下には移動できません。
 
 ### ポリシーの削除
 
 * 作成されたポリシーをクリックして**削除**ボタンを押すとポリシーを削除できます。
-    * **一度削除したポリシーは復元することができず、名前：defailt-denyポリシーは削除できません。**
+    * **一度削除したポリシーは復元することができず、名前：default-denyポリシーは削除できません。**
 
 ### ポリシーの一括ダウンロード
 
@@ -224,7 +223,7 @@ Network Firewallインスタンスを作成すると、ポリシー初期ペー�
 * ログ遠隔転送設定:遠隔地にトラフィックログを保存できるオプションを選択します。
     * syslog:最大2つの遠隔地アドレスにログを保存
     * Object Storage: NHN Cloudで提供するObject Storageサービスでログを保存
-    * Log & Crash Serach: NHN Cloudが提供するLog&Crash Serachサービスでログを保存
+    * Log & Crash Search: NHN Cloudが提供するLog&Crash Searchサービスでログを保存
 
 ### 一般設定
 
