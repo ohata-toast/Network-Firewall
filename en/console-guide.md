@@ -23,12 +23,11 @@ The following network resources are required before creating a Network Firewall.
 
 1. Go to **Security > Network Firewall**.
 2. Select all required items and click the **Create Network Firewall** button at the bottom.
-
-* RBAC: Assign API permissions to query instance objects and provide the Network Firewall service
-* VPC: Select the VPC that the Network Firewall instance will use
-* Subnet: Select a subnet that Network Firewall instances will use to control internal traffic
-* NAT: Select a subnet that the Network Firewall instances will use to control external traffic
-* External transmission: Select a subnet to which the traffic and logs created in Network Firewall instances are transmitted
+    * RBAC: Assign API permissions to query instance objects and provide the Network Firewall service
+    * VPC: Select the VPC that the Network Firewall instance will use
+    * Subnet: Select a subnet that Network Firewall instances will use to control internal traffic
+    * NAT: Select a subnet that the Network Firewall instances will use to control external traffic
+    * External transmission: Select a subnet to which the traffic and logs created in Network Firewall instances are transmitted
 
 **[Note]**
 
@@ -224,8 +223,9 @@ In the **Log** tab, search logs created in Network Firewall.
 * Log remote transmission settings: Select the option to save traffic logs remotely.
     * syslog: Save logs with up to 2 remote addresses
     * Object Storage: Save logs with the Object Storage service provided by NHN Cloud
-    * Log & Crash Serach: Save logs with the Log&Crash Serach service provided by NHN Cloud
+    * Log & Crash Search: Save logs with the Log & Crash Search service provided by NHN Cloud
 
 ### General Settings
 
-* NAT Settings
+* NAT Settings: Set whether to use NAT
+    *  **When you change NAT from Set to Not Set, all information set on the NAT tab will be deleted.**
