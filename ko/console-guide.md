@@ -35,7 +35,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 >* Network Firewall 인스턴스는 가용 영역을 분리하여 이중화를 기본으로 제공합니다.
 >* Security Groups와는 별개의 서비스이므로 Network Firewall을 사용하면 두 서비스를 모두 허용해야 인스턴스에 접근할 수 있습니다.
 >* Network Firewall이 소유하고 있는 CIDR 대역과 연결이 필요한 CIDR 대역은 중복되지 않아야 합니다.
->* **Network > Network Interface** 에서 Virtual_IP 타입으로 생성되어 있는 IP는 Network Firewall 에서 이중화 용도로 사용 중이므로 삭제할 경우 통신이 차단될 수 있습니다.
+>* **Network > Network Interface**에서 Virtual_IP 타입으로 생성되어 있는 IP는 Network Firewall에서 이중화 용도로 사용 중이므로 삭제할 경우 통신이 차단될 수 있습니다.
 
 ### 연결 설정
 
@@ -61,7 +61,7 @@ Network Firewall이 사용하는 VPC(Hub)는 10.0.0.0/24이고, Network Firewall
         * 대상 CIDR: 0.0.0.0/0
         * 게이트웨이: NFW_TRAFFIC_SUBNET_INTERFACE_VIP
 
-위의 라우팅 설정이 완료되면 Spoke VPC에 있는 인스턴스가 Network Firewall 을 경유하여 공인통신이 가능합니다. (**Network Firewall > NAT** 탭에서 NAT 추가 필요)
+위의 라우팅 설정이 완료되면 Spoke VPC에 있는 인스턴스가 Network Firewall을 경유하여 공인 통신이 가능합니다. (**Network Firewall > NAT** 탭에서 NAT 추가 필요)
  
  
 ---
@@ -73,7 +73,7 @@ Spoke VPC(172.16.0.0/24)의 서브넷이 172.16.0.0/25와 172.16.0.128/25일 때
     * 대상 CIDR: 172.16.0.0/25과 172.16.0.128/25
     * 게이트웨이: 피어링 연결 후 추가된 피어링 타입의 게이트웨이
 
-위의 라우팅 설정이 완료되면 Spoke VPC 안에 있는 서브넷 간 통신이 Network Firewall 을 경유하여 사설통신이 가능합니다. (**Network Firewall > 정책** 탭에서 정책추가 필요)
+위의 라우팅 설정이 완료되면 Spoke VPC 안에 있는 서브넷 간 통신이 Network Firewall을 경유하여 사설통신이 가능합니다. (**Network Firewall > 정책** 탭에서 정책 추가 필요)
 
  ---    
 만약 Spoke VPC가 2개 이상이라면 아래의 라우팅을 추가합니다.
@@ -88,7 +88,7 @@ Spoke VPC1(172.16.0.0/24)과 Spoke VPC2(192.168.0.0/24)일 때
         * 대상 CIDR: 192.168.0.0/24
         * 게이트웨이: Hub VPC와 Spoke VPC2 사이에 추가된 피어링 타입의 게이트웨이
 
-위의 라우팅 설정이 완료되면 서로 다른 Spoke VPC간 통신이 Network Firewall 을 경유하여 사설 통신이 가능합니다. (**Network Firewall > 정책** 탭에서 정책추가 필요)
+위의 라우팅 설정이 완료되면 서로 다른 Spoke VPC 간 통신이 Network Firewall을 경유하여 사설 통신이 가능합니다. (**Network Firewall > 정책** 탭에서 정책 추가 필요)
 Network Firewall 서비스 구성도를 참고하여 고객의 환경에 맞게 연결을 설정하시기 바랍니다.
 
 ---
@@ -101,7 +101,7 @@ Network Firewall 인스턴스를 생성하게 되면 정책 초기 페이지로 
 
 ### 메인 페이지
 
-* default-deny 정책은 필수정책이며, 수정하거나 삭제할 수 없습니다.
+* default-deny는 필수정책이며, 수정하거나 삭제할 수 없습니다.
 >[참고]
 default-deny 정책을 통해 차단된 로그는 **옵션** 탭의 **기본 차단 정책 로그 설정**을 **사용**으로 변경한 후 **로그** 탭에서 확인 가능합니다.
 
@@ -186,7 +186,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 * 포트 기반의 NAT는 제공하지 않습니다.
 * 생성된 공인 IP는 **Network > Floating IP**에서 확인 가능합니다.
 >[참고]
->NAT를 생성한 뒤 허용정책을 추가해야만 공인 통신이 가능합니다.
+>NAT를 생성한 뒤 허용 정책을 추가해야만 공인 통신이 가능합니다.
 
 ### 추가
 
@@ -217,7 +217,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 ### 엑셀 내려받기
 
 * **엑셀 내려받기**를 클릭해 트래픽과 Audit 로그의 검색 결과를 다운로드할 수 있습니다..
-    * 트래픽 로그의 최대 다운로드 개수는 30만건 입니다.
+    * 트래픽 로그의 최대 다운로드 개수는 30만 건입니다.
 
 ## 모니터
 
