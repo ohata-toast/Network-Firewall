@@ -1,4 +1,4 @@
 ## Security > Network Firewall > Release Notes
 
-## September 26, 2023
+## October 31, 2023
 * Network Firewall service released
