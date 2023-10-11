@@ -18,7 +18,7 @@ The minimum network service resources needed to create a Network Firewall are as
 * 3 subnets in the selected VPC
 * Internet gateway attached to the selected VPC
 
-> **The above service resources can be created in the [Network] category.**
+> [Note] The above service resources can be created in the [Network] category.
 
 ### Create Network Firewall
 
