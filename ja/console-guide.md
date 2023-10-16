@@ -60,7 +60,7 @@ Network Firewallが使用するVPC(Hub)は10.0.0.0/24で、Network Firewallと�
     * 作成されたピアリングを選択して**ルート** タブに移動します。
     * **ピア**または**ローカルルートの変更**ボタンを押して、以下のようにルーティングを設定します。
         * 対象CIDR: 0.0.0.0/0
-        * ゲートウェイ: NFW_TRAFFIC_SUBNET_INTERFACE_VIP
+        * ゲートウェイ: NetworkFirewall_INF_TRAFFIC_VIP
 
 上記のルーティング設定が完了すると、Spoke VPCにあるインスタンスがNetwork Firewallを経由して公認通信が可能になります。 (**Network Firewall > NAT** タブでNAT追加必要)
 

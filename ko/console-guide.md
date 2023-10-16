@@ -59,7 +59,7 @@ Network Firewall이 사용하는 VPC(Hub)는 10.0.0.0/24이고, Network Firewall
     * 생성된 피어링을 선택하여 **라우트** 탭으로 이동합니다.
     * **피어** 또는 **로컬 라우트 변경** 버튼을 눌러 아래와 같이 라우팅을 설정합니다.
         * 대상 CIDR: 0.0.0.0/0
-        * 게이트웨이: NFW_TRAFFIC_SUBNET_INTERFACE_VIP
+        * 게이트웨이: NetworkFirewall_INF_TRAFFIC_VIP
 
 위의 라우팅 설정이 완료되면 Spoke VPC에 있는 인스턴스가 Network Firewall을 경유하여 공인 통신이 가능합니다. (**Network Firewall > NAT** 탭에서 NAT 추가 필요)
  

@@ -60,7 +60,7 @@ When the VPC (Hub) used by Network Firewall is 10.0.0.0/24, and the VPC (Spoke) 
     * Select the created peering and go to the **Route** tab.
     * Click the **Peer** or **Change Local Route** to set up routing as follows.
         * Destination CIDR: 0.0.0.0/0
-        * Gateway: NFW_TRAFFIC_SUBNET_INTERFACE_VIP
+        * Gateway: NetworkFirewall_INF_TRAFFIC_VIP
 
 Once the above routing settings are complete, instances in the Spoke VPC will be able to communicate publicly through the Network Firewall. (Requires adding NAT in **Network Firewall > NAT**)
  
