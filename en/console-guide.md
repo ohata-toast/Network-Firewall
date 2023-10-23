@@ -113,6 +113,7 @@ Logs blocked through the default-deny policy can be viewed on the **Log** tab af
 * Add policies based on departure, destination, and destination port.
     * Select the departure, destination, and destination port through already created objects.
 * Add a policy by selecting the policy's status (enabled/disabled), action (allowed/blocked), and schedule.
+* The schedule feature works after enabling the policy's status (If the policy's status is disabled, the schedule feature does not apply).
 
 ![acl_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_add_1.png)
 
@@ -126,9 +127,10 @@ Logs blocked through the default-deny policy can be viewed on the **Log** tab af
 
 ### Modify Policy
 
+* You can modify the policy by clicking **Edit**.
+
 ![acl_edit.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_edit_1.png)
 
-* You can modify the policy by clicking **Edit**.
 
 ### Move Policy
 

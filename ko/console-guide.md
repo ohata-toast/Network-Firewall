@@ -112,6 +112,7 @@ default-deny 정책을 통해 차단된 로그는 **옵션** 탭의 **기본 차
 * 출발지, 목적지, 목적지 포트를 기반으로 정책을 추가할 수 있습니다.
     * 이미 만들어진 객체를 통해 출발지, 목적지, 목적지 포트를 선택합니다.
 * 정책의 상태(활성화/비활성화)와 동작(허용/차단), 스케줄을 선택하여 정책을 추가할 수 있습니다.
+* 스케줄 기능은 정책의 상태를 활성화 한 이후에 동작합니다(정책이 비활성화되어 있을 경우 스케줄 기능이 적용되지 않습니다.).
 
 ![acl_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_add_1.png)
 
@@ -125,9 +126,10 @@ default-deny 정책을 통해 차단된 로그는 **옵션** 탭의 **기본 차
 
 ### 정책 수정
 
+* **수정**을 클릭해 정책을 수정할 수 있습니다.
+
 ![acl_edit.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_edit_1.png)
 
-* **수정**을 클릭해 정책을 수정할 수 있습니다.
 
 ### 정책 이동
 
