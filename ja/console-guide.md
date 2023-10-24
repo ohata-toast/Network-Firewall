@@ -121,14 +121,15 @@ default-denyポリシーでブロックされたログは、**オプション**�
 * **コピー**をクリックしてポリシーをコピーできます。
     * コピーされたポリシーは無効になります。
 
-![acl_copy.PNG](/ko/images/acl_copy.png)
+
+![acl_copy.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_copy_1.png)
 
 
 ### ポリシーの修正
 
 * **修正**をクリックしてポリシーを修正できます。
 
-![acl_edit.PNG](/ko/images/acl_edit.png)
+![acl_edit.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_edit_1.png)
 
 
 ### ポリシーの移動
