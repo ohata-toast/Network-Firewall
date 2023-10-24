@@ -16,12 +16,13 @@ NHN Cloud에 특화된 접근제어를 적용할 수 있고, 별도의 방화벽
 서비스 구성은 아래의 3가지 형태로 구성할 수 있습니다.
 
 ### 1개의 프로젝트
-![service_architecrure_1](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/service_architecture_1.PNG)
+![service_architecrure_1](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/architecture_1.PNG)
 
 ### 1개 이상의 프로젝트
-![service_architecrure_2](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/service_architecture_2.PNG)
+![service_architecrure_2](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/architecture_2.PNG)
 
 ### 다른 리전의 프로젝트
-![service_architecrure_3](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/service_architecture_3.PNG)
+![service_architecrure_3](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/architecture_3.PNG)
+
 > [참고]
 > 다른 리전의 같은 프로젝트에서만 구성 가능합니다.
