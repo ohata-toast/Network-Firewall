@@ -3,6 +3,21 @@
 Network Firewall is a network security service to safely protect infrastructure assets used by NHN Cloud. 
 You can easily use access control specialized for NHN Cloud and the firewall feature without using a separate firewall product.
 
+# 🧑 Inviting Members
+
+{% hint style="info" %}
+**GitBook tip:** Try out a range of different content types to keep folks engaged and interested in each feature, some content types work for different chunks of information
+{% endhint %}
+
+<details>
+
+<summary>As a Guest User</summary>
+
+
+
+</details>
+
+
 ## Main Features
 * Allows you to manage network communication policies efficiently.
     * Controls traffic with a single policy in the stateful manner.
