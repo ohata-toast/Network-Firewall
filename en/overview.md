@@ -16,12 +16,12 @@ You can easily use access control specialized for NHN Cloud and the firewall fea
 Service configurations can take three forms as follows.
 
 ### 1 Project
-![service_architecrure_1](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/service_architecture_1.PNG)
+![service_architecrure_1](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/architecture_1.PNG)
 
 ### 1 or More Projects
-![service_architecrure_2](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/service_architecture_2.PNG)
+![service_architecrure_2](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/architecture_2.PNG)
 
 ### Project in other regions
-![service_architecrure_3](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/service_architecture_3.PNG)
+![service_architecrure_3](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/architecture_3.PNG)
 > [Note]
 Service can only be configured in the same project of different regions.
