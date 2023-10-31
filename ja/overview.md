@@ -16,12 +16,12 @@ NHN Cloudに特化したアクセス制御を適用することができ、別�
 サービス構成は下記の3つの形で構成できます。
 
 ### 1つのプロジェクト
-![service_architecrure_1](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/service_architecture_1.PNG)
+![service_architecrure_1](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/architecture_1.PNG)
 
 ### 1つ以上のプロジェクト
-![service_architecrure_2](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/service_architecture_2.PNG)
+![service_architecrure_2](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/architecture_2.PNG)
 
 ### 他のリージョンのプロジェクト
-![service_architecrure_3](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/service_architecture_3.PNG)
+![service_architecrure_3](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/architecture_3.PNG)
 > [参考]
 > 他のリージョンの同じプロジェクトのみ構成可能です。
