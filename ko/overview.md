@@ -3,6 +3,10 @@
 Network Firewall은 NHN Cloud에서 사용하는 인프라 자산들을 안전하게 보호하기 위해 제공하는 네트워크 보안 서비스입니다.
 NHN Cloud에 특화된 접근제어를 적용할 수 있고, 별도의 방화벽 제품을 사용하지 않아도 간편하게 방화벽 기능을 사용할 수 있습니다.
 
+> [참고]
+> Netowork Firewall 서비스는 한국(판교) 리전의 경우 신규 네트워크 환경에서만 이용할 수 > 있습니다.
+> 한국(판교) 리전에서 2022년 3월 7일 이전에 생성한 프로젝트는 개선하기 전의 네트워크 환경이므로 Network Firewall 서비스를 이용하려면 프로젝트를 새로 생성해야 합니다.
+
 ## 주요 기능
 * 효율적으로 네트워크 통신 정책을 관리할 수 있습니다.
     * Stateful 방식으로 하나의 정책으로 트래픽을 제어합니다.
@@ -25,4 +29,7 @@ NHN Cloud에 특화된 접근제어를 적용할 수 있고, 별도의 방화벽
 ![service_architecrure_3](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.26/architecture_3.PNG)
 
 > [참고]
-> 다른 리전의 같은 프로젝트에서만 구성 가능합니다.
+> * 다른 리전의 프로젝트 환경에서는 다른 리전의 같은 프로젝트에서만 구성 가능합니다. 자세한 내용은 [사용자 가이드](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/)를 참조 해주세요.
+> 
+> * 서비스 구성시 개선하기 전의 네트워크 환경과는 연결할 수 없습니다.
+> 예를 들어 하나의 조직에 개선하기 전의 네트워크 환경을 사용하는 프로젝트와 신규 네트워크 환경을 사용하는 프로젝트가 생성되어 있을 경우 신규 네트워크 환경에 Network Firewall을 생성할 수 있지만 개선하기 전의 네트워크 환경을 Spoke VPC로 사용할 수 없습니다.
