@@ -67,10 +67,10 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
     * 서브넷: Network Firewall 인스턴스가 내부 트래픽 제어를 위해 사용할 서브넷
     * NAT: Network Firewall 인스턴스가 외부 트래픽 제어를 위해 사용할 서브넷
     * 외부 전송: Network Firewall 인스턴스에 생성된 트래픽과 로그를 전송할 서브넷
-    * <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/NFW-Create.png" width="60%" height="60%" />
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/NFW-Create.png" height="60%">
 
 
->[참고]
+> [참고]
 >* 서브넷, NAT, 외부 전송에 사용하는 서브넷은 모두 다른 서브넷으로 선택해야 합니다.
 >   * 가급적 NHN Cloud 콘솔에서 생성할 수 있는 최소 단위(28비트)로 생성할 것을 권장합니다.
 >* Network Firewall이 속할 VPC의 라우팅 테이블에 인터넷 게이트웨이가 연결되어 있어야 생성 가능합니다.
@@ -85,9 +85,9 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 
 1. <strong>Network > Routing</strong>으로 이동하여 Spoke VPC를 선택한 후 라우팅 테이블을 변경합니다.
     * Spoke VPC를 선택한 후 <strong>라우팅 테이블 변경</strong>을 클릭해 중앙 집중형 라우팅(CVR) 방식으로 변경합니다.
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings1.png" width="65%" height="65%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings1.png" height="65%" />
 <br>
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings2.png" width="50%" height="50%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings2.png" height="50%" />
 <br>
 
 2. <strong>Network > Peering Gateway</strong>로 이동하여 피어링을 생성합니다.
@@ -95,21 +95,21 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
     * Spoke VPC가 다른 리전이라면 리전 피어링을 생성합니다.
     * Spoke VPC가 같은 프로젝트라면 피어링을 생성합니다.
         * 피어링 게이트웨이 연결에 대한 자세한 사항은 [사용자 가이드](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/)를 참조해 주세요.
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings3.png" width="65%" height="65%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings3.png" height="65%" />
 <br>
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings4.png" width="65%" height="65%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings4.png" height="65%" />
 <br>
 
 3. <strong>Network > Routing</strong>으로 이동하여 Hub VPC를 선택한 후 아래의 라우팅을 설정합니다.
     * 대상 CIDR: 172.16.0.0/24
     * 게이트웨이: 피어링 연결 후 추가된 피어링 타입의 게이트웨이
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings5.png" width="65%" height="65%" />
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings5.png" height="65%" />
 <br>
 
 4. <strong>Network > Routing</strong>으로 이동하여 Spoke VPC를 선택한 후 아래의 라우팅을 설정합니다.
     * 대상 CIDR: 0.0.0.0/0
     * 게이트웨이: 피어링 연결 후 추가된 피어링 타입의 게이트웨이
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings6.png" width="65%" height="65%" />
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings6.png" height="65%" />
 <br>
 
 5. <strong>Network > Peering Gateway</strong>로 이동하여 라우팅을 설정합니다.
@@ -117,9 +117,9 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
     * **피어** 또는 **로컬 라우트 변경** 버튼을 눌러 아래와 같이 라우팅을 설정합니다.
         * 대상 CIDR: 0.0.0.0/0
         * 게이트웨이: NetworkFirewall\_INF\_TRAFFIC\_VIP
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings7.png" width="65%" height="65%" />
+        <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings7.png" height="65%" />
 <br>
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings8.png" width="50%" height="50%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings8.png" height="50%" />
 
 위의 라우팅 설정이 완료되면 Spoke VPC에 있는 인스턴스가 Network Firewall을 경유하여 공인 통신을 할 수 있습니다. (<strong>Network Firewall > NAT</strong> 탭에서 NAT 추가 필요)
 <br>
@@ -135,9 +135,9 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 * <strong>Network > Routing</strong>으로 이동하여 Spoke VPC를 선택한 후 아래의 라우팅 2개를 추가합니다.
     * 대상 CIDR: 172.16.0.0/25과 172.16.0.128/25
     * 게이트웨이: 피어링 연결 후 추가된 피어링 타입의 게이트웨이
-    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings9.png" width="65%" height="65%" />
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings9.png" height="65%" />
 <br>
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings10.png" width="65%" height="65%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings10.png" height="65%" />
 위의 라우팅 설정이 완료되면 Spoke VPC 안에 있는 서브넷 간 Network Firewall을 경유하여 사설 통신을 할 수 있습니다. (<strong>Network Firewall > 정책</strong> 탭에서 정책 추가 필요)
 <br>
 
@@ -156,9 +156,10 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
     * Spoke VPC 2
         * 대상 CIDR: 192.168.0.0/24
         * 게이트웨이: Hub VPC와 Spoke VPC2 사이에 추가된 피어링 타입의 게이트웨이
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings11.png" width="65%" height="65%" />
+        <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings11.png" height="65%" />
 
-\[참고\]
+
+> [참고]
 >\"3\. 연결 설정 - 5\"와 같이 Spoke VPC2 - Hub 간 VPC 피어링에도 라우트 추가 설정이 필요합니다.
 
 위의 라우팅 설정이 완료되면 서로 다른 Spoke VPC 간 Network Firewall을 경유하여 사설 통신을 할 수 있습니다. (<strong>Network Firewall > 정책</strong> 탭에서 정책 추가 필요)
