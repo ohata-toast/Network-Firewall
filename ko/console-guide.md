@@ -13,43 +13,43 @@ Network Firewall을 사용하기 위해서는 가장 먼저 Network Firewall 인
 Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아래와 같습니다.
 
 > [참고]
-> 개요 항목 내 Network Firewall 서비스 구성도를 참조 해주세요.
+> **Network Firewall > 개요**에서Network Firewall 서비스 구성도를 참조 해주세요.
 
 
-[1개의 프로젝트 구성 시 준비사항]
+[1개의 프로젝트 구성 시 준비 사항]
 * 1개의 프로젝트
-* 2개의 VPC (Hub VPC, Spoke VPC)
-* Hub VPC 내 3개의 서브넷 (Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
+* 2개의 VPC(Hub VPC, Spoke VPC)
+* Hub VPC 내 3개의 서브넷(Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
 * Spoke VPC 내 최소 1개의 서브넷
 * Hub VPC의 Routing에 연결된 인터넷 게이트웨이
 
-[1개의 프로젝트 내 2개의 Spoke VPC 구성 시 준비사항] 
+[1개의 프로젝트 내 2개의 Spoke VPC 구성 시 준비 사항] 
 * 1개의 프로젝트
-* 3개의 VPC (Hub VPC, Spoke1 VPC, Spoke2 VPC)
-* Hub VPC 내 3개의 서브넷 (Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
+* 3개의 VPC(Hub VPC, Spoke1 VPC, Spoke2 VPC)
+* Hub VPC 내 3개의 서브넷(Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
 * Spoke1 VPC, Spoke2 VPC 내 각각 최소 1개의 서브넷
 * Hub VPC의 Routing에 연결된 인터넷 게이트웨이
 
-[1개 이상의 프로젝트 구성 시 준비사항]
+[1개 이상의 프로젝트 구성 시 준비 사항]
 * 2개의 프로젝트
-* 2개의 VPC (각각 프로젝트에 Hub VPC, Spoke VPC)
-* Hub VPC 내 3개의 서브넷 (Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
+* 2개의 VPC(각각 프로젝트에 Hub VPC, Spoke VPC)
+* Hub VPC 내 3개의 서브넷(Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
 * Spoke VPC 내 최소 1개의 서브넷
 * Hub VPC의 Routing에 연결된 인터넷 게이트웨이
 
 
-[다른 리전간 프로젝트 구성 시 준비사항]
+[다른 리전 간 프로젝트 구성 시 준비 사항]
 * 1개의 프로젝트
-* 2개의 VPC (KR1 리전에 Hub VPC, KR2 리전에 Spoke VPC)
-* Hub VPC 내 3개의 서브넷 (Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
+* 2개의 VPC(KR1 리전에 Hub VPC, KR2 리전에 Spoke VPC)
+* Hub VPC 내 3개의 서브넷(Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
 * Spoke VPC 내 최소 1개의 서브넷
 * Hub VPC의 Routing에 연결된 인터넷 게이트웨이
 
 
-[단일 VPC 내 여러개의 서브넷 구성 시 준비사항]
+[단일 VPC 내 여러 개의 서브넷 구성 시 준비 사항]
 * 1개의 프로젝트
 * 1개의 VPC
-* 3개의 Hub 서브넷 (Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
+* 3개의 Hub 서브넷(Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
 * 최소 1개의 Spoke 서브넷
 * VPC의 Routing에 연결된 인터넷 게이트웨이
 
@@ -79,7 +79,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 >* Network Firewall이 소유하고 있는 CIDR 대역과 연결이 필요한 CIDR 대역은 중복되지 않아야 합니다.
 >* **Network > Network Interface**에서 Virtual_IP 타입으로 생성되어 있는 IP는 Network Firewall에서 이중화 용도로 사용 중이므로 삭제할 경우 통신이 차단될 수 있습니다.
 
-### 3. 연결 설정
+### 연결 설정
 > [예시]
 > Network Firewall이 사용하는 VPC(Hub)는 10.0.0.0/24이고, Network Firewall과 연결이 필요한 VPC(Spoke)는 172.16.0.0/24일 때
 
@@ -160,10 +160,10 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 
 
 > [참고]
->\"3\. 연결 설정 - 5\"와 같이 Spoke VPC2 - Hub 간 VPC 피어링에도 라우트 추가 설정이 필요합니다.
+> **연결 설정**의 **5**와 같이 Spoke VPC2-Hub 간 VPC 피어링에도 라우트 추가 설정이 필요합니다.
 
 위의 라우팅 설정이 완료되면 서로 다른 Spoke VPC 간 Network Firewall을 경유하여 사설 통신을 할 수 있습니다. (<strong>Network Firewall > 정책</strong> 탭에서 정책 추가 필요)
-Network Firewall 서비스 구성도를 참고하여 고객의 환경에 맞게 연결을 설정하시기 바랍니다.
+Network Firewall 서비스 구성도를 참고하여 고객의 환경에 맞게 연결을 설정하십시오.
 <br>
 
 ***
@@ -173,7 +173,7 @@ Network Firewall 생성과 연결 설정을 완료하면 Network Firewall의 여
 
 
 ## 정책
-Network Firewall 인스턴스를 생성하게 되면 정책 초기 페이지로 이동합니다.
+Network Firewall 인스턴스를 생성하면 정책 초기 페이지로 이동합니다.
 
 **정책** 탭에서는 Network Firewall 인스턴스와 연결된 VPC 간 트래픽과 인바운드/아웃바운드 트래픽을 제어할 수 있는 정책을 관리할 수 있습니다.
 
@@ -292,8 +292,8 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 * 트래픽: Network Firewall을 경유할 때 허용 또는 차단 정책에 의해 생성된 트래픽 로그를 검색
     * 조회는 1개월 단위로 최대 3개월까지의 과거 데이터만 검색 가능합니다.
-        * 최대 저장 로그 개수는 800만개 이며, 트래픽의 양에 따라 저장되는 로그의 양이 달라지므로 과거의 데이터가 조회되지 않을 수 있습니다.
-    * 별도의 데이터 저장이 필요한 경우 **옵션** 탭의 **로그 원격 전송 설정**을 참고하세요.
+        * 최대 저장 로그 개수는 800만 개이며, 트래픽의 양에 따라 저장되는 로그의 양이 달라지므로 과거의 데이터가 조회되지 않을 수 있습니다.
+    * 별도의 데이터 저장이 필요한 경우 **옵션** 탭의 **로그 원격 전송 설정**을 참고하십시오.
 
 * Audit: 정책 생성 및 삭제 등 Network Firewall의 변경 사항에 대한 로그를 검색
     * 조회는 최대 1개월 단위로 검색 가능하며, 조직 서비스인 CloudTrail에서도 검색할 수 있습니다.
