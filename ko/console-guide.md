@@ -13,7 +13,7 @@ Network Firewall을 사용하기 위해서는 가장 먼저 Network Firewall 인
 Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아래와 같습니다.
 
 > [참고]
-> **Network Firewall > 개요**에서Network Firewall 서비스 구성도를 참조 해주세요.
+> **Network Firewall > 개요**에서 Network Firewall 서비스 구성도를 참조하십시오.
 
 
 [1개의 프로젝트 구성 시 준비 사항]
