@@ -13,7 +13,7 @@ To use Network Firewall, first create a Network Firewall instance.
 The minimum network service resources needed to create a Network Firewall are as follows.
 
 > [Note]
-See the Network Firewall service diagram**in Network Firewall > Overview**.
+> See the Network Firewall service diagram**in Network Firewall > Overview**.
 
 
 [Preparations for Configuring 1 Project]
@@ -130,7 +130,7 @@ Once the above routing settings are complete, instances in the Spoke VPC will be
 **If the Spoke VPC has two or more subnets and traffic control between subnets is required through Network Firewall**, add the routing as follows.
 
 > [Example]
-When the subnets of Spoke VPC (172.16.0.0/24) are 172.16.0.0/25 and 172.16.0.128/25
+> When the subnets of Spoke VPC (172.16.0.0/24) are 172.16.0.0/25 and 172.16.0.128/25
 
 * Go to <strong>Network > Routing<strong>, and select Spoke VPC and add the two routings as follows.
     * Destination CIDR: 172.16.0.0/25 and 172.16.0.128/25
@@ -147,7 +147,7 @@ Once the above routing settings are complete, private communication between subn
 **If there are two or more spoke VPCs**, add the routing as follows.
 
 > [Example]
-With Spoke VPC1 (172.16.0.0/24) and Spoke VPC2 (192.168.0.0/24)
+> With Spoke VPC1 (172.16.0.0/24) and Spoke VPC2 (192.168.0.0/24)
 
 * Go to <strong>Network > Routing<strong> to select a Hub VPC, and add the two routings as follows.
     * Spoke VPC 1
@@ -160,7 +160,7 @@ With Spoke VPC1 (172.16.0.0/24) and Spoke VPC2 (192.168.0.0/24)
 
 
 > [Note]
-VPC peering between Spoke VPC2-Hub also requires the Add Route setting, as shown in **5****in Connection Settings**.
+> VPC peering between Spoke VPC2-Hub also requires the Add Route setting, as shown in **5****in Connection Settings**.
 
 After the above routing settings are completed, communication between different Spoke VPCs can be private through Network Firewall.(Requires adding a policy in<strong>Network Firewall > Policy</strong>)
 Please refer to the Network Firewall service configuration diagram to set up the connection according to your environment.
