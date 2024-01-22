@@ -83,14 +83,14 @@ The minimum network service resources needed to create a Network Firewall are as
 > [Example]
 When the VPC (Hub) used by Network Firewall is 10.0.0.0/24, and the VPC (Spoke) that needs to be connected to the Network Firewall is 172.16.0.0/24.
 
-1. Go to <strong>Network > Routing<strong>, select the Spoke VPC, and change the routing table.
-    * After selecting Spoke VPC, click <strong>Change Routing Table<strong> to change to the Centralized Virtual Routing (CVR) method.
+1. Go to **Network > Routing**, select the Spoke VPC, and change the routing table.
+    * After selecting Spoke VPC, click **Change Routing Table** to change to the Centralized Virtual Routing (CVR) method.
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings1.png" height="65%" />
 <br>
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings2.png" height="50%" />
 <br>
 
-2. Go to <strong>Network > Peering Gateway<strong> to create a peering.
+2. Go to **Network > Peering Gateway** to create a peering.
     * If the Spoke VPC is a different project, create a project peering.
     * If the Spoke VPC is in a different region, create a region peering.
     * If the spoke VPCs are the same project, create a peering.
@@ -100,19 +100,19 @@ When the VPC (Hub) used by Network Firewall is 10.0.0.0/24, and the VPC (Spoke) 
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings4.png" height="65%" />
 <br>
 
-3. Go to <strong>Network > Routing<strong>, select a Hub VPC, and set up the routing as follows.
+3. Go to **Network > Routing**, select a Hub VPC, and set up the routing as follows.
     * Destination CIDR: 172.16.0.0/24
     * Gateway: Gateway of peering type added after peering connection
     <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings5.png" height="65%" />
 <br>
 
-4. Go to <strong>Network > Routing<strong>, select a Spoke VPC, and set up the routing as follows.
+4. Go to **Network > Routing*, select a Spoke VPC, and set up the routing as follows.
     * Destination CIDR: 0.0.0.0/0
     * Gateway: Gateway of peering type added after peering connection
     <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings6.png" height="65%" />
 <br>
 
-5. Go to <strong>Network > Peering Gateway > Project Peering</strong>.
+5. Go to **Network > Peering Gateway > Project Peering**.
     * Select the created peering and go to the **Route** tab.
     * Click the **Peer** or **Change Local Route** to set up routing as follows.
         * Destination CIDR: 0.0.0.0/0
@@ -121,7 +121,7 @@ When the VPC (Hub) used by Network Firewall is 10.0.0.0/24, and the VPC (Spoke) 
 <br>
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings8.png" height="50%" />
 
-Once the above routing settings are complete, instances in the Spoke VPC will be able to communicate publicly through the Network Firewall. (Requires adding NAT in <strong>Network Firewall > NAT<strong>)
+Once the above routing settings are complete, instances in the Spoke VPC will be able to communicate publicly through the Network Firewall. (Requires adding NAT in **Network Firewall > NAT**)
 <br>
 
 ***
@@ -132,13 +132,13 @@ Once the above routing settings are complete, instances in the Spoke VPC will be
 > [Example]
 > When the subnets of Spoke VPC (172.16.0.0/24) are 172.16.0.0/25 and 172.16.0.128/25
 
-* Go to <strong>Network > Routing<strong>, and select Spoke VPC and add the two routings as follows.
+* Go to **Network > Routing**, and select Spoke VPC and add the two routings as follows.
     * Destination CIDR: 172.16.0.0/25 and 172.16.0.128/25
     * Gateway: Gateway of peering type added after peering connection
     <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings9.png" height="65%" />
 <br>
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings10.png" height="65%" />
-Once the above routing settings are complete, private communication between subnets within the Spoke VPC can be made through the Network Firewall. (Requires adding a policy in<strong>Network Firewall > Policies</strong> tab)
+Once the above routing settings are complete, private communication between subnets within the Spoke VPC can be made through the Network Firewall. (Requires adding a policy in**Network Firewall > Policies** tab)
 <br>
 
 ***
@@ -149,7 +149,7 @@ Once the above routing settings are complete, private communication between subn
 > [Example]
 > With Spoke VPC1 (172.16.0.0/24) and Spoke VPC2 (192.168.0.0/24)
 
-* Go to <strong>Network > Routing<strong> to select a Hub VPC, and add the two routings as follows.
+* Go to **Network > Routing** to select a Hub VPC, and add the two routings as follows.
     * Spoke VPC 1
         * Destination CIDR: 172.16.0.0/24
         * Gateway: Gateway of peering type added between Hub VPC and Spoke VPC1
@@ -162,7 +162,7 @@ Once the above routing settings are complete, private communication between subn
 > [Note]
 > VPC peering between Spoke VPC2-Hub also requires the Add Route setting, as shown in **5****in Connection Settings**.
 
-After the above routing settings are completed, communication between different Spoke VPCs can be private through Network Firewall.(Requires adding a policy in<strong>Network Firewall > Policy</strong>)
+After the above routing settings are completed, communication between different Spoke VPCs can be private through Network Firewall.(Requires adding a policy in **Network Firewall > Policy**)
 Please refer to the Network Firewall service configuration diagram to set up the connection according to your environment.
 <br>
 
