@@ -16,7 +16,8 @@ The minimum network service resources needed to create a Network Firewall are as
 > See the Network Firewall service diagram**in Network Firewall > Overview**.
 
 
-[Preparations for Configuring 1 Project]
+[Preparations for Configuring 1 Project].
+
 * 1 project
 * 2 VPCs (Hub VPC, Spoke VPC)
 * 3 subnets in the Hub VPC (Network Firewall subnet, NAT subnet, and external transport subnet)
@@ -24,6 +25,7 @@ The minimum network service resources needed to create a Network Firewall are as
 * Internet gateway connected to Routing in the Hub VPC
 
 [Preparations for Configuring 2 Spoke VPCs within One Project]. 
+
 * 1 project
 * 3 VPCs (Hub VPC, Spoke1 VPC, Spoke2 VPC)
 * 3 subnets in the Hub VPC (Network Firewall subnet, NAT subnet, and external transport subnet)
@@ -31,6 +33,7 @@ The minimum network service resources needed to create a Network Firewall are as
 * Internet gateway connected to Routing in the Hub VPC
 
 [Preparations for configuring more than one project].
+
 * 2 projects
 * 2 VPCs (Hub VPC and Spoke VPC for each project)
 * 3 subnets in the Hub VPC (Network Firewall subnet, NAT subnet, and external transport subnet)
@@ -39,6 +42,7 @@ The minimum network service resources needed to create a Network Firewall are as
 
 
 [Preparations for configuring cross-region projects].
+
 * 1 project
 * 2 VPCs (Hub VPC in KR1 region and Spoke VPC in KR2 region)
 * 3 subnets in the Hub VPC (Network Firewall subnet, NAT subnet, and external transport subnet)
@@ -47,6 +51,7 @@ The minimum network service resources needed to create a Network Firewall are as
 
 
 [Preparations for configuring multiple subnets within a single VPC].
+
 * 1 project
 * 1 VPC
 * 3 hub subnets (Network Firewall subnet, NAT subnet, and external transport subnet)
@@ -71,6 +76,7 @@ The minimum network service resources needed to create a Network Firewall are as
 
 
 >[Note]
+> 
 >* The subnets used for subnet, NAT, and external transmission must all be selected as different subnets.
 >   * It is recommended to create subnets in the minimum unit (28 bits) that can be created in the NHN Cloud console.
 >* An Internet gateway must be connected to the routing table of the VPC to which the Network Firewall will belong before it can be created.

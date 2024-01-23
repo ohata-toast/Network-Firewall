@@ -16,6 +16,7 @@ Network Firewallの作成に必要な最小ネットワークサービスリソ�
 > **Network Firewall > 概要**のNetwork Firewallサービス構成図を参照してください。
 
 [1つのプロジェクトを構成する際の準備事項］
+
 * 1個のプロジェクト
 * 2個のVPC(Hub VPC, Spoke VPC)
 * Hub VPC内の3つのサブネット(Network Firewallサブネット、NATサブネット、外部転送サブネット)
@@ -23,6 +24,7 @@ Network Firewallの作成に必要な最小ネットワークサービスリソ�
 * Hub VPCのRoutingに接続されたインターネットゲートウェイ
 
 [1つのプロジェクト内に2つのSpoke VPCを構成する場合の準備事項］ 
+
 * 1つのプロジェクト
 * 3つのVPC(Hub VPC、Spoke1 VPC、Spoke2 VPC)
 * Hub VPC内の3つのサブネット(Network Firewallサブネット、NATサブネット、外部転送サブネット)
@@ -30,6 +32,7 @@ Network Firewallの作成に必要な最小ネットワークサービスリソ�
 * Hub VPCのRoutingに接続されたインターネットゲートウェイ
 
 [1つ以上のプロジェクトを構成する際の準備事項］
+
 * 2つのプロジェクト
 * 2つのVPC(それぞれプロジェクトにHub VPC、Spoke VPC)
 * Hub VPC内の3つのサブネット(Network Firewallサブネット、NATサブネット、外部転送サブネット)
@@ -38,6 +41,7 @@ Network Firewallの作成に必要な最小ネットワークサービスリソ�
 
 
 [他のリージョン間プロジェクトを構成する際の準備事項]
+
 * 1つのプロジェクト
 * 2個のVPC(KR1リージョンにHub VPC, KR2リージョンにSpoke VPC)
 * Hub VPC内の3つのサブネット(Network Firewallサブネット、NATサブネット、外部転送サブネット)
@@ -46,6 +50,7 @@ Network Firewallの作成に必要な最小ネットワークサービスリソ�
 
 
 [単一VPC内の複数のサブネットを構成する際の準備事項]
+
 * 1個のプロジェクト
 * 1個のVPC
 * 3つのHubサブネット(Network Firewallサブネット、 NATサブネット、外部転送サブネット)
@@ -70,6 +75,7 @@ Network Firewallの作成に必要な最小ネットワークサービスリソ�
 
 
 > [参考]
+> 
 >* サブネット、 NAT、外部転送に使用するサブネットはすべて別のサブネットを選択する必要があります。
 >   * なるべくNHN Cloudコンソールで作成できる最小単位(28ビット)で作成することを推奨します。
 >* Network Firewallが属するVPCのルーティングテーブルにインターネットゲートウェイが接続されている必要があります。
