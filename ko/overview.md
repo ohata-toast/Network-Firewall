@@ -39,6 +39,7 @@ NHN Cloud에 특화된 접근 제어를 적용할 수 있고, 별도의 방화�
 
 
 > [참고]
+> 
 > * 다른 리전의 프로젝트 환경에서는 같은 프로젝트에서만 구성 가능합니다. 자세한 내용은 [사용자 가이드](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/)를 참조하십시오.
 > 
 > * 서비스 구성 시 개선하기 전의 네트워크 환경과는 연결할 수 없습니다.
