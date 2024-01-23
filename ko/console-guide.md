@@ -17,13 +17,15 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 
 
 [1개의 프로젝트 구성 시 준비 사항]
+
 * 1개의 프로젝트
 * 2개의 VPC(Hub VPC, Spoke VPC)
 * Hub VPC 내 3개의 서브넷(Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
 * Spoke VPC 내 최소 1개의 서브넷
 * Hub VPC의 Routing에 연결된 인터넷 게이트웨이
 
-[1개의 프로젝트 내 2개의 Spoke VPC 구성 시 준비 사항] 
+[1개의 프로젝트 내 2개의 Spoke VPC 구성 시 준비 사항]
+
 * 1개의 프로젝트
 * 3개의 VPC(Hub VPC, Spoke1 VPC, Spoke2 VPC)
 * Hub VPC 내 3개의 서브넷(Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
@@ -31,6 +33,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 * Hub VPC의 Routing에 연결된 인터넷 게이트웨이
 
 [1개 이상의 프로젝트 구성 시 준비 사항]
+
 * 2개의 프로젝트
 * 2개의 VPC(각각 프로젝트에 Hub VPC, Spoke VPC)
 * Hub VPC 내 3개의 서브넷(Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
@@ -39,6 +42,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 
 
 [다른 리전 간 프로젝트 구성 시 준비 사항]
+
 * 1개의 프로젝트
 * 2개의 VPC(KR1 리전에 Hub VPC, KR2 리전에 Spoke VPC)
 * Hub VPC 내 3개의 서브넷(Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
@@ -47,6 +51,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 
 
 [단일 VPC 내 여러 개의 서브넷 구성 시 준비 사항]
+
 * 1개의 프로젝트
 * 1개의 VPC
 * 3개의 Hub 서브넷(Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
@@ -71,6 +76,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 
 
 > [참고]
+> 
 >* 서브넷, NAT, 외부 전송에 사용하는 서브넷은 모두 다른 서브넷으로 선택해야 합니다.
 >   * 가급적 NHN Cloud 콘솔에서 생성할 수 있는 최소 단위(28비트)로 생성할 것을 권장합니다.
 >* Network Firewall이 속할 VPC의 라우팅 테이블에 인터넷 게이트웨이가 연결되어 있어야 생성 가능합니다.

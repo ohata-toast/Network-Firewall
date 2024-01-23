@@ -39,6 +39,7 @@ Service configurations can take five forms as follows.
 
 
 > [Note]
+> 
 > * In a project environment in a different region, it can only be configured in the same project. For more information, see the [user guide](https://docs.nhncloud.com/en/Network/Peering%20Gateway/ko/console-guide/).
 > 
 > * When you configure a service, you cannot associate it with the network environment before improvements.
