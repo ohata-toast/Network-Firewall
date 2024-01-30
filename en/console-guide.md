@@ -337,13 +337,3 @@ In the **Options** tab, set options required for operation of Network Firewall.
 * NAT Settings: Set options for whether to use NAT.
 > [Caution]
 If you change from Enable NAT to **Disable**, any information you set on the NAT tab is deleted.
-
-### Example
-
-<details open>
-<summary>Expendable Menu</summary>
-
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/NFW-Create.png" height="60%">
-
-
-</details>
