@@ -343,30 +343,7 @@ If you change from Enable NAT to **Disable**, any information you set on the NAT
 <details open>
 <summary>Expendable Menu</summary>
 
-```json
-{
-    "header": {
-        "resultCode": 0,
-        "resultMessage": "SUCCESS",
-        "isSuccessful": true
-    },
-    "result": {
-        "paymentSeq": "2022041110385239",
-        "productSeq": 1003150,
-        "currency": "EUR",
-        "price": 2.29,
-        "marketId": "AS",
-        "accessToken": "-Fr8Y7_dvv5qhdd6qVHbs7gKnkX0r7EKPvuK6CI-UBBekc1rE9CVbMKVCNuw6ZtwkBGlzeIHg6DdjaRVeaW7GYlPF4vRa50L8umB6tdBvk8",
-        "paymentId" : "Store Reference Key",
-        "productType": "CONSUMABLE",
-        "userId": "AS@QW4M1GM7W97YJDCN",
-        "gamebaseProductId": "qa_ksw_prod_as_001",
-        "purchaseTime": "2022-04-11T16:47:01+09:00",
-        "payload" : "string",
-        "isTestPurchase": true,
-        "isConsumable": false
-    }
-}
-```
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/NFW-Create.png" height="60%">
+
 
 </details>
