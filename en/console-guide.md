@@ -337,3 +337,13 @@ In the **Options** tab, set options required for operation of Network Firewall.
 * NAT Settings: Set options for whether to use NAT.
 > [Caution]
 If you change from Enable NAT to **Disable**, any information you set on the NAT tab is deleted.
+
+### Example
+
+<details open>
+<summary>Expendable Menu</summary>
+* network
+* network firewall
+* networking
+
+</details>
