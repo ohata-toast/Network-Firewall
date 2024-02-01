@@ -337,23 +337,3 @@ In the **Options** tab, set options required for operation of Network Firewall.
 * NAT Settings: Set options for whether to use NAT.
 > [Caution]
 If you change from Enable NAT to **Disable**, any information you set on the NAT tab is deleted.
-
-
-
-> ## Blockquoted header
-> This is blockquoted text.
-> This is a second paragraph within the blockquoted text.
-
-
-> ## Blockquoted header
-> 
-> This is blockquoted text.
-> 
-> This is a second paragraph within the blockquoted text.
-> This is a second paragraph within the blockquoted text.
-
----
-
-
-
-
