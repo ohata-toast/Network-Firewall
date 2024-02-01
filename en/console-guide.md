@@ -350,32 +350,10 @@ If you change from Enable NAT to **Disable**, any information you set on the NAT
 > This is blockquoted text.
 > 
 > This is a second paragraph within the blockquoted text.
+> This is a second paragraph within the blockquoted text.
 
 ---
 
-> ### Blockquoted header
-> 
-> This is blockquoted text.
-> 
-> This is blockquoted text.
-> 
-> This is a second paragraph within the blockquoted text.
-> 
-> This is blockquoted text.
-
-- - -
-
-
-> ### 참고
-> 
-> 블록화하기
-> 
-> 텍스트입니다.
-> 
-> 텍스트입니다.2
-> 
-> 텍스트입니다.3
 
 
 
-This is *emphasized* _text_.
