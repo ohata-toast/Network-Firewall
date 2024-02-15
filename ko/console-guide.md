@@ -4,7 +4,7 @@ Network Firewall을 생성하기 위한 절차와 생성 이후 콘솔을 사용
 
 ## 시작하기
 
-Network Firewall을 사용하기 위해서는 가장 먼저 Network Firewall 인스턴스를 생성합니다.
+Network Firewall을 사용하기 위해서는 가장 먼저 Network Firewall 서비스를 활성화합니다.
 
 ## Network Firewall 생성
 
@@ -68,10 +68,10 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 1. **Security > Network Firewall**로 이동합니다.
 2. 각 필수 항목을 모두 선택하고 하단의 **Network Firewall 생성**을 클릭합니다.
     * RBAC: 인스턴스 객체 조회, Network Firewall 서비스 제공에 필요한 API 권한을 부여
-    * VPC: Network Firewall 인스턴스가 사용할 VPC
-    * 서브넷: Network Firewall 인스턴스가 내부 트래픽 제어를 위해 사용할 서브넷
-    * NAT: Network Firewall 인스턴스가 외부 트래픽 제어를 위해 사용할 서브넷
-    * 외부 전송: Network Firewall 인스턴스에 생성된 트래픽과 로그를 전송할 서브넷
+    * VPC: Network Firewall에서 사용할 VPC
+    * 서브넷: Network Firewall에서 내부 트래픽 제어를 위해 사용할 서브넷
+    * NAT: Network Firewall에서 외부 트래픽 제어를 위해 사용할 서브넷
+    * 외부 전송: Network Firewall에서 생성된 트래픽과 로그를 전송할 서브넷
     <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/NFW-Create.png" height="60%">
 
 
@@ -80,7 +80,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 >* 서브넷, NAT, 외부 전송에 사용하는 서브넷은 모두 다른 서브넷으로 선택해야 합니다.
 >   * 가급적 NHN Cloud 콘솔에서 생성할 수 있는 최소 단위(28비트)로 생성할 것을 권장합니다.
 >* Network Firewall이 속할 VPC의 라우팅 테이블에 인터넷 게이트웨이가 연결되어 있어야 생성 가능합니다.
->* Network Firewall 인스턴스는 가용 영역을 분리하여 이중화를 기본으로 제공합니다.
+>* Network Firewall 서비스는 가용 영역을 분리하여 이중화를 기본으로 제공합니다.
 >* Security Groups와는 별개의 서비스이므로 Network Firewall을 사용하면 두 서비스를 모두 허용해야 인스턴스에 접근할 수 있습니다.
 >* Network Firewall이 소유하고 있는 CIDR 대역과 연결이 필요한 CIDR 대역은 중복되지 않아야 합니다.
 >* **Network > Network Interface**에서 Virtual_IP 타입으로 생성되어 있는 IP는 Network Firewall에서 이중화 용도로 사용 중이므로 삭제할 경우 통신이 차단될 수 있습니다.
@@ -311,7 +311,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 ## 모니터
 
-**모니터** 탭에서는 Network Firewall 인스턴스의 상태를 실시간으로 확인할 수 있습니다.
+**모니터** 탭에서는 Network Firewall의 상태를 실시간으로 확인할 수 있습니다.
 검색은 최대 24시간(1일) 내에서만 가능합니다.
 
 ### 검색
@@ -334,6 +334,19 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 ### 일반 설정
 
-* NAT 설정: NAT 사용 여부에 대한 옵션을 설정합니다.
-> [주의]
-NAT 사용 중 **사용 안 함**으로 변경할 경우 NAT 탭에서 설정한 정보는 모두 삭제됩니다.
+* MTU(Maximum Transmission Unit) 크기 설정: Network Firewall이 소유한 이더넷의 MTU 크기를 설정합니다.
+    * 트래픽: 피어링을 포함하여 NHN Cloud 내부통신에 사용하는 이더넷
+    * NAT: 외부통신에 사용하는 이더넷
+
+> [참고]
+> 
+> 트래픽, NAT 이더넷의 기본 MTU 크기는 1450Byte 입니다.
+
+## 서비스 비활성화
+
+**프로젝트 관리 > 이용 중인 서비스** 에서 Network Firewall 서비스를 비활성화 할 수 있습니다.
+
+> [비활성화 전 주의사항]
+>
+> * Network Firewall 서비스를 비활성화시 판교 리전과 평촌 리전 모두 Network Firewall 서비스가 비활성화 됩니다.
+>     예를 들어, 동일한 프로젝트의 판교 리전과 평촌 리전에 모두 Network Firewall 서비스를 활성화 한 후 판교 리전 또는 평촌 리전 중 하나의 Network Firewall 서비스만 비활성화 할 수 없습니다.(기능개선 예정)
