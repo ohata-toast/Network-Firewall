@@ -348,5 +348,5 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 > [비활성화 전 주의사항]
 >
-> * Network Firewall 서비스를 비활성화시 판교 리전과 평촌 리전 모두 Network Firewall 서비스가 비활성화 됩니다.
+> * Network Firewall 서비스 비활성화는 판교 리전과 평촌 리전 모두 Network Firewall 서비스가 비활성화 됩니다.
 >     예를 들어, 동일한 프로젝트의 판교 리전과 평촌 리전에 모두 Network Firewall 서비스를 활성화 한 후 판교 리전 또는 평촌 리전 중 하나의 Network Firewall 서비스만 비활성화 할 수 없습니다.(기능개선 예정)
