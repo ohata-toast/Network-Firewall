@@ -13,7 +13,7 @@ You can easily use access control specialized for NHN Cloud and the firewall fea
 * Allows for safe protection of instances against external attacks with the Hub-Spoke structure.
     * Controls internal traffic and inbound/outbound traffic between VPCs.
 * Provides real-time log search and backup for blocking and allowing networks.
-    * Provides several backup methods to suit the customer's environment (Syslog, Object Storage, Log & Crach Search).
+    * Provides several backup methods to suit the customer's environment (Syslog, Object Storage, Log & Crash Search).
 * Provides high availability (redundancy) for reliable operation.
 
 ## Network Firewall Service Configuration
