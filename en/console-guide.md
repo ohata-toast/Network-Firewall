@@ -337,3 +337,12 @@ In the **Options** tab, set options required for operation of Network Firewall.
 * NAT Settings: Set options for whether to use NAT.
 > [Caution]
 If you change from Enable NAT to **Disable**, any information you set on the NAT tab is deleted.
+
+## Disable Service
+
+You can disable the Network Firewall service in **Project Management > Services in Use**.
+
+> [Precautions]
+> 
+> * Disabling the Network Firewall service applies to both the Pangyo and Pyeongchon regions.
+> For example, if you enable the Network Firewall service for both the Pangyo and Pyeongchon regions of the same project, you cannot disable the Network Firewall service for only one of the two regions. (Improvement scheduled)
