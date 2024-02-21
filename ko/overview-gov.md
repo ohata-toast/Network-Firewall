@@ -13,7 +13,7 @@ NHN Cloud에 특화된 접근 제어를 적용할 수 있고, 별도의 방화�
 * Hub - Spoke 구조로 외부 공격으로부터 안전하게 인스턴스를 보호할 수 있습니다.
     * VPC 간 내부 트래픽과 인바운드/아웃바운드 트래픽을 제어합니다.
 * 네트워크 차단과 허용에 대한 실시간 로그 검색과 백업 기능을 제공합니다.
-    * 고객의 환경에 맞춰 여러 가지 백업 방식을 제공합니다(Syslog, Object Storage, Log & Crash Search).
+    * 고객의 환경에 맞춰 여러 가지 백업 방식을 제공합니다(Syslog, Object Storage, Log & Crach Search).
 * 안정적인 운영을 위해 고가용성(이중화)을 제공합니다.
 
 ## Network Firewall 서비스 구성도
