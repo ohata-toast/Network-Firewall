@@ -4,7 +4,7 @@ Network Firewall을 생성하기 위한 절차와 생성 이후 콘솔을 사용
 
 ## 시작하기
 
-Network Firewall을 사용하기 위해서는 가장 먼저 Network Firewall 서비스를 활성화 합니다.
+Network Firewall을 사용하기 위해서는 가장 먼저 Network Firewall 서비스를 활성화합니다.
 
 ## Network Firewall 생성
 
@@ -334,18 +334,18 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
     * 사용 선택 시 기본 차단 정책으로 생성된 로그는 트래픽 로그에서 검색 가능합니다.
 * 로그 원격 전송 설정: 원격지로 트래픽 로그를 저장할 수 있는 옵션을 선택합니다.
     * Syslog: 최대 2개의 원격지 주소로 로그를 전송
-        * 2개의 원격지는 개별적으로 설정 가능(IP주소, 프로토콜, 포트번호)
+        * 2개의 원격지는 개별적으로 설정 가능(IP주소, 프로토콜, 포트 번호)
     * Object Storage: NHN Cloud에서 제공하는 Object Storage 서비스로 로그를 전송
-    * Log & Crash Search: NHN Cloud에서 제공하는 Log&Crash Search 서비스로 로그를 전송
+    * Log & Crash Search: NHN Cloud에서 제공하는 Log & Crash Search 서비스로 로그를 전송
 
 ### 일반 설정
 
-* MTU(Maximum Transmission Unit) 크기 설정: Network Firewall이 소유한 이더넷의 MTU 크기를 설정합니다.
-    * 트래픽: NHN Cloud 내부통신에 사용하는 이더넷(피어링 통신 포함)
-    * NAT: 외부통신에 사용하는 이더넷
+* MTU(maximum transmission unit) 크기 설정: Network Firewall이 소유한 이더넷의 MTU 크기를 설정합니다.
+    * 트래픽: NHN Cloud 내부 통신에 사용하는 이더넷(피어링 통신 포함)
+    * NAT: 외부 통신에 사용하는 이더넷
 
 > [참고] 
-> 트래픽, NAT 이더넷의 기본 MTU 크기는 1450byte 입니다.
+> 트래픽, NAT 이더넷의 기본 MTU 크기는 1450Byte입니다.
 
 ## 서비스 비활성화
 
