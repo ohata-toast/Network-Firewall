@@ -102,7 +102,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
     * Spoke VPC가 다른 프로젝트라면 프로젝트 피어링을 생성합니다.
     * Spoke VPC가 다른 리전이라면 리전 피어링을 생성합니다.
     * Spoke VPC가 같은 프로젝트라면 피어링을 생성합니다.
-        * 피어링 게이트웨이 연결에 대한 자세한 사항은 [사용자 가이드](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/)를 참조해 주세요.
+        * 피어링 게이트웨이 연결에 대한 자세한 사항은 [사용자 가이드](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/)를 참조하십시오.
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings3.png" height="65%" />
 <br>
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings4.png" height="65%" />
@@ -234,7 +234,7 @@ Network Firewall 인스턴스를 생성하면 정책 초기 페이지로 이동�
 
 ### 정책 일괄 다운로드
 
-* 정책 탭에 생성되어 있는 정책 전체를 한번에 다운로드할 수 있습니다.
+* 정책 탭에 생성되어 있는 정책 전체를 한 번에 다운로드할 수 있습니다.
 
 ### 정책 일괄 등록
 
@@ -311,7 +311,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 ### 엑셀 내려받기
 
-* **엑셀 내려받기**를 클릭해 트래픽과 Audit 로그의 검색 결과를 다운로드할 수 있습니다..
+* **엑셀 내려받기**를 클릭해 트래픽과 Audit 로그의 검색 결과를 다운로드할 수 있습니다.
     * 트래픽 로그의 최대 다운로드 개수는 30만 건입니다.
 
 ## 모니터
@@ -330,7 +330,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 ### 로그 설정
 
-* 기본 차단정책 로그 설정: Network Firewall 생성 후 필수로 생성되는 기본 차단정책 로그의 저장여부를 선택합니다.
+* 기본 차단 정책 로그 설정: Network Firewall 생성 후 필수로 생성되는 기본 차단 정책 로그의 저장 여부를 선택합니다.
     * 사용 선택 시 기본 차단 정책으로 생성된 로그는 트래픽 로그에서 검색 가능합니다.
 * 로그 원격 전송 설정: 원격지로 트래픽 로그를 저장할 수 있는 옵션을 선택합니다.
     * Syslog: 최대 2개의 원격지 주소로 로그를 전송
@@ -353,5 +353,5 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 > [비활성화 전 주의 사항]
 > 
-> * Network Firewall 서비스 비활성화는 판교 리전과 평촌 리전에 모두 적용됩니다.
-> 예를 들어 동일한 프로젝트의 판교 리전과 평촌 리전에 모두 Network Firewall 서비스를 활성화한 경우 두 리전 중 하나의 Network Firewall 서비스만 비활성화할 수 없습니다. (기능 개선 예정)
+> * Network Firewall 서비스 비활성화는 한국(판교) 리전과 한국(평촌) 리전에 모두 적용됩니다.
+> 예를 들어 동일한 프로젝트의 한국(판교) 리전과 한국(평촌) 리전에 모두 Network Firewall 서비스를 활성화한 경우 두 리전 중 하나의 Network Firewall 서비스만 비활성화할 수 없습니다. (기능 개선 예정)
