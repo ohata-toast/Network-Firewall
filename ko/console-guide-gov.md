@@ -4,7 +4,7 @@ Network Firewall을 생성하기 위한 절차와 생성 이후 콘솔을 사용
 
 ## 시작하기
 
-Network Firewall을 사용하기 위해서는 가장 먼저 Network Firewall 인스턴스를 생성합니다.
+Network Firewall을 사용하기 위해서는 가장 먼저 Network Firewall 서비스를 활성화합니다.
 
 ## Network Firewall 생성
 
@@ -60,27 +60,29 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 
 
 > [참고]
-> 위의 서비스 자원은 [Network] 카테고리에서 생성 가능합니다.
-> Network Firewall 생성은 프로젝트당 1개씩만 생성 가능합니다.
+>* 위의 서비스 자원은 [Network] 카테고리에서 생성 가능합니다.
+> 
+>* Network Firewall 생성은 프로젝트당 1개씩만 생성 가능합니다.
 
 ### Network Firewall 생성
 
 1. **Security > Network Firewall**로 이동합니다.
 2. 각 필수 항목을 모두 선택하고 하단의 **Network Firewall 생성**을 클릭합니다.
     * RBAC: 인스턴스 객체 조회, Network Firewall 서비스 제공에 필요한 API 권한을 부여
-    * VPC: Network Firewall 인스턴스가 사용할 VPC
-    * 서브넷: Network Firewall 인스턴스가 내부 트래픽 제어를 위해 사용할 서브넷
-    * NAT: Network Firewall 인스턴스가 외부 트래픽 제어를 위해 사용할 서브넷
-    * 외부 전송: Network Firewall 인스턴스에 생성된 트래픽과 로그를 전송할 서브넷
-    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/NFW-Create.png" height="60%">
+    * VPC: Network Firewall에서 사용할 VPC
+    * 서브넷: Network Firewall에서 내부 트래픽 제어를 위해 사용할 서브넷
+    * NAT: Network Firewall에서 외부 트래픽 제어를 위해 사용할 서브넷
+    * 외부 전송: Network Firewall에서 생성된 트래픽과 로그를 전송할 서브넷
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/nfw-create.png" height="60%">
 
 
 > [참고]
 > 
+>* 생성된 Network Firewall은 사용자의 프로젝트에 노출되지 않습니다. 
 >* 서브넷, NAT, 외부 전송에 사용하는 서브넷은 모두 다른 서브넷으로 선택해야 합니다.
 >   * 가급적 NHN Cloud 콘솔에서 생성할 수 있는 최소 단위(28비트)로 생성할 것을 권장합니다.
 >* Network Firewall이 속할 VPC의 라우팅 테이블에 인터넷 게이트웨이가 연결되어 있어야 생성 가능합니다.
->* Network Firewall 인스턴스는 가용 영역을 분리하여 이중화를 기본으로 제공합니다.
+>* Network Firewall 서비스는 가용 영역을 분리하여 이중화를 기본으로 제공합니다.
 >* Security Groups와는 별개의 서비스이므로 Network Firewall을 사용하면 두 서비스를 모두 허용해야 인스턴스에 접근할 수 있습니다.
 >* Network Firewall이 소유하고 있는 CIDR 대역과 연결이 필요한 CIDR 대역은 중복되지 않아야 합니다.
 >* **Network > Network Interface**에서 Virtual_IP 타입으로 생성되어 있는 IP는 Network Firewall에서 이중화 용도로 사용 중이므로 삭제할 경우 통신이 차단될 수 있습니다.
@@ -100,7 +102,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
     * Spoke VPC가 다른 프로젝트라면 프로젝트 피어링을 생성합니다.
     * Spoke VPC가 다른 리전이라면 리전 피어링을 생성합니다.
     * Spoke VPC가 같은 프로젝트라면 피어링을 생성합니다.
-        * 피어링 게이트웨이 연결에 대한 자세한 사항은 [사용자 가이드](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/)를 참조해 주세요.
+        * 피어링 게이트웨이 연결에 대한 자세한 사항은 [사용자 가이드](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/)를 참조하십시오.
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings3.png" height="65%" />
 <br>
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings4.png" height="65%" />
@@ -186,8 +188,9 @@ Network Firewall 인스턴스를 생성하면 정책 초기 페이지로 이동�
 ### 메인 페이지
 
 * default-deny는 필수 정책이며, 수정하거나 삭제할 수 없습니다.
->[참고]
-default-deny 정책을 통해 차단된 로그는 **옵션** 탭의 **기본 차단 정책 로그 설정**을 **사용**으로 변경한 후 **로그** 탭에서 확인 가능합니다.
+
+> [참고]
+> default-deny 정책을 통해 차단된 로그는 **옵션** 탭의 **기본 차단 정책 로그 설정**을 **사용**으로 변경한 후 **로그** 탭에서 확인 가능합니다.
 
 ![main_page.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/main_page_1.png)
 
@@ -225,12 +228,13 @@ default-deny 정책을 통해 차단된 로그는 **옵션** 탭의 **기본 차
 ### 정책 삭제
 
 * **삭제**를 클릭해 정책을 삭제할 수 있습니다.
+
 >[주의]
 >한번 삭제한 정책은 복구할 수 없으며, default-deny 정책은 삭제할 수 없습니다.
 
 ### 정책 일괄 다운로드
 
-* 정책 탭에 생성되어 있는 정책 전체를 한번에 다운로드할 수 있습니다.
+* 정책 탭에 생성되어 있는 정책 전체를 한 번에 다운로드할 수 있습니다.
 
 ### 정책 일괄 등록
 
@@ -244,20 +248,21 @@ default-deny 정책을 통해 차단된 로그는 **옵션** 탭의 **기본 차
 
 ### 추가
 
-필수 항목을 입력하여 객체를 생성합니다.
+* 필수 항목을 입력하여 객체를 생성합니다.
 IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
-* IP
-    * 타입: 서브넷, 범위, 그룹
-* 포트
-    * 타입: 포트, 범위, 그룹
-    * 프로토콜: TCP, UDP, ICMP
+    * IP
+        * 타입: 서브넷, 범위, 그룹
+    * 포트
+        * 타입: 포트, 범위, 그룹
+        * 프로토콜: TCP, UDP, ICMP
 
 ### 삭제
 
 * **삭제**를 클릭해 객체를 삭제할 수 있습니다.
 
     * 자동으로 Network Firewall에서 생성한 객체는 수정이나 삭제할 수 없습니다.
+
 >[주의]
 >정책에서 사용 중인 객체는 삭제 후 ALL 객체로 변경됩니다.
 
@@ -306,12 +311,12 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 ### 엑셀 내려받기
 
-* **엑셀 내려받기**를 클릭해 트래픽과 Audit 로그의 검색 결과를 다운로드할 수 있습니다..
+* **엑셀 내려받기**를 클릭해 트래픽과 Audit 로그의 검색 결과를 다운로드할 수 있습니다.
     * 트래픽 로그의 최대 다운로드 개수는 30만 건입니다.
 
 ## 모니터
 
-**모니터** 탭에서는 Network Firewall 인스턴스의 상태를 실시간으로 확인할 수 있습니다.
+**모니터** 탭에서는 Network Firewall의 상태를 실시간으로 확인할 수 있습니다.
 검색은 최대 24시간(1일) 내에서만 가능합니다.
 
 ### 검색
@@ -325,15 +330,28 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 ### 로그 설정
 
-* 기본 차단정책 로그 설정: Network Firewall 생성 후 필수로 생성되는 기본 차단정책 로그의 저장여부를 선택합니다.
+* 기본 차단 정책 로그 설정: Network Firewall 생성 후 필수로 생성되는 기본 차단 정책 로그의 저장 여부를 선택합니다.
     * 사용 선택 시 기본 차단 정책으로 생성된 로그는 트래픽 로그에서 검색 가능합니다.
 * 로그 원격 전송 설정: 원격지로 트래픽 로그를 저장할 수 있는 옵션을 선택합니다.
-    * syslog: 최대 2개의 원격지 주소로 로그를 저장
-    * Object Storage: NHN Cloud에서 제공하는 Object Storage 서비스로 로그를 저장
-    * Log & Crash Search: NHN Cloud에서 제공하는 Log&Crash Search 서비스로 로그를 저장
+    * Syslog: 최대 2개의 원격지 주소로 로그를 전송
+        * 2개의 원격지는 개별적으로 설정 가능(IP주소, 프로토콜, 포트 번호)
+    * Object Storage: NHN Cloud에서 제공하는 Object Storage 서비스로 로그를 전송
+    * Log & Crash Search: NHN Cloud에서 제공하는 Log & Crash Search 서비스로 로그를 전송
 
 ### 일반 설정
 
-* NAT 설정: NAT 사용 여부에 대한 옵션을 설정합니다.
-> [주의]
-NAT 사용 중 **사용 안 함**으로 변경할 경우 NAT 탭에서 설정한 정보는 모두 삭제됩니다.
+* MTU(maximum transmission unit) 크기 설정: Network Firewall이 소유한 이더넷의 MTU 크기를 설정합니다.
+    * 트래픽: NHN Cloud 내부 통신에 사용하는 이더넷(피어링 통신 포함)
+    * NAT: 외부 통신에 사용하는 이더넷
+
+> [참고] 
+> 트래픽, NAT 이더넷의 기본 MTU 크기는 1450Byte입니다.
+
+## 서비스 비활성화
+
+**프로젝트 관리 > 이용 중인 서비스**에서 Network Firewall 서비스를 비활성화할 수 있습니다.
+
+> [비활성화 전 주의 사항]
+> 
+> * Network Firewall 서비스 비활성화는 한국(판교) 리전과 한국(평촌) 리전에 모두 적용됩니다.
+> 예를 들어 동일한 프로젝트의 한국(판교) 리전과 한국(평촌) 리전에 모두 Network Firewall 서비스를 활성화한 경우 두 리전 중 하나의 Network Firewall 서비스만 비활성화할 수 없습니다. (기능 개선 예정)

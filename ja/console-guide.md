@@ -71,7 +71,7 @@ Network Firewallの作成に必要な最小ネットワークサービスリソ�
     * サブネット: Network Firewallインスタンスが内部トラフィック制御のために使用するサブネット
     * NAT: Network Firewallインスタンスが外部トラフィック制御のために使用するサブネット
     * 外部転送: Network Firewallインスタンスに作成されたトラフィックとログを転送するサブネット
-    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/NFW-Create.png" height="60%">
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/nfw-create.png" height="60%">
 
 
 > [参考]
