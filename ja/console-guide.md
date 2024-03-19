@@ -4,7 +4,7 @@ Network Firewallを作成するための手順と作成後のコンソールの�
 
 ## はじめる
 
-Network Firewallを使うためには、まず、Network Firewallのインスタンスを作成します。
+Network Firewallを使うためには、まず、Network Firewallサービスを有効化します。
 
 ## Network Firewallの作成
 
@@ -59,27 +59,29 @@ Network Firewallの作成に必要な最小ネットワークサービスリソ�
 
 
 > [参考]
-> 上記のサービスリソースは[Network]カテゴリーで作成可能です。
-> Network Firewallは、プロジェクトごとに1つずつしか作成できません。
+>* 上記のサービスリソースは[Network]カテゴリーで作成可能です。
+> 
+>* Network Firewallは、プロジェクトごとに1つずつしか作成できません。
 
 ### Network Firewallの作成
 
 1. **Security > Network Firewall**に移動します。
 2. 各必須項目を全て選択し、下部の**Network Firewall作成**をクリックします。
     * RBAC:インスタンスオブジェクト照会、 Network Firewallサービスの提供に必要なAPI権限を付与
-    * VPC: Network Firewallインスタンスが使用するVPC
-    * サブネット: Network Firewallインスタンスが内部トラフィック制御のために使用するサブネット
-    * NAT: Network Firewallインスタンスが外部トラフィック制御のために使用するサブネット
-    * 外部転送: Network Firewallインスタンスに作成されたトラフィックとログを転送するサブネット
+    * VPC: Network Firewallで使用するVPC
+    * サブネット: Network Firewallで内部トラフィック制御のために使用するサブネット
+    * NAT: Network Firewallで外部トラフィック制御のために使用するサブネット
+    * 外部転送: Network Firewallで成されたトラフィックとログを転送するサブネット
     <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/nfw-create.png" height="60%">
 
 
 > [参考]
 > 
+>* 作成されたNetwork Firewallはユーザーのプロジェクトに表示されません。 
 >* サブネット、 NAT、外部転送に使用するサブネットはすべて別のサブネットを選択する必要があります。
 >   * なるべくNHN Cloudコンソールで作成できる最小単位(28ビット)で作成することを推奨します。
 >* Network Firewallが属するVPCのルーティングテーブルにインターネットゲートウェイが接続されている必要があります。
->* Network Firewallインスタンスは、利用可能領域を分離して冗長化を基本的に提供します。
+>* Network Firewallサービスは、利用可能領域を分離して冗長化を基本的に提供します。
 >* Security Groupsとは別のサービスなので、Network Firewallを使用すると、両方のサービスを許可しなければインスタンスにアクセスすることができません。
 >* Network Firewallが所有しているCIDR帯域と接続が必要なCIDR帯域は重複してはいけません。
 >* **Network > Network Interface**にてVirtual_IPタイプで作成されているIPはNetwork Firewallにて冗長化用途で使用中のため、削除すると通信が遮断される可能性があります。
@@ -182,8 +184,9 @@ Network Firewallインスタンスを作成すると、ポリシー初期ペー�
 ### メインページ
 
 * default-denyは必須ポリシーであり、修正や削除ができません。
->[参考]
-default-denyポリシーでブロックされたログは、**オプション**タブの基本ブロックポリシーログ設定**を**使用**に変更した後、**ログ**タブで確認できます。
+
+> [参考]
+> default-denyポリシーでブロックされたログは、**オプション**タブの基本ブロックポリシーログ設定**を**使用**に変更した後、**ログ**タブで確認できます。
 
 ![main_page.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/main_page_1.png)
 
@@ -221,6 +224,7 @@ default-denyポリシーでブロックされたログは、**オプション**�
 ### ポリシーの削除
 
 * **削除**をクリックしてポリシーを削除できます。
+
 >[注意]
 >一度削除したポリシーは復元することができず、 default-denyポリシーは削除できません。
 
@@ -240,20 +244,21 @@ default-denyポリシーでブロックされたログは、**オプション**�
 
 ### 追加
 
-必須項目を入力してオブジェクトを作成します。
+* 必須項目を入力してオブジェクトを作成します。
 IPとポートは下記のタイプとプロトコルを追加できます。
 
-* IP
-    * タイプ:サブネット、範囲、グループ
-* ポート
-    * タイプ:ポート、範囲、グループ
-    * プロトコル: TCP, UDP, ICMP
+    * IP
+        * タイプ:サブネット、範囲、グループ
+    * ポート
+        * タイプ:ポート、範囲、グループ
+        * プロトコル: TCP, UDP, ICMP
 
 ### 削除
 
 * **削除**をクリックしてオブジェクトを削除できます。
 
     * 自動的にNetwork Firewallで生成されたオブジェクトは修正や削除ができません。
+
 >[注意]
 >ポリシーで使用中のオブジェクトは削除後、ALLオブジェクトに変更されます。
 
@@ -306,7 +311,7 @@ IPとポートは下記のタイプとプロトコルを追加できます。
 
 ## モニター
 
-**モニター**タブではNetwork Firewallインスタンスの状態をリアルタイムで確認できます。
+**モニター**タブではNetwork Firewallの状態をリアルタイムで確認できます。
 検索は最大24時間(1日)以内でのみ可能です。
 
 ### 検索
@@ -323,15 +328,20 @@ IPとポートは下記のタイプとプロトコルを追加できます。
 * 基本ブロックポリシーログ設定: Network Firewall作成後に必ず作成される基本ブロックポリシーログを保存するかどうかを選択します。
     * 使用を選択すると、基本ブロックポリシーで作成されたログはトラフィックログから検索できます。
 * ログ遠隔転送設定:遠隔地にトラフィックログを保存できるオプションを選択します。
-    * syslog:最大2つの遠隔地アドレスにログを保存
-    * Object Storage: NHN Cloudで提供するObject Storageサービスでログを保存
-    * Log & Crash Search: NHN Cloudが提供するLog&Crash Searchサービスでログを保存
+    * Syslog:最大2つの遠隔地アドレスにログを保存
+        * 2つの遠隔地は 個別に設定可能(IPアドレス、プロトコル、ポート番号)
+    * Object Storage: NHN Cloudで提供するObject Storageサービスでログを転送
+    * Log & Crash Search: NHN Cloudで提供するLog & Crash Searchサービスでログを転送
 
 ### 一般設定
 
-* NAT設定:NATを使用するかどうかのオプションを設定します。
-> [注意]
-NAT使用中に**使用しない**に変更した場合、NATタブで設定した情報は全て削除されます。
+* MTU(maximum transmission unit)サイズ設定: Network Firewallが所有するイーサネットのMTUサイズを設定します。
+    * トラフィック: NHN Cloud内部通信に使用するイーサネット(ピアリング通信を含む)
+    * NAT:外部通信に使用するイーサネット
+
+> [参考] 
+> トラフィック、 NATイーサネットの基本MTUサイズは1450Byteです。
+
 
 ## サービスの無効化
 
