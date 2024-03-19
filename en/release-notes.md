@@ -2,13 +2,16 @@
 
 ## March 26, 2024
 **Added Features**
+
 * Added MTU setting options
 
 **Feature Updates**
+
 * Improved UI to change syslog ports
 * Improved UI to display protocols as characters among log entries
 
 **Deleted Features**
+
 * Deleted NAT settings options
     * Changed Network Firewall to be automatically enabled when created
     
