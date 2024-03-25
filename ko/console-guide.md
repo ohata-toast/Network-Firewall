@@ -340,7 +340,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 ### 일반 설정
 
-* MTU(maximum transmission unit) 크기 설정: Network Firewall이 소유한 이더넷의 MTU 크기를 설정합니다.
+* MTU(maximum transmission unit) 크기 설정: Network Firewall에 연결된 이더넷의 MTU 크기를 설정합니다.
     * 트래픽: NHN Cloud 내부 통신에 사용하는 이더넷(피어링 통신 포함)
     * NAT: 외부 통신에 사용하는 이더넷
 
