@@ -335,7 +335,7 @@ IPとポートは下記のタイプとプロトコルを追加できます。
 
 ### 一般設定
 
-* MTU(maximum transmission unit)サイズ設定: Network Firewallが所有するイーサネットのMTUサイズを設定します。
+* MTU(maximum transmission unit)サイズ設定: Network Firewallに連結されたイーサネットのMTUサイズを設定します。
     * トラフィック: NHN Cloud内部通信に使用するイーサネット(ピアリング通信を含む)
     * NAT:外部通信に使用するイーサネット
 
