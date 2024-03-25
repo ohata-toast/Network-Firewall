@@ -339,7 +339,7 @@ In the **Options** tab, set options required for operation of Network Firewall.
 
 ### General Settings
 
-* Maximum transmission unit (MTU) size setting: Set the MTU size of the Ethernet owned by Network Firewall.
+* Maximum transmission unit (MTU) size setting: Set the MTU size of the Ethernet associated with Network Firewall.
     * Traffic: Ethernet used for internal NHN Cloud communication (including peering communication)
     * NAT: Ethernet used for external communication
 
