@@ -4,7 +4,7 @@ This guide describes the procedure for creating Network Firewall and how to use 
 
 ## Get Started
 
-To use Network Firewall, first create a Network Firewall instance.
+To use Network Firewall, first enable the Network Firewall service.
 
 ## Create Network Firewall
 
@@ -60,27 +60,28 @@ The minimum network service resources needed to create a Network Firewall are as
 
 
 > [Note]
-> The above service resources can be created in the [Network] category.
-> Only one Network Firewall can be created per project.
+>* The above service resources can be created in the [Network] category.
+> 
+>* Only one network firewall can be created per project.
 
 ### Create Network Firewall
 
 1. Go to **Security > Network Firewall**.
 2. Select all required items and click **Create Network Firewall** at the bottom.
     * RBAC: Grant API permissions to query instance objects and provide the Network Firewall service
-    * VPC: The VPC that the Network Firewall instance will use
-    * Subnet: The subnet that Network Firewall instances will use to control internal traffic
-    * NAT: The subnet that the Network Firewall instances will use to control external traffic
-    * External transmission: The subnet to which the traffic and logs created in Network Firewall instances are transmitted
-    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/NFW-Create.png" height="60%">
+    * VPC: VPC that Network Firewall will use
+    * Subnet: Subnet that Network Firewall uses to control internal traffic
+    * NAT: Subnet that Network Firewall uses to control external traffic
+    * External transmission: Subnet that sends traffic and logs created by Network Firewall
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/nfw-create.png" height="60%">
 
 
 >[Note]
 > 
->* The subnets used for subnet, NAT, and external transmission must all be selected as different subnets.
+>* The created Network Firewall is not exposed in users’ projects.
 >   * It is recommended to create subnets in the minimum unit (28 bits) that can be created in the NHN Cloud console.
 >* An Internet gateway must be connected to the routing table of the VPC to which the Network Firewall will belong before it can be created.
->* Network Firewall instances are provided with redundancy by separating availability zones.
+>* Network Firewall is provided with redundancy by separating availability zones.
 >* If you use the Network Firewall service as a separate service from Security Groups, you must allow both to access the instances.
 >* The CIDR block owned by Network Firewall and the CIDR block requiring connectivity must not overlap.
 >* IPs created with the Virtual_IP type **in Network > Network Interface**are used by Network Firewall for redundancy purposes, so deleting them may block communication.
@@ -186,8 +187,9 @@ In the **Policies** tab, you can manage policies to control inbound/outbound tra
 ### Main Page
 
 * The default-deny policy is a required policy and cannot be modified or deleted.
+
 >[Note]
-Logs blocked through the default-deny policy can be viewed on the **Log** tab after changing the **Default blocking policy log setting**to **Enable**on the **Options** tab.
+> Logs blocked through the default-deny policy can be viewed on the **Log** tab after changing the **Default Blocking Policy Log Setting**to **Enable**on the **Options** tab.
 
 ![main_page.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/main_page_1.png)
 
@@ -225,6 +227,7 @@ Logs blocked through the default-deny policy can be viewed on the **Log** tab af
 ### Delete Policy
 
 * You can delete the policy by clicking **Delete**.
+
 >[Caution]
 >Once deleted, a policy cannot be restored, and a policy with name: default-deny cannot be deleted.
 
@@ -244,22 +247,23 @@ In the **Object** tab, create and manage IPs and ports to use when creating poli
 
 ### Add
 
-Enter the required fields to create the object.
+* Enter the required fields to create the object.
 IP and port are required, you can add a type and protocol below.
 
-* IP
-    * Type: Subnet, Range, Group
-* Port
-    * Type: Port, Range, Group
-    * Protocol: TCP, UDP, ICMP
+    * IP
+        * Type: Subnet, Range, Group
+    * Port
+        * Type: Port, Range, Group
+        * Protocol: TCP, UDP, ICMP
 
 ### Delete
 
 * You can delete an object by clicking **Delete**.
 
     * Objects automatically created by Network Firewall cannot be modified or deleted.
+
 >[Note]
-Objects in use by a policy will be changed to ALL objects after deletion (caution required).
+>Objects in use by a policy will be changed to ALL objects after deletion (caution required).
 
 ### Batch Download of Objects
 
@@ -311,7 +315,7 @@ In the **Log** tab, search logs created in Network Firewall.
 
 ## Monitor
 
-In the **Monitor** tab, check the status of your Network Firewall instances in real time.
+In the **Monitor** tab, check the status of Network Firewall in real time.
 Searches are only available for up to 24 hours (1 day).
 
 ### Search
@@ -328,15 +332,19 @@ In the **Options** tab, set options required for operation of Network Firewall.
 * Default blocking policy log settings: Select whether to save the default blocking policy log that is required after creating a Network Firewall.
     * When enabled, you can search logs created with the default blocking policy in the traffic log.
 * Log remote transmission settings: Select the option to save traffic logs remotely.
-    * syslog: Save logs with up to 2 remote addresses
-    * Object Storage: Save logs with the Object Storage service provided by NHN Cloud
-    * Log & Crash Search: Save logs with the Log&Crash Search service provided by NHN Cloud
+    * Syslog: Send logs with up to 2 remote addresses
+        * Two remote locations can be configured individually (IP address, protocol, port number)
+    * Object Storage: Send logs with the Object Storage service provided by NHN Cloud
+    * Log & Crash Search: Send logs with the Log&Crash Search service provided by NHN Cloud
 
 ### General Settings
 
-* NAT Settings: Set options for whether to use NAT.
-> [Caution]
-If you change from Enable NAT to **Disable**, any information you set on the NAT tab is deleted.
+* Maximum transmission unit (MTU) size setting: Set the MTU size of the Ethernet associated with Network Firewall.
+    * Traffic: Ethernet used for internal NHN Cloud communication (including peering communication)
+    * NAT: Ethernet used for external communication
+
+> [Note]
+> The default MTU size for traffic, NAT Ethernet is 1450 bytes.
 
 ## Disable Service
 

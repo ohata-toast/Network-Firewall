@@ -40,6 +40,8 @@ NHN Cloudに特化したアクセス制御を適用することができ、別�
 
 > [参考]
 > 
+> * 上記の構成図は一般的な構成であり、お客様の環境によってNetwork Firewallを除いたWEB、WAS、Load Balancerなどの構成が異なる場合があります。
+> 
 > * 他のリージョンのプロジェクト環境では、同じプロジェクトでのみ設定可能です。詳細は[ユーザーガイド](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/)を参照してください。
 > 
 > * サービス構成時、改善する前のネットワーク環境とは接続できません。

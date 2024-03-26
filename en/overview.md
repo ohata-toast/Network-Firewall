@@ -40,7 +40,9 @@ Service configurations can take five forms as follows.
 
 > [Note]
 > 
-> * In a project environment in a different region, it can only be configured in the same project. For more information, see the [user guide](https://docs.nhncloud.com/en/Network/Peering%20Gateway/ko/console-guide/).
+>  * The above configuration diagram is a typical configuration, and the configuration of WEB, WAS, Load Balancer, etc. except Network Firewall may differ depending on the customer's environment.
+>
+> * In a project environment in a different region, it can only be configured in the same project. For more information, see the [user guide](https://docs.nhncloud.com/en/Network/Peering%20Gateway/en/console-guide/).
 > 
 > * When you configure a service, you cannot associate it with the network environment before improvements.
 > For example, if an organization has projects created that use the pre-improvement network environment and projects that use the new network environment, you can create a Network Firewall in the new network environment, but you cannot use the pre-improvement network environment as a Spoke VPC.
