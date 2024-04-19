@@ -17,7 +17,7 @@ NHN Cloud에 특화된 접근 제어를 적용할 수 있고, 별도의 방화�
 * 안정적인 운영을 위해 고가용성(이중화)을 제공합니다.
 
 ## Network Firewall 서비스 구성도
-서비스 구성은 아래의 4가지 형태로 구성할 수 있습니다.
+서비스는 아래의 4가지 형태로 구성할 수 있습니다.
 
 ### 1개의 프로젝트
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/23.12.19/Architecture1.png" height="70%">
