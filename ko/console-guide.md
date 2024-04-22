@@ -287,7 +287,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
     * NAT 전 공인 IP는 **Network - Floating IP**에서 미리 생성한 IP 중 하나를 선택합니다.  
     * NAT 후 사설 IP에서 선택할 객체는 **객체** 탭에서 미리 생성해야만 **추가**를 클릭해 추가할 수 있습니다.
 
-![nat_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.04.05/nat_add_1.png)
+![nat_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.04.05/nat_add_2.png)
 
 ### 수정
 
