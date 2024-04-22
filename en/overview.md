@@ -17,7 +17,7 @@ You can easily use access control specialized for NHN Cloud and the firewall fea
 * Provides high availability (redundancy) for reliable operation.
 
 ## Network Firewall Service Configuration
-Service configurations can take five forms as follows.
+You can configure the service in the following four forms.
 
 ### 1 Project
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/23.12.19/Architecture1.png" height="70%">
