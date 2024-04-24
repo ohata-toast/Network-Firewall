@@ -283,7 +283,7 @@ IPとポートは下記のタイプとプロトコルを追加できます。
     * NAT前のグローバルIPは**Network - Floating IP**であらかじめ作成したIPのいずれかを選択します。  
     * NAT後、プライベートIPで選択するオブジェクトは、**オブジェクト**タブであらかじめ作成しておく必要があり、**追加**をクリックして追加できます。
 
-![nat_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.04.05/nat_add_1.png)
+![nat_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.04.05/nat_add_2.png)
 
 ### 修正
 
