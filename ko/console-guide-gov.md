@@ -40,16 +40,6 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 * Spoke VPC 내 최소 1개의 서브넷
 * Hub VPC의 Routing에 연결된 인터넷 게이트웨이
 
-
-[다른 리전 간 프로젝트 구성 시 준비 사항]
-
-* 1개의 프로젝트
-* 2개의 VPC(KR1 리전에 Hub VPC, KR2 리전에 Spoke VPC)
-* Hub VPC 내 3개의 서브넷(Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
-* Spoke VPC 내 최소 1개의 서브넷
-* Hub VPC의 Routing에 연결된 인터넷 게이트웨이
-
-
 [단일 VPC 내 여러 개의 서브넷 구성 시 준비 사항]
 
 * 1개의 프로젝트
