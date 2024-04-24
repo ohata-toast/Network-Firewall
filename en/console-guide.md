@@ -287,7 +287,7 @@ After creating a NAT, you must add an allow policy to enable authorized communic
 * Click **Confirm** to check the connected **public IP before NAT**.
     * The created public IP before NAT cannot be changed arbitrarily.
 
-![nat_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/nat_add_1.png)
+![nat_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.04.05/nat_add_2.png)
 
 ### Delete
 
