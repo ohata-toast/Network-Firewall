@@ -271,28 +271,31 @@ IP and port are required, you can add a type and protocol below.
 
 ## NAT
 
-In the **NAT** (Network Address Translation) tab, create a dedicated public IP by specifying the instance to be accessed from the outside.
-
-* NAT offers only destination-based and 1:1 methods.
-* Port-based NAT is not provided.
-* The created public IP can be checked in **Network > Floating IP**.
+In the **NAT** (Network Address Translation) tab, select and connect a dedicated public IP with the instance to be accessed from the outside.
 
 >[Note]
-After creating a NAT, you must add an allow policy to enable authorized communication.
+> 
+> * NAT offers only destination-based and 1:1 methods.
+> * Port-based NAT is not provided.
+> * After creating a NAT, you must add an allow policy to enable authorized communication.
+> * After deleting NAT, delete the unused public IP before NAT directly from **Network - Floating**.
 
 ### Add
 
-* Click  Add (+) to select an object.
-    * The object you want to select must be created in advance.
-* Click **Confirm** to check the connected **public IP before NAT**.
-    * The created public IP before NAT cannot be changed arbitrarily.
+* Click **Add** to create NAT.
+    * For the public IP before NAT, select one of the pre-created IPs in **Network - Floating IP**.  
+    * For the objects to be selected in Private IP after NAT, pre-create them on the **Objects** tab to add by clicking **Add**. 
 
 ![nat_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.04.05/nat_add_2.png)
+
+### Modify
+
+* Click **Modify** to modify the created NAT.
+    * You can modify both public and private IPs.
 
 ### Delete
 
 * Click **Delete** to delete the created NAT.
-    * After deletion, the public IP before NAT is automatically deleted.
 
 ## Log
 
