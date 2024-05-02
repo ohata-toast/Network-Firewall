@@ -1,5 +1,10 @@
 ## Security > Network Firewall > Release Notes
 
+## May 14, 2024
+**Added Features**
+
+* Added the Modify button on the NAT tab
+
 ## March 26, 2024
 **Added Features**
 
