@@ -17,7 +17,7 @@ NHN Cloudに特化したアクセス制御を適用することができ、別�
 * 安定した運営のために高可用性(冗長化)を提供します。
 
 ## Network Firewallサービス構成図
-サービス構成は下記の5つの形で構成できます。
+서비스는 아래의 5가지 형태로 구성할 수 있습니다.
 
 ### 1つのプロジェクト
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/23.12.19/Architecture1.png" height="70%">
