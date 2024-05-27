@@ -274,10 +274,18 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 ### 추가
 
 * **추가**를 클릭해 NAT를 생성합니다.
+    * 타입을 선택합니다. 
     * NAT 전 공인 IP는 **Network - Floating IP**에서 미리 생성한 IP 중 하나를 선택합니다.  
     * NAT 후 사설 IP에서 선택할 객체는 **객체** 탭에서 미리 생성해야만 **추가**를 클릭해 추가할 수 있습니다.
 
-![nat_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.04.05/nat_add_1.png)
+![nat_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/nat_add.png)
+
+>[주의사항]
+> 
+> * 타입의 선택에 따라 아래의 NAT 전 공인 IP가 노출됩니다.
+>   * Network Firewall: **Network - Floating IP**에서 Public Network 로 생성된 Floating IP
+>   * SSL VPN: **Network - Floating IP**에서 VPN Network 로 생성된 Floating IP
+> * NHN Cloud에서 제공하는 
 
 ### 수정
 
@@ -339,6 +347,9 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 > [참고] 
 > 트래픽, NAT 이더넷의 기본 MTU 크기는 1450Byte입니다.
+
+* SSL VPN 설정: 외부에서 NHN Cloud(공공기관용) 인스턴스 접속이 필요할 경우 사용하는 SSL VPN 서비스와 Network Firewall을 연동하는 옵션을 제공합니다.
+    * 해당 옵션을 사용할 경우 NHN Cloud(공공기관용)에서 사용하는 Private Network의 사설 VPN Network IP를 Network Firewall 의 NAT 탭에서 설정할 수 있습니다.
 
 ## 서비스 비활성화
 
