@@ -269,6 +269,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 > * NAT는 목적지 기반 및 1:1 방식만 제공합니다.
 > * 포트 기반의 NAT는 제공하지 않습니다.
 > * NAT를 생성한 뒤 허용 정책을 추가해야만 공인 통신이 가능합니다.
+> * NHN Cloud(공공기관용)에서 제공하는 SSL VPN 서비스와 Network Firewall을 연결하여 사용할 수 있습니다.(옵션 - SSL VPN 설정에서 사용으로 설정시)
 > * NAT 삭제 후 사용하지 않는 NAT 전 공인 IP는 **Network - Floating**에서 직접 삭제하십시오.
 
 ### 추가
@@ -280,12 +281,12 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 ![nat_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/nat_add.png)
 
->[주의사항]
+>[참고]
 > 
+> * 옵션 - SSL VPN 설정에서 사용으로 설정했을 경우에만 타입이 노출됩니다.
 > * 타입의 선택에 따라 아래의 NAT 전 공인 IP가 노출됩니다.
 >   * Network Firewall: **Network - Floating IP**에서 Public Network 로 생성된 Floating IP
 >   * SSL VPN: **Network - Floating IP**에서 VPN Network 로 생성된 Floating IP
-> * NHN Cloud에서 제공하는 
 
 ### 수정
 
@@ -295,6 +296,45 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 ### 삭제
 
 * **삭제**를 클릭해 생성된 NAT를 삭제합니다.
+
+## VPN
+**VPN** 탭에서는 사이트간 암호화된 터널을 통해 안전한 사설통신을 지원합니다.
+
+### 게이트웨이 생성
+* **게이트웨이 생성** 을 클릭해 상대방 VPN 장비와 연결하기 위한 게이트웨이를 생성합니다.
+
+![gw_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/gw_add.png)
+
+> [참고]
+>
+> * VPC와 서브넷은 수정할 수 없습니다.
+> * 게이트웨이는 최대 10개까지 생성 가능합니다.
+
+### 게이트웨이 수정
+* **수정** 버튼을 클릭해 게이트웨이를 수정합니다.
+
+### 게이트웨이 삭제
+* **삭제** 버튼을 클릭해 게이트웨이를 삭제합니다.
+    * 게이트웨이에 연결된 터널이 있을 경우 삭제가 되지 않습니다. 
+
+### 플로팅 IP 연결
+* 상대방 장비와의 연결에 필요한 플로팅 IP를 설정합니다.
+    * 플로팅 IP는 **Network - Floating IP** 에 생성된 리스트중 사용하지 않는 플로팅 IP가 노출됩니다.
+
+![fip.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/fip.png)
+
+### 터널 생성
+* 상대방 장비와 연결할 터널을 생성합니다.
+    * 터널은 Phase 1과 Phase 2 의 2가지 설정을 통해 터널을 생성합니다. 
+
+![tunnel_add_phase1.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/tunnel_add_phase1.png)
+
+* 터널 성정
+    * 게이트웨이: 게이트웨이 탭에서 생성된 게이트웨이를 노출하며, 터널과 연결할 게이트웨이를 선택합니다.
+        * 생성된 게이트웨이가 없을 경우 노출되지 않습니다.
+    * 상태방 IP 주소: 상대방 VPN 장비의 IP 주소를 입력합니다.
+    
+
 
 ## 로그
 
@@ -349,7 +389,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 > 트래픽, NAT 이더넷의 기본 MTU 크기는 1450Byte입니다.
 
 * SSL VPN 설정: 외부에서 NHN Cloud(공공기관용) 인스턴스 접속이 필요할 경우 사용하는 SSL VPN 서비스와 Network Firewall을 연동하는 옵션을 제공합니다.
-    * 해당 옵션을 사용할 경우 NHN Cloud(공공기관용)에서 사용하는 Private Network의 사설 VPN Network IP를 Network Firewall 의 NAT 탭에서 설정할 수 있습니다.
+    * 해당 옵션을 사용할 경우 NHN Cloud(공공기관용)에서 인스턴스 접속시 사용하는 Private Network의 사설 VPN Network IP를 Network Firewall 의 NAT 탭에서 설정할 수 있습니다.
 
 ## 서비스 비활성화
 
