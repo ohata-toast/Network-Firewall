@@ -171,9 +171,9 @@ Network Firewall 생성과 연결 설정을 완료하면 Network Firewall의 여
 
 
 ## 정책
-Network Firewall 인스턴스를 생성하면 정책 초기 페이지로 이동합니다.
+Network Firewall을 생성하면 정책 초기 페이지로 이동합니다.
 
-**정책** 탭에서는 Network Firewall 인스턴스와 연결된 VPC 간 트래픽과 인바운드/아웃바운드 트래픽을 제어할 수 있는 정책을 관리할 수 있습니다.
+**정책** 탭에서는 Network Firewall과 연결된 VPC 간 트래픽과 인바운드/아웃바운드 트래픽을 제어할 수 있는 정책을 관리할 수 있습니다.
 
 ### 메인 페이지
 
@@ -188,10 +188,10 @@ Network Firewall 인스턴스를 생성하면 정책 초기 페이지로 이동�
 
 * 출발지, 목적지, 목적지 포트를 기반으로 정책을 추가할 수 있습니다.
     * 이미 만들어진 객체를 통해 출발지, 목적지, 목적지 포트를 선택합니다.
-* 정책의 상태(활성화/비활성화)와 동작(허용/차단), 스케줄을 선택하여 정책을 추가할 수 있습니다.
+* 정책의 상태(활성화/비활성화)와 동작(허용/차단), 스케줄을 설정하여 정책을 추가할 수 있고, 정책별 로깅여부를 설정할 수 있습니다.
 * 스케줄 기능은 정책의 상태를 활성화 한 이후에 동작합니다(정책이 비활성화되어 있을 경우 스케줄 기능이 적용되지 않습니다.).
 
-![acl_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_add_1.png)
+![acl_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/acl_add.png)
 
 ### 정책 복사
 
@@ -211,7 +211,7 @@ Network Firewall 인스턴스를 생성하면 정책 초기 페이지로 이동�
 ### 정책 이동
 
 * **이동**을 클릭해 정책을 이동할 수 있습니다.
-    * 이름: default-deny 정책 아래로는 이동이 불가능합니다.
+    * default-deny 정책 아래로는 이동이 불가능합니다.
 
 ![acl_move.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_move_1.png)
 
@@ -270,6 +270,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 > * 포트 기반의 NAT는 제공하지 않습니다.
 > * NAT를 생성한 뒤 허용 정책을 추가해야만 공인 통신이 가능합니다.
 > * NHN Cloud(공공기관용)에서 제공하는 SSL VPN 서비스와 Network Firewall을 연결하여 사용할 수 있습니다.(옵션 - SSL VPN 설정에서 사용으로 설정시)
+> * NAT에 설정된 NAT 후 사설 IP를 소유한 인스턴스에 직접 Floating IP를 할당할 경우 통신에 문제가 있을 수 있습니다.
 > * NAT 삭제 후 사용하지 않는 NAT 전 공인 IP는 **Network - Floating**에서 직접 삭제하십시오.
 
 ### 추가
@@ -287,6 +288,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 > * 타입의 선택에 따라 아래의 NAT 전 공인 IP가 노출됩니다.
 >   * Network Firewall: **Network - Floating IP**에서 Public Network 로 생성된 Floating IP
 >   * SSL VPN: **Network - Floating IP**에서 VPN Network 로 생성된 Floating IP
+> * 인스턴스 접속은 NAT를 추가하면서 설정한 NAT 전 공인 IP로 접속 가능합니다. (인스턴스에 직접 Floating IP 연결 불필요)
 
 ### 수정
 
@@ -351,7 +353,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
  > * 모든 설정은 상대방 장비와 동일한 값으로 설정합니다.
  > * 로컬 ID는 상대방 VPN 장비의 설정방식에 따라 설정합니다. (선택 입력)
  > * Phase 2 추가는 최대 3개까지 가능합니다.
- > * 로컬 사설 IP와 상대방 사설 IP는 서로 중복되지 않아야 합니다. 이 범위는 피어링을 포함한 Network Firewall과 연결되는 모든 사설대역이 포함됩니다. 
+ > * 로컬 사설 IP와 상대방 사설 IP는 서로 중복되지 않아야 합니다. 이 범위는 VPC 피어링을 포함한 Network Firewall과 연결되는 모든 사설대역이 포함됩니다. 
 
 ### 터널 연결
 
@@ -381,11 +383,12 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 ### 이벤트
 
-* 상대방 VPN 장비과의 터널연결간 발생하는 이벤트 로그를 검색할 수 있습니다.
+* 상대방 VPN 장비과의 터널 연결간 발생하는 이벤트 로그를 검색할 수 있습니다.
 
 > [참고]
 >
-> * 이벤트에서는 터널에 대한 이벤트 로그만 검색할 수 있으며, VPN 터널을 통한 통신 로그 또는 터널 생성과 삭제 등의 감사로그를 확인하려면 로그탭에서 확인하십시오.
+> * 이벤트에서는 터널에 대한 이벤트 로그만 검색할 수 있습니다.
+> * VPN 터널을 통한 통신 로그 또는 터널 생성과 삭제 등의 감사로그를 확인하려면 로그탭에서 확인하십시오.
 
 ## 로그
 
