@@ -13,7 +13,7 @@ Network Firewall을 사용하기 위해서는 가장 먼저 Network Firewall 서
 Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아래와 같습니다.
 
 > [참고]
-> **Network Firewall > 개요**에서 Network Firewall 서비스 구성도를 참조하십시오.
+> **Network Firewall > 개요**에서 Network Firewall 서비스 구성도를 참조하세요.
 
 
 [1개의 프로젝트 구성 시 준비 사항]
@@ -92,7 +92,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
     * Spoke VPC가 다른 프로젝트라면 프로젝트 피어링을 생성합니다.
     * Spoke VPC가 다른 리전이라면 리전 피어링을 생성합니다.
     * Spoke VPC가 같은 프로젝트라면 피어링을 생성합니다.
-        * 피어링 게이트웨이 연결에 대한 자세한 사항은 [사용자 가이드](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/)를 참조하십시오.
+        * 피어링 게이트웨이 연결에 대한 자세한 사항은 [사용자 가이드](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/)를 참조하세요.
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings3.png" height="65%" />
 <br>
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings4.png" height="65%" />
@@ -161,7 +161,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 > **연결 설정**의 **5**와 같이 Spoke VPC2-Hub 간 VPC 피어링에도 라우트 추가 설정이 필요합니다.
 
 위의 라우팅 설정이 완료되면 서로 다른 Spoke VPC 간 Network Firewall을 경유하여 사설 통신을 할 수 있습니다. (<strong>Network Firewall > 정책</strong> 탭에서 정책 추가 필요)
-Network Firewall 서비스 구성도를 참고하여 고객의 환경에 맞게 연결을 설정하십시오.
+Network Firewall 서비스 구성도를 참고하여 고객의 환경에 맞게 연결을 설정하세요.
 <br>
 
 ***
@@ -189,7 +189,7 @@ Network Firewall을 생성하면 정책 초기 페이지로 이동합니다.
 
 * 출발지, 목적지, 목적지 포트를 기반으로 정책을 추가할 수 있습니다.
     * 이미 만들어진 객체를 통해 출발지, 목적지, 목적지 포트를 선택합니다.
-* 정책의 상태(활성화/비활성화)와 동작(허용/차단), 스케줄을 설정과 정책별 로깅여부 등의 옵션을 설정하여 정책을 추가할 수 있습니다.
+* 정책의 상태(활성화/비활성화)와 동작(허용/차단), 스케줄을 설정 및 정책별 로깅 여부 등의 옵션을 설정하여 정책을 추가할 수 있습니다.
 * 스케줄 기능은 정책의 상태를 활성화 한 이후에 동작합니다(정책이 비활성화되어 있을 경우 스케줄 기능이 적용되지 않습니다.).
 
 ![acl_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/acl_add.png)
@@ -281,15 +281,15 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 > * NAT는 목적지 기반 및 1:1 방식만 제공합니다.
 > * 포트 기반의 NAT는 제공하지 않습니다.
 > * NAT를 생성한 뒤 허용 정책을 추가해야만 공인 통신이 가능합니다.
-> * NHN Cloud(공공기관용)에서 제공하는 SSL VPN 서비스와 Network Firewall을 연동하여 사용할 수 있습니다.(옵션 - SSL VPN 설정에서 사용으로 설정시)
+> * NHN Cloud(공공기관용)에서 제공하는 SSL VPN 서비스와 Network Firewall을 연동하여 사용할 수 있습니다. (**옵션 > SSL VPN 설정**에서 **사용**으로 설정 시)
 > * NAT에 설정된 NAT 후 사설 IP를 소유한 인스턴스에 직접 Floating IP를 할당할 경우 통신에 문제가 있을 수 있습니다.
-> * NAT 삭제 후 사용하지 않는 NAT 전 공인 IP는 **Network - Floating IP**에서 직접 삭제하십시오.
+> * NAT 삭제 후 사용하지 않는 NAT 전 공인 IP는 **Network > Floating IP**에서 직접 삭제하세요.
 
 ### 추가
 
 * **추가**를 클릭해 NAT를 생성합니다.
     * 타입을 선택합니다. 
-    * NAT 전 공인 IP는 **Network - Floating IP**에서 미리 생성한 IP 중 하나를 선택합니다.  
+    * NAT 전 공인 IP는 **Network > Floating IP**에서 미리 생성한 IP 중 하나를 선택합니다.  
     * NAT 후 사설 IP에서 선택할 객체는 **객체** 탭에서 미리 생성해야만 **추가**를 클릭해 추가할 수 있습니다.
 
 ![nat_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/nat_add.png)
@@ -298,8 +298,8 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 > 
 > * 옵션 - SSL VPN 설정에서 사용으로 설정했을 경우에만 타입이 노출됩니다.
 > * 타입의 선택에 따라 아래의 NAT 전 공인 IP가 노출됩니다.
->   * Network Firewall: **Network - Floating IP**에서 Public Network 로 생성된 Floating IP
->   * SSL VPN: **Network - Floating IP**에서 VPN Network로 생성된 Floating IP
+>   * Network Firewall: **Network > Floating IP**에서 Public Network 로 생성된 Floating IP
+>   * SSL VPN: **Network > Floating IP**에서 VPN Network로 생성된 Floating IP
 > * 인스턴스 접속은 NAT를 추가하면서 설정한 NAT 전 공인 IP로 접속 가능합니다. (인스턴스에 직접 Floating IP 연결 불필요)
 
 ### 수정
@@ -313,11 +313,11 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 ## VPN
 
-**VPN** 탭에서는 사이트간 암호화된 터널을 통해 안전한 사설통신을 지원합니다.
+**VPN** 탭에서는 사이트간 암호화된 터널을 통해 안전한 사설 통신을 지원합니다.
 
 ### 게이트웨이 생성
 
-* **게이트웨이 생성**을 클릭해 상대방 VPN 장비와 연결하기 위한 게이트웨이를 생성합니다.
+* **게이트웨이 생성**을 클릭해 피어 VPN 장비와 연결하기 위한 게이트웨이를 생성합니다.
 
 ![gw_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/gw_add.png)
 
@@ -333,61 +333,61 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 ### 게이트웨이 삭제
 
 * **삭제** 버튼을 클릭해 게이트웨이를 삭제합니다.
-    * 게이트웨이에 연결된 터널이 있을 경우 삭제가 되지 않으므로 불필요한 터널을 삭제한 후 게이트웨이를 삭제 하십시오.
+    * 게이트웨이에 연결된 터널이 있을 경우 삭제가 되지 않으므로 불필요한 터널을 삭제한 후 게이트웨이를 삭제 하세요.
 
 ### 플로팅 IP 연결
 
-* 상대방 장비와 연결에 필요한 플로팅 IP를 설정합니다.
-    * 플로팅 IP는 **Network - Floating IP**에 생성된 리스트중 미사용중인 플로팅 IP가 노출됩니다.
+* 피어 장비와 연결에 필요한 플로팅 IP를 설정합니다.
+    * 플로팅 IP는 **Network > Floating IP**에 생성된 목록중 미사용 중인 항목이 노출됩니다.
 
 ![fip.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/fip.png)
 
 ### 터널 생성
 
-* 상대방 장비와 연결할 터널을 생성합니다.
+* 피어 장비와 연결할 터널을 생성합니다.
 
 ![tunnel_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/tunnel_add.png)
 
 * 터널 설정
     * 게이트웨이: 게이트웨이 탭에서 생성된 게이트웨이가 노출되며, 터널과 연결할 게이트웨이를 선택합니다.
         * 생성된 게이트웨이가 없을 경우 노출되지 않습니다.
-    * 상태방 IP 주소: 연결할 상대방 VPN 장비의 공인 IP 주소를 입력합니다.
-    * IKE 버전: 상대방 VPN 장비와 동일한 버전으로 설정합니다.
+    * 피어 IP 주소: 연결할 피어 VPN 장비 IP 주소를 입력합니다.
+    * IKE 버전: 피어 VPN 장비와 동일한 버전으로 설정합니다.
         * IKE 버전 1은 Main Mode만 지원됩니다.
-    * Pre-Shared Key: 상대방 VPN 장비와 동일한 키값을 입력합니다.
-    * DPD(dead peer detection): 10초 단위로 총 5회의 재전송을 시도하며, 비활성화 선택시 상대방 VPN 장비의 DPD 요청에 대한 응답만 지원합니다.
-    * NAT-Traversal: 터널 생성간 발생되는 패킷의 삭제를 방지하기 위한 기능으로 일반적으로 상대방 VPN 장비가 공인 IP 일경우 사용으로 설정합니다.
+    * Pre-Shared Key: 피어 VPN 장비와 동일한 키값을 입력합니다.
+    * DPD(dead peer detection): 10초 단위로 총 5회의 재전송을 시도하며, 비활성화 선택 시 피어 VPN 장비의 DPD 요청에 대한 응답만 지원합니다.
+    * NAT-Traversal: 터널 생성 시 발생되는 패킷의 삭제를 방지하기 위한 기능으로 일반적으로 피어 VPN 장비가 공인 IP일 경우 **사용**으로 설정합니다.
 * Phase 1/2 설정
-    * IPSec VPN 터널을 생성하기 위해 필요한 설정정보를 입력합니다.
+    * IPSec VPN 터널을 생성하기 위해 필요한 설정 정보를 입력합니다.
 
- > [설정시 주의사항]
+ > [설정 시 주의 사항]
  >
- > * 모든 설정은 상대방 장비와 동일하게 설정합니다.
- > * 로컬 ID는 상대방 VPN 장비의 설정방식에 따라 선택적으로 설정합니다.
+ > * 모든 설정은 피어 VPN 장비와 동일하게 설정합니다.
+ > * 로컬 ID는 피어 VPN 장비의 설정 방식에 따라 선택적으로 설정합니다.
  > * Phase 2 추가는 최대 3개까지 가능합니다.
- > * 로컬 사설 IP와 상대방 사설 IP는 서로 중복되지 않아야 합니다. 이 범위는 VPC 피어링을 포함한 Network Firewall과 연결되는 모든 사설대역이 포함됩니다. 
+ > * 로컬 사설 IP와 피어 사설 IP는 서로 중복되지 않아야 합니다. 이 범위는 VPC 피어링을 포함한 Network Firewall과 연결되는 모든 사설 대역이 포함됩니다. 
 
 ### 터널 연결
 
-* 터널 생성이 완료되면 연결 대기 상태로 생성되며, 생성된 터널을 **연결** 버튼을 클릭해 상대방 VPN 장비와 연결합니다.
+* 터널 생성이 완료되면 연결 대기 상태로 생성되며, 생성된 터널을 **연결** 버튼을 클릭해 피어 VPN 장비와 연결합니다.
 
 > [참고]
 >
-> * 상태컬럼에서 색상별로 터널의 상태를 확인할 수 있습니다.
->   * 녹색: 상대방 VPN 장비와 정상적으로 연결중인 상태
->   * 빨강색: 설정 또는 통신상태 등의 문제로 상대방 VPN 장비간 연결이 실패된 상태
->   * 회색: 연결 대기 상태 (새로 생성된 터널)
->   * 주황색: **중지** 버튼을 클릭해 상대방 VPN 장비와 연결이 중지된 상태
+> * **상태** 열에서 색상별로 터널의 상태를 확인할 수 있습니다.
+>   * 녹색: 피어 VPN 장비와 정상적으로 연결 중인 상태
+>   * 빨강색: 설정 또는 통신 상태 등의 문제로 피어 VPN 장비간 연결이 실패된 상태
+>   * 회색: 연결 대기 상태(새로 생성된 터널)
+>   * 주황색: **중지** 버튼을 클릭해 피어 VPN 장비와 연결이 중지된 상태
 
 ### 터널 수정
 
 * **수정** 버튼을 클릭해 터널을 수정합니다.
-    * 설정값 중 게이트웨이를 제외한 모든 값은 수정이 가능하며, 수정할 경우 상대방 VPN 장비도 동일한 값으로 수정해야 합니다.
+    * 설정값 중 게이트웨이를 제외한 모든 값은 수정이 가능하며, 수정할 경우 피어 VPN 장비도 동일한 값으로 수정해야 합니다.
 
 ### 터널 중지
 
 * **중지** 버튼을 클릭해 터널을 중지합니다.
-    * 중지할 경우 상대방 VPN 장비를 통한 사설통신이 중단됩니다. 
+    * 중지할 경우 피어 VPN 장비를 통한 사설 통신이 중단됩니다. 
 
 ### 터널 삭제
 
@@ -395,12 +395,12 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 ### 이벤트
 
-* 상대방 VPN 장비과의 터널 연결간 발생하는 이벤트 로그를 검색할 수 있습니다.
+* 피어 장비와의 터널 연결 시 발생하는 이벤트 로그를 검색할 수 있습니다.
 
 > [참고]
 >
 > * 이벤트에서는 터널에 대한 이벤트 로그만 검색할 수 있습니다.
-> * VPN 터널을 통한 통신로그 또는 터널 생성과 삭제 등의 감사로그를 확인하려면 로그탭에서 확인하십시오.
+> * VPN 터널을 통한 통신 로그 또는 터널 생성과 삭제 등의 감사 로그는 **로그** 탭에서 확인하세요.
 
 ## 로그
 
@@ -411,7 +411,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 * 트래픽: Network Firewall을 경유할 때 허용 또는 차단 정책에 의해 생성된 트래픽 로그를 검색
     * 조회는 1개월 단위로 최대 3개월까지의 과거 데이터만 검색 가능합니다.
         * 최대 저장 로그 개수는 800만 개이며, 트래픽의 양에 따라 저장되는 로그의 양이 달라지므로 과거의 데이터가 조회되지 않을 수 있습니다.
-    * 별도의 데이터 저장이 필요한 경우 **옵션** 탭의 **로그 원격 전송 설정**을 참고하십시오.
+    * 별도의 데이터 저장이 필요한 경우 **옵션** 탭의 **로그 원격 전송 설정**을 참고하세요.
 
 * Audit: 정책 생성 및 삭제 등 Network Firewall의 변경 사항에 대한 로그를 검색
     * 조회는 최대 1개월 단위로 검색 가능하며, 조직 서비스인 CloudTrail에서도 검색할 수 있습니다.
@@ -458,8 +458,8 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 > [참고]
 > 
-> * 해당 옵션을 사용할 경우 NHN Cloud(공공기관용)에서 인스턴스 접속시 사용하는 Private Network의 사설 VPN Network IP를 Network Firewall의 NAT 탭에서 설정할 수 있습니다.
-> 옵션 사용시 SSL VPN 연결 후 인스턴스에 접근할 때 Network Firewall을 통해 접근하게 되며 정책에서 통신을 허용해야만 인스턴스 접근이 가능합니다.
+> * 해당 옵션을 사용할 경우 NHN Cloud(공공기관용)에서 인스턴스 접속 시 사용하는 Private Network의 사설 VPN Network IP를 Network Firewall의 NAT 탭에서 설정할 수 있습니다.
+> 옵션 사용 시 SSL VPN 연결 후 인스턴스에 접근할 때 Network Firewall을 통해 접근하게 되며 정책에서 통신을 허용해야만 인스턴스 접근이 가능합니다.
 
 ## 서비스 비활성화
 
