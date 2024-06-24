@@ -180,9 +180,9 @@ Once you've created Network Firewall and established a connection, you can lever
 
 
 ## Policy
-When you create a Network Firewall instance, you will be moved to the initial policy page.
+When you create Network Firewall, you will be moved to the initial policy page.
 
-In the **Policies** tab, you can manage policies to control inbound/outbound traffic and traffic between the VPCs connected to your Network Firewall instance.
+In the **Policies** tab, you can manage policies to control inbound/outbound traffic and traffic between the VPCs connected to your Network Firewall.
 
 ### Main Page
 
@@ -197,10 +197,10 @@ In the **Policies** tab, you can manage policies to control inbound/outbound tra
 
 * Add policies based on departure, destination, and destination port.
     * Select the departure, destination, and destination port through already created objects.
-* Add a policy by selecting the policy's status (enabled/disabled), action (allowed/blocked), and schedule.
+* Add a policy by setting up options such as the policy's status (enabled/disabled), action (allowed/blocked), schedule, and logging per policy.
 * The schedule feature works after enabling the policy's status (If the policy's status is disabled, the schedule feature does not apply).
 
-![acl_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_add_1.png)
+![acl_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/acl_add.png)
 
 ### Copy Policy
 
@@ -214,13 +214,12 @@ In the **Policies** tab, you can manage policies to control inbound/outbound tra
 
 * You can modify the policy by clicking **Edit**.
 
-![acl_edit.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_edit_1.png)
 
 
 ### Move Policy
 
 * You can move the policy by clicking **Move**.
-    * Name: Could not move below the default-deny policy.
+    * Could not move below the default-deny policy.
 
 ![acl_move.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_move_1.png)
 
@@ -256,6 +255,10 @@ IP and port are required, you can add a type and protocol below.
         * Type: Port, Range, Group
         * Protocol: TCP, UDP, ICMP
 
+### Modify
+* Click **Modify** to make changes to objects.
+    * You cannot modify the type.
+
 ### Delete
 
 * You can delete an object by clicking **Delete**.
@@ -264,6 +267,13 @@ IP and port are required, you can add a type and protocol below.
 
 >[Note]
 >Objects in use by a policy will be changed to ALL objects after deletion (caution required).
+
+### Add Instance Objects
+* Add an object by using the instances in the project in which Network Firewall is created.
+
+> [Note]
+>
+> * Create an object by simply referencing the instance's name and private IP address, regardless of instances (once created, manage on the Object tab).
 
 ### Batch Download of Objects
 
@@ -288,6 +298,12 @@ In the **NAT** (Network Address Translation) tab, select and connect a dedicated
 
 ![nat_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.04.05/nat_add_2.png)
 
+
+
+>[Note]
+> 
+> * Instances can be accessed from the pre-NAT public IP that you set when adding NAT (Not required to connect a floating IP directly to the instance).
+
 ### Modify
 
 * Click **Modify** to modify the created NAT.
@@ -296,6 +312,97 @@ In the **NAT** (Network Address Translation) tab, select and connect a dedicated
 ### Delete
 
 * Click **Delete** to delete the created NAT.
+
+## VPN
+
+The **VPN** tab enables secure, private communication over an encrypted tunnel between sites.
+
+### Create Gateway
+
+* Click **Create Gateway** to create a gateway to connect with peer VPN equipment.
+
+![gw_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/gw_add.png)
+
+> [Note]
+>
+> * VPCs and subnets cannot be modified.
+> * You can create up to 10 gateways.
+
+### Modify Gateway
+
+* Click **Modify** to modify gateways.
+
+### Delete Gateway
+
+* Click **Delete** to delete gateways.
+    * If there is a tunnel connected to gateways, it will not be deleted.
+
+### Associate Floating IP
+
+* Set the floating IP required to connect to the peer equipment.
+    * Floating IPs that are not used appear in the list created in **Network > Floating IP**.
+
+![fip.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/fip.png)
+
+### Create Tunnel
+
+* Create a tunnel to connect with the peer device.
+
+![tunnel_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/tunnel_add.png)
+
+* Set up Tunnel
+    * Gateway: On the Gateway tab, the created gateways appear, and select the gateway you want to associate with the tunnel.
+        * If no gateways are created, they are not exposed.
+    * Peer IP address: Enter the IP address of the peer VPN equipment to connect to.
+    * IKE version: Set to the same version as the peer VPN equipment.
+        * IKE version 1 is only supported in Main Mode.
+    * Pre-Shared Key: Enter the same key value as the peer VPN equipment.
+    * DPD(dead peer detection): Attempts a total of five retransmissions in 10-second increments and only supports responses to DPD requests from peer VPN equipment when Disabled is selected.
+    * NAT-Traversal: Prevents packet dropping that occurs during tunnel creation and is typically enabled when the peer VPN equipment is a public IP.
+* Set Phase 1/2
+    * Enter the necessary setup information to create an IPSec VPN tunnel.
+
+ > [Precautions for Setup]
+ >
+ > * Set all settings identically to the peer VPN equipment.
+ > * The local ID is optional, depending on how the peer VPN equipment is set up.
+ > * You can add up to three Phase 2s.
+ > *  The local private IP and peer private IP must not overlap each other. This range includes all private bands that connect to Network Firewall, including VPC peering.
+
+### Connect Tunnel
+
+* When the tunnel is created, it will be created as a pending connection, and you can click **Connect** to connect the created tunnel to the peer VPN equipment.
+
+> [Note]
+>
+> * In the **Status** column, you can see the status of the tunnel by color.
+>   * Green: Healthy connection with the peer VPN equipment
+>   * Red: Connection between peer VPN devices fails due to issues with settings or communication status.
+>   * Gray: Waiting for connection (newly created tunnel)
+>   * Orange: Click **Stop** to stop the connection between the peer VPN equipment.
+
+### Modify Tunnel
+
+* Click **Modify** to modify the tunnel.
+    * All of these values can be modified except the Gateway, and if you do, you must also modify the peer VPN devices to the same values.
+
+### Stop Tunnel
+
+* Click **Stop** to stop the tunnel.
+    * If you stop, private communication over the peer VPN device will be stopped. 
+
+### Delete Tunnel
+
+* Click **Delete** to delete the tunnel.
+
+### Event
+
+* You can search event logs that occur during tunnel connections with peer VPN devices.
+
+> [Note]
+>
+> * Under Events, you can only search the event log for the tunnel.
+> * Check the **Log** tab for logs of communication over the VPN tunnel or audit logs, such as tunnel creation and deletion.
 
 ## Log
 
