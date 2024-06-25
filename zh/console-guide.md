@@ -376,10 +376,10 @@ The **VPN** tab enables secure, private communication over an encrypted tunnel b
 > [Note]
 >
 > * In the **Status** column, you can see the status of the tunnel by color.
->   * Green: Healthy connection with the peer VPN equipment
->   * Red: Connection between peer VPN devices fails due to issues with settings or communication status.
->   * Gray: Waiting for connection (newly created tunnel)
->   * Orange: Click **Stop** to stop the connection between the peer VPN equipment.
+ >   * Green: Healthy connection with the peer VPN equipment
+ >   * Red: Connection between peer VPN devices fails due to issues with settings or communication status.
+ >   * Gray: Waiting for connection (newly created tunnel)
+ >   * Orange: Click **Stop** to stop the connection between the peer VPN equipment.
 
 ### Modify Tunnel
 
