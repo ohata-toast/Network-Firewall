@@ -12,6 +12,7 @@ You can easily use access control specialized for NHN Cloud and the firewall fea
     * Controls traffic with a single policy in the stateful manner.
 * Allows for safe protection of instances against external attacks with the Hub-Spoke structure.
     * Controls internal traffic and inbound/outbound traffic between VPCs.
+* Provides a secure virtual private network (VPN) over an encrypted tunnel between sites in an Internet environment.   
 * Provides real-time log search and backup for blocking and allowing networks.
     * Provides several backup methods to suit the customer's environment (Syslog, Object Storage, Log & Crash Search).
 * Provides high availability (redundancy) for reliable operation.
@@ -44,5 +45,5 @@ You can configure the service in the following five forms.
 >
 > * In a project environment in a different region, it can only be configured in the same project. For more information, see the [user guide](https://docs.nhncloud.com/en/Network/Peering%20Gateway/en/console-guide/).
 > 
-> * When you configure a service, you cannot associate it with the network environment before improvements.
-> For example, if an organization has projects created that use the pre-improvement network environment and projects that use the new network environment, you can create a Network Firewall in the new network environment, but you cannot use the pre-improvement network environment as a Spoke VPC.
+> * When you configure a service, you cannot associate it with the network environment configured before March 7, 2022.
+> For example, if an organization has projects created that uses a network environment configured before 7 March 2022 and another that uses a network environment configureed afterwards, you can create a Network Firewall in the new network environment, but you cannot use the pre-improvement network environment as a Spoke VPC.
