@@ -469,10 +469,12 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 > * 해당 옵션을 사용할 경우 NHN Cloud(공공기관용)에서 인스턴스 접속 시 사용하는 Private Network의 사설 VPN Network IP를 Network Firewall의 NAT 탭에서 설정할 수 있습니다.
 > 옵션 사용 시 SSL VPN 연결 후 인스턴스에 접근할 때 Network Firewall을 통해 접근하게 되며 정책에서 통신을 허용해야만 인스턴스 접근이 가능합니다.
 
-* Network Firewall 구성: Network Firewall의 구성방식을 설정할 수 있습니다.
+* Network Firewall 구성: 단일 또는 이중화로 Network Firewall의 구성방식을 설정할 수 있습니다.
 
 > [참고]
-> 구성 방식 변경시 몇분 정도의 변경시간이 소요되며, 구성 변경이 진행되는 동안 운영중인 서비스가 원활하지 않을 수 있습니다. 
+> 
+> * 구성 방식 변경시 몇분 정도의 변경시간이 소요되며, 구성 변경이 완료되기 전까지 서비스에 영향이 있을 수 있습니다.
+> * 구성이 변경되는 동안 정책, NAT 등 Network Firewall의 변경 작업은 가급적 지양 해주세요
 
 * Network Firewall 삭제: 운영중인 Network Firewall을 삭제할 수 있습니다.
     * 삭제는 판교 리전과 평촌 리전에서 각각 삭제 가능합니다.

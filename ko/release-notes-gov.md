@@ -6,7 +6,7 @@
 ### 기능 추가
 
 * 옵션 추가
-    * Network Firewall 삭제
+    * Network Firewall 삭제 
     * 구성 변경 (단일/이중화)
 
 ### 기능 개선
