@@ -59,6 +59,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 1. **Security > Network Firewall**로 이동합니다.
 2. 각 필수 항목을 모두 선택하고 하단의 **Network Firewall 생성**을 클릭합니다.
     * RBAC: 인스턴스 객체 조회, Network Firewall 서비스 제공에 필요한 API 권한을 부여
+    * 생성 구분: 단일 구성과 이중화 구성을 선택합니다.
     * VPC: Network Firewall에서 사용할 VPC
     * 서브넷: Network Firewall에서 내부 트래픽 제어를 위해 사용할 서브넷
     * NAT: Network Firewall에서 외부 트래픽 제어를 위해 사용할 서브넷
@@ -76,6 +77,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 >* Security Groups와는 별개의 서비스이므로 Network Firewall을 사용하면 두 서비스를 모두 허용해야 인스턴스에 접근할 수 있습니다.
 >* Network Firewall이 소유하고 있는 CIDR 대역과 연결이 필요한 CIDR 대역은 중복되지 않아야 합니다.
 >* **Network > Network Interface**에서 Virtual_IP 타입으로 생성되어 있는 IP는 Network Firewall에서 이중화 용도로 사용 중이므로 삭제할 경우 통신이 차단될 수 있습니다.
+>* 단일 또는 이중화 구성을 선택하여 Network Firewall을 생성한 뒤 변경이 필요할 경우 **옵션** 탭에서 구성을 변경할 수 있습니다.
 
 ### 연결 설정
 > [예시]
@@ -280,7 +282,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 > 
 > * NAT는 목적지 기반 및 1:1 방식만 제공합니다.
 > * 포트 기반의 NAT는 제공하지 않습니다.
-> * NAT를 생성한 뒤 허용 정책을 추가해야만 공인 통신이 가능합니다.
+> * NAT를 생성한 뒤 **정책** 탭에 허용 정책을 추가해야만 공인 통신이 가능합니다.
 > * NHN Cloud(공공기관용)에서 제공하는 SSL VPN 서비스와 Network Firewall을 연동하여 사용할 수 있습니다. (**옵션 > SSL VPN 설정**에서 **사용**으로 설정 시)
 > * NAT에 설정된 NAT 후 사설 IP를 소유한 인스턴스에 직접 Floating IP를 할당할 경우 통신에 문제가 있을 수 있습니다.
 > * NAT 삭제 후 사용하지 않는 NAT 전 공인 IP는 **Network > Floating IP**에서 직접 삭제하세요.
@@ -371,7 +373,12 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
  >       * 192.168.100.0/20 (X) → 192.168.96.0/20 (O)
  >       * 172.16.30.0/21 (X) → 172.16.24.0/21 (O)
  >       * 10.0.50.0/22 (X) → 10.0.48.0/22 (O)
- > * 로컬 프라이빗 IP와 피어 프라이빗 IP는 서로 중복되지 않아야 합니다. 이 범위는 VPC 피어링을 포함한 Network Firewall과 연결되는 모든 사설 대역이 포함됩니다. 
+ > * 로컬 프라이빗 IP와 피어 프라이빗 IP는 서로 중복되지 않아야 합니다. 이 범위는 VPC 피어링을 포함한 Network Firewall과 연결되는 모든 사설 대역이 포함됩니다.
+ > * 아래의 CIDR은 로컬 프라이빗 IP와 피어 프라이빗 IP에 추가할 수 없으며, 추가할 경우 Network Firewall을 경유하는 통신에 문제가 있을 수 있습니다.
+ >   * 10.0.0.0/8
+ >   * 172.16.0.0/12
+ >   * 192.168.0.0/16
+
 
 ### 터널 연결
 
@@ -467,11 +474,26 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 > * 해당 옵션을 사용할 경우 NHN Cloud(공공기관용)에서 인스턴스 접속 시 사용하는 Private Network의 사설 VPN Network IP를 Network Firewall의 NAT 탭에서 설정할 수 있습니다.
 > 옵션 사용 시 SSL VPN 연결 후 인스턴스에 접근할 때 Network Firewall을 통해 접근하게 되며 정책에서 통신을 허용해야만 인스턴스 접근이 가능합니다.
 
+* Network Firewall 구성: 단일 또는 이중화로 Network Firewall의 구성 방식을 설정할 수 있습니다.
+
+> [참고]
+> 
+> * 구성 방식 변경 시 몇 분 정도의 시간이 소요되며, 구성 변경이 완료되기 전까지 서비스에 영향이 있을 수 있습니다.
+> * 정책, NAT 등 Network Firewall 변경 작업은 구성 방식 변경이 완료된 뒤 진행할 것을 권장합니다.
+
+* Network Firewall 삭제: 운영 중인 Network Firewall을 삭제할 수 있습니다.
+    * Network Firewall은 한국(판교) 리전과 한국(평촌) 리전에서 각각 삭제할 수 있습니다.
+
+> [삭제 시 주의 사항]
+> 
+> * 운영 중인 Network Firewall을 삭제할 경우 Network Firewall과 연결된 다른 서비스를 고려하여 진행하세요.
+
 ## 서비스 비활성화
 
 **프로젝트 관리 > 이용 중인 서비스**에서 Network Firewall 서비스를 비활성화할 수 있습니다.
 
-> [비활성화 전 주의 사항]
+> [참고]
 > 
 > * Network Firewall 서비스 비활성화는 한국(판교) 리전과 한국(평촌) 리전에 모두 적용됩니다.
-> 예를 들어 동일한 프로젝트의 한국(판교) 리전과 한국(평촌) 리전에 모두 Network Firewall 서비스를 활성화한 경우 두 리전 중 하나의 Network Firewall 서비스만 비활성화할 수 없습니다. (기능 개선 예정)
+> 예를 들어 Network Firewall 서비스를 동일한 프로젝트의 한국(판교) 리전과 한국(평촌) 리전에 모두 활성화한 경우 두 리전 중 하나의 Network Firewall 서비스만 비활성화할 수 없습니다.
+> * 비활성화하려면 한국(판교) 리전과 한국(평촌) 리전에서 각각 Network Firewall을 삭제한 뒤 진행하세요.
