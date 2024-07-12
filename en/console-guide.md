@@ -69,6 +69,7 @@ The minimum network service resources needed to create a Network Firewall are as
 1. Go to **Security > Network Firewall**.
 2. Select all required items and click **Create Network Firewall** at the bottom.
     * RBAC: Grant API permissions to query instance objects and provide the Network Firewall service
+    * Creation Type: Select either a single configuration or redundanct configuration.
     * VPC: VPC that Network Firewall will use
     * Subnet: Subnet that Network Firewall uses to control internal traffic
     * NAT: Subnet that Network Firewall uses to control external traffic
@@ -79,12 +80,14 @@ The minimum network service resources needed to create a Network Firewall are as
 >[Note]
 > 
 >* The created Network Firewall is not exposed in users’ projects.
+>* Subnet, NAT, and the subnet used for external transport must all be selected as different subnets.
 >   * It is recommended to create subnets in the minimum unit (28 bits) that can be created in the NHN Cloud console.
 >* An Internet gateway must be connected to the routing table of the VPC to which the Network Firewall will belong before it can be created.
 >* Network Firewall is provided with redundancy by separating availability zones.
 >* If you use the Network Firewall service as a separate service from Security Groups, you must allow both to access the instances.
 >* The CIDR block owned by Network Firewall and the CIDR block requiring connectivity must not overlap.
 >* IPs created with the Virtual_IP type **in Network > Network Interface**are used by Network Firewall for redundancy purposes, so deleting them may block communication.
+>* After you create a Network Firewall by selecting a single or redundant configuration, you can change the configuration on the **Option** tab if you need to make changes.
 
 ### Connection Settings
 > [Example]
@@ -215,7 +218,6 @@ In the **Policies** tab, you can manage policies to control inbound/outbound tra
 * You can modify the policy by clicking **Edit**.
 
 
-
 ### Move Policy
 
 * You can move the policy by clicking **Move**.
@@ -275,6 +277,7 @@ IP and port are required, you can add a type and protocol below.
 >
 > * Create an object by simply referencing the instance's name and private IP address, regardless of instances (once created, manage on the Object tab).
 
+
 ### Batch Download of Objects
 
 * Download all IPs and port objects created in the **Object** tab at once.
@@ -288,6 +291,7 @@ In the **NAT** (Network Address Translation) tab, select and connect a dedicated
 > * NAT offers only destination-based and 1:1 methods.
 > * Port-based NAT is not provided.
 > * After creating a NAT, you must add an allow policy to enable authorized communication.
+> * If you assign a floating IP directly to an instance that owns a private IP after NAT has been set up, there may be communication issues.
 > * After deleting NAT, delete the unused public IP before NAT directly from **Network - Floating**.
 
 ### Add
@@ -297,8 +301,6 @@ In the **NAT** (Network Address Translation) tab, select and connect a dedicated
     * For the objects to be selected in Private IP after NAT, pre-create them on the **Objects** tab to add by clicking **Add**. 
 
 ![nat_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.04.05/nat_add_2.png)
-
-
 
 >[Note]
 > 
@@ -367,7 +369,17 @@ The **VPN** tab enables secure, private communication over an encrypted tunnel b
  > * Set all settings identically to the peer VPN equipment.
  > * The local ID is optional, depending on how the peer VPN equipment is set up.
  > * You can add up to three Phase 2s.
- > *  The local private IP and peer private IP must not overlap each other. This range includes all private bands that connect to Network Firewall, including VPC peering.
+ > * Set the private IP for Phase 2 to /24 bits or less; if you need to set a value higher than /24 bits, check the subnet range in advance and enter it as the starting IP for the subnet.
+ >   * [Example]
+ >       * 192.168.100.0/20 (X) → 192.168.96.0/20 (O)
+ >       * 172.16.30.0/21 (X) → 172.16.24.0/21 (O)
+ >       * 10.0.50.0/22 (X) → 10.0.48.0/22 (O)
+ > * The local private IP and peer private IP must not overlap each other. This range includes all private bands that connect to Network Firewall, including VPC peering.
+  > * The CIDRs below cannot be added to local private IPs and peer private IPs, and if they are, there may be issues with communication through Network Firewall.
+ >   * 10.0.0.0/8
+ >   * 172.16.0.0/12
+ >   * 192.168.0.0/16
+
 
 ### Connect Tunnel
 
@@ -403,6 +415,7 @@ The **VPN** tab enables secure, private communication over an encrypted tunnel b
 >
 > * Under Events, you can only search the event log for the tunnel.
 > * Check the **Log** tab for logs of communication over the VPN tunnel or audit logs, such as tunnel creation and deletion.
+
 
 ## Log
 
@@ -456,11 +469,26 @@ In the **Options** tab, set options required for operation of Network Firewall.
 > [Note]
 > The default MTU size for traffic, NAT Ethernet is 1450 bytes.
 
+* Network Firewall configuration: You can set how Network Firewall is configured: single or redundant.
+
+> [Note]
+> 
+> * Changing your configuration takes a few minutes and may impact your service until the configuration change is complete.
+> * It is recommended to make changes to Network Firewall, such as changing policies and NAT after configuration changes are complete.
+
+* Network Firewall Deletion: You can delete a running Network Firewall.
+    * Network Firewall can be deleted from the Korea (Pangyo) region and Korea (Pyongchon) region respectively.
+
+> [Precautions when deleting]
+> 
+> * If you are deleting a running Network Firewall, consider other services associated with the Network Firewall before proceeding.     
+
 ## Disable Service
 
 You can disable the Network Firewall service in **Project Management > Services in Use**.
 
-> [Precautions]
+> [Notes]
 > 
 > * Disabling the Network Firewall service applies to both the Pangyo and Pyeongchon regions.
-> For example, if you enable the Network Firewall service for both the Pangyo and Pyeongchon regions of the same project, you cannot disable the Network Firewall service for only one of the two regions. (Improvement scheduled)
+> For example, if you enable the Network Firewall service for both the Pangyo and Pyeongchon regions of the same project, you cannot disable the Network Firewall service for only one of the two regions. 
+* To disable, delete Network Firewall from the Korea (Pangyo) region and Korea (Pyeongchon) region before proceeding.
