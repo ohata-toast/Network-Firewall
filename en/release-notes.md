@@ -1,5 +1,16 @@
 ## Security > Network Firewall > Release Notes
 
+## July 23, 2024
+
+### Added Features
+
+* Added Network Firewall deletion option
+* Added functionality to change the configuration to single or redundant configuration
+
+### Feature Updates
+
+* Added a column that is displayed in traffic logs
+
 ## June 25, 2024
 
 ### Added Features
