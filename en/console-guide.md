@@ -369,13 +369,13 @@ The **VPN** tab enables secure, private communication over an encrypted tunnel b
  > * Set all settings identically to the peer VPN equipment.
  > * The local ID is optional, depending on how the peer VPN equipment is set up.
  > * You can add up to three Phase 2s.
- > * Phase 2의 프라이빗 IP는 /24비트 이하로 설정하세요. /24비트 이상의 값을 설정해야 할 경우 서브넷 범위를 사전에 확인하여 서브넷의 시작 IP로 입력하세요.
- >   * [예시]
+ > * Set the private IP for Phase 2 to /24 bits or less; if you need to set a value higher than /24 bits, check the subnet range in advance and enter it as the starting IP for the subnet.
+ >   * [Example]
  >       * 192.168.100.0/20 (X) → 192.168.96.0/20 (O)
  >       * 172.16.30.0/21 (X) → 172.16.24.0/21 (O)
  >       * 10.0.50.0/22 (X) → 10.0.48.0/22 (O)
- > * 로컬 프라이빗 IP와 피어 프라이빗 IP는 서로 중복되지 않아야 합니다. 이 범위는 VPC 피어링을 포함한 Network Firewall과 연결되는 모든 사설 대역이 포함됩니다. 
-  > * 아래의 CIDR은 로컬 프라이빗 IP와 피어 프라이빗 IP에 추가할 수 없으며, 추가할 경우 Network Firewall을 경유하는 통신에 문제가 있을 수 있습니다.
+ > * The local private IP and peer private IP must not overlap each other. This range includes all private bands that connect to Network Firewall, including VPC peering.
+  > * The CIDRs below cannot be added to local private IPs and peer private IPs, and if they are, there may be issues with communication through Network Firewall.
  >   * 10.0.0.0/8
  >   * 172.16.0.0/12
  >   * 192.168.0.0/16
