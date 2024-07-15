@@ -74,7 +74,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
     * 서브넷: Network Firewall에서 내부 트래픽 제어를 위해 사용할 서브넷
     * NAT: Network Firewall에서 외부 트래픽 제어를 위해 사용할 서브넷
     * 외부 전송: Network Firewall에서 생성된 트래픽과 로그를 전송할 서브넷
-    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/nfw-create.png" height="60%">
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.07.12/nfw_add.png" height="60%">
 
 
 > [참고]

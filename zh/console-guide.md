@@ -74,7 +74,7 @@ The minimum network service resources needed to create a Network Firewall are as
     * Subnet: Subnet that Network Firewall uses to control internal traffic
     * NAT: Subnet that Network Firewall uses to control external traffic
     * External transmission: Subnet that sends traffic and logs created by Network Firewall
-    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/nfw-create.png" height="60%">
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.07.12/nfw_add.png" height="60%">
 
 
 >[Note]
