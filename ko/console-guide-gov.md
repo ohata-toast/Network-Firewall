@@ -13,6 +13,7 @@ Network Firewall을 사용하기 위해서는 가장 먼저 Network Firewall 서
 Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아래와 같습니다.
 
 > [참고]
+> 
 > **Network Firewall > 개요**에서 Network Firewall 서비스 구성도를 참조하세요.
 
 
@@ -20,7 +21,8 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 
 * 1개의 프로젝트
 * 2개의 VPC(Hub VPC, Spoke VPC)
-* Hub VPC 내 3개의 서브넷(Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
+* Hub VPC 내 3개의 서브넷
+    * 트래픽(내부) 서브넷, NAT(외부) 서브넷, 외부 전송 서브넷
 * Spoke VPC 내 최소 1개의 서브넷
 * Hub VPC의 Routing에 연결된 인터넷 게이트웨이
 
@@ -28,7 +30,8 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 
 * 1개의 프로젝트
 * 3개의 VPC(Hub VPC, Spoke1 VPC, Spoke2 VPC)
-* Hub VPC 내 3개의 서브넷(Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
+* Hub VPC 내 3개의 서브넷
+    * 트래픽(내부) 서브넷, NAT(외부) 서브넷, 외부 전송 서브넷
 * Spoke1 VPC, Spoke2 VPC 내 각각 최소 1개의 서브넷
 * Hub VPC의 Routing에 연결된 인터넷 게이트웨이
 
@@ -36,7 +39,8 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 
 * 2개의 프로젝트
 * 2개의 VPC(각 프로젝트에 Hub VPC, Spoke VPC)
-* Hub VPC 내 3개의 서브넷(Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
+* Hub VPC 내 3개의 서브넷
+    * 트래픽(내부) 서브넷, NAT(외부) 서브넷, 외부 전송 서브넷
 * Spoke VPC 내 최소 1개의 서브넷
 * Hub VPC의 Routing에 연결된 인터넷 게이트웨이
 
@@ -44,14 +48,14 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 
 * 1개의 프로젝트
 * 1개의 VPC
-* 3개의 Hub 서브넷(Network Firewall 서브넷, NAT 서브넷, 외부 전송 서브넷)
+* 3개의 Hub 서브넷
+    * 트래픽(내부) 서브넷, NAT(외부) 서브넷, 외부 전송 서브넷
 * 최소 1개의 Spoke 서브넷
 * VPC의 Routing에 연결된 인터넷 게이트웨이
 
-
 > [참고]
->* 위의 서비스 자원은 [Network] 카테고리에서 생성 가능합니다.
 > 
+>* 위의 서비스 자원은 [Network] 카테고리에서 생성 가능합니다.
 >* Network Firewall 생성은 프로젝트당 1개씩만 생성 가능합니다.
 
 ### Network Firewall 생성
@@ -59,7 +63,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 1. **Security > Network Firewall**로 이동합니다.
 2. 각 필수 항목을 모두 선택하고 하단의 **Network Firewall 생성**을 클릭합니다.
     * RBAC: 인스턴스 객체 조회, Network Firewall 서비스 제공에 필요한 API 권한을 부여
-    * 생성 구분: 단일 구성과 이중화 구성을 선택합니다.
+    * 구성 방식: 단일 구성과 이중화 구성을 선택합니다.
     * VPC: Network Firewall에서 사용할 VPC
     * 서브넷: Network Firewall에서 내부 트래픽 제어를 위해 사용할 서브넷
     * NAT: Network Firewall에서 외부 트래픽 제어를 위해 사용할 서브넷
@@ -77,7 +81,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 >* Security Groups와는 별개의 서비스이므로 Network Firewall을 사용하면 두 서비스를 모두 허용해야 인스턴스에 접근할 수 있습니다.
 >* Network Firewall이 소유하고 있는 CIDR 대역과 연결이 필요한 CIDR 대역은 중복되지 않아야 합니다.
 >* **Network > Network Interface**에서 Virtual_IP 타입으로 생성되어 있는 IP는 Network Firewall에서 이중화 용도로 사용 중이므로 삭제할 경우 통신이 차단될 수 있습니다.
->* 단일 또는 이중화 구성을 선택하여 Network Firewall을 생성한 뒤 변경이 필요할 경우 **옵션** 탭에서 구성을 변경할 수 있습니다.
+>* 단일 또는 이중화 구성을 선택하여 Network Firewall을 생성한 뒤 변경이 필요할 경우 **옵션** 탭에서 구성을 변경할 수 있습니다. 하지만 가용성 영역은 변경이 불가능하므로 이중화 구성의 경우 가급적 가용성 영역을 분리하여 구성하세요.
 
 ### 연결 설정
 > [예시]
@@ -130,6 +134,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 **만약 Spoke VPC의 서브넷이 2개 이상이고, Network Firewall을 통해 서브넷 간 트래픽 제어가 필요한 경우** 아래의 라우팅을 추가합니다.
 
 > [예시]
+> 
 > Spoke VPC(172.16.0.0/24)의 서브넷이 172.16.0.0/25와 172.16.0.128/25일 때
 
 * <strong>Network > Routing</strong>으로 이동하여 Spoke VPC를 선택한 후 아래의 라우팅 2개를 추가합니다.
@@ -147,6 +152,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 **만약 Spoke VPC가 2개 이상**이라면 아래의 라우팅을 추가합니다.
 
 > [예시]
+> 
 > Spoke VPC1(172.16.0.0/24)과 Spoke VPC2(192.168.0.0/24)일 때
 
 * <strong>Network > Routing</strong>으로 이동하여 Hub VPC를 선택한 후 아래의 라우팅 2개를 추가합니다.
@@ -160,34 +166,50 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 
 
 > [참고]
+> 
 > **연결 설정**의 **5**와 같이 Spoke VPC2-Hub 간 VPC 피어링에도 라우트 추가 설정이 필요합니다.
 
-위의 라우팅 설정이 완료되면 서로 다른 Spoke VPC 간 Network Firewall을 경유하여 사설 통신을 할 수 있습니다. (<strong>Network Firewall > 정책</strong> 탭에서 정책 추가 필요)
+위의 라우팅 설정이 완료되면 서로 다른 Spoke VPC 간 Network Firewall을 경유하여 사설 통신을 할 수 있습니다. (<strong>Network Firewall > 정책</strong> 탭에서 ACL 추가 필요)
 Network Firewall 서비스 구성도를 참고하여 고객의 환경에 맞게 연결을 설정하세요.
 <br>
 
 ***
 
-Network Firewall 생성과 연결 설정을 완료하면 Network Firewall의 여러 기능을 활용하여 접근 제어를 구성할 수 있습니다.
-<br>
+## 인스턴스 접속
+Network Firewall을 생성하고 연결 설정을 모두 완료한 후 Network Firewall을 경유하여 인스턴스에 접속할 수 있습니다.
 
+예를 들어, 1개의 프로젝트 내 2개의 Spoke VPC로 3개의 서브넷을 구성하고, 외부에서 웹방화벽 접속이 필요할 경우 아래와 같이 NAT, ACL을 설정합니다.
+
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/instance-access.png" height="65%" />
+
+> [설정 방법]
+>
+> * **Network Firewall > NAT** 탭으로 이동
+> * **추가** 버튼 클릭 후 NAT 설정
+>   * 설정 전 **객체** 탭에서 목적지 IP 객체 생성과 여분의 플로팅 IP 필요 
+> <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/nat-add.png" height="65%" />
+> * **Network Firewall > 정책 > ACL** 탭에서 필요한 ACL을 허용
+> <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/access_acl.png" height="65%" />  
+
+위와 같이 설정 후 출발지 IP를 보안 그룹에서 허용하면 인스턴스에 접속 가능합니다.
+
+***
 
 ## 정책
-Network Firewall을 생성하면 정책 초기 페이지로 이동합니다.
+Network Firewall을 생성하면 정책 탭으로 이동합니다.
 
-**정책** 탭에서는 Network Firewall과 연결된 VPC 간 트래픽과 인바운드/아웃바운드 트래픽을 제어할 수 있는 정책을 관리할 수 있습니다.
-
-### 메인 페이지
-
-* default-deny는 필수 정책이며, 수정하거나 삭제할 수 없습니다.
+**정책** 탭에서는 Network Firewall과 연결된 VPC 간 트래픽과 인바운드/아웃바운드 트래픽을 제어할 수 있는 **ACL**과 트래픽의 경로를 지정할 수 있는 **라우트**를 설정할 수 있습니다.
 
 ![main_page.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/main_page_1.png)
 
 > [참고]
-> default-deny 정책을 통해 차단된 로그는 **옵션** 탭의 **기본 차단 정책 로그 설정**을 **사용**으로 변경한 후 **로그** 탭에서 확인 가능합니다.
+>
+> * default-deny는 필수 정책이며, 수정하거나 삭제할 수 없습니다.
+> * default-deny 정책을 통해 차단된 로그는 **옵션** 탭의 **기본 차단 정책 로그 설정**을 **사용**으로 변경한 후 **로그** 탭에서 확인 가능합니다.
 
+## ACL
 
-### 정책 추가
+### 추가
 
 * 출발지, 목적지, 목적지 포트를 기반으로 정책을 추가할 수 있습니다.
     * 이미 만들어진 객체를 통해 출발지, 목적지, 목적지 포트를 선택합니다.
@@ -196,7 +218,7 @@ Network Firewall을 생성하면 정책 초기 페이지로 이동합니다.
 
 ![acl_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/acl_add.png)
 
-### 정책 복사
+### 복사
 
 * **복사**를 클릭해 정책을 복사할 수 있습니다.
     * 복사된 정책은 비활성화됩니다.
@@ -204,12 +226,12 @@ Network Firewall을 생성하면 정책 초기 페이지로 이동합니다.
 ![acl_copy.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_copy_1.png)
 
 
-### 정책 수정
+### 수정
 
 * **수정**을 클릭해 정책을 수정할 수 있습니다.
 
 
-### 정책 이동
+### 이동
 
 * **이동**을 클릭해 정책을 이동할 수 있습니다.
     * default-deny 정책 아래로는 이동이 불가능합니다.
@@ -221,6 +243,7 @@ Network Firewall을 생성하면 정책 초기 페이지로 이동합니다.
 * **삭제**를 클릭해 정책을 삭제할 수 있습니다.
 
 >[주의]
+> 
 >한번 삭제한 정책은 복구할 수 없으며, default-deny 정책은 삭제할 수 없습니다.
 
 ### 정책 일괄 다운로드
@@ -233,21 +256,51 @@ Network Firewall을 생성하면 정책 초기 페이지로 이동합니다.
 
 ![acl_batch.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_batch_1.png)
 
+## 라우트
+사진 추가
+
+> [참고]
+> 
+> * Network Firewall의 기본 게이트웨이는 NAT 이더넷이며, 수정이나 삭제할 수 없습니다.
+> * 라우트 설정이 변경될 경우 통신에 문제가 있을수 있으므로 유의하여 설정하세요.  
+
+### 추가
+
+* **추가**를 클릭해 이더넷을 선택하고, 목적지와 게이트웨이를 입력합니다. 
+    * 목적지: 서브넷 형식으로 입력
+    * 이더넷: NAT, TRAFFIC, VPN(IPSec VPN 기능 사용시) 중 선택
+    * 게이트웨이: 호스트 형식으로 입력
+
+> [참고]
+> 
+> * 이더넷을 VPN으로 선택할 경우 게이트웨이는 지정하지 않아도 됩니다.
+> * IPSec VPN과 연동된 사설 IP 대역에 대한 라우트 설정은 반드시 이더넷을 VPN으로 설정하세요.
+
+
+### 수정
+
+* **수정**을 클릭해 라우트를 수정할 수 있습니다.
+
+### 삭제
+
+* **삭제**를 클릭해 라우트를 삭제할 수 있습니다.
+
+***
 
 ## 객체
 
-**객체** 탭에서는 정책을 생성할 때 사용할 IP와 포트를 생성하고 관리합니다.
+**객체** 탭에서는 정책을 생성할 때 사용할 IP, 포트, 도메인을 생성하고 관리합니다.
 
 ### 추가
 
 * 필수 항목을 입력하여 객체를 생성합니다.
-IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
+    * 객체는 IP, 포트, 도메인의 3가지 형태로 추가할 수 있습니다.
 
-    * IP
-        * 타입: 서브넷, 범위, 그룹
-    * 포트
-        * 타입: 포트, 범위, 그룹
-        * 프로토콜: TCP, UDP, ICMP
+> [참고]
+> 
+> * 그룹 객체 생성시 그룹 객체는 추가할 수 없습니다. (단일이나 범위 객체만 선택하여 추가 가능)
+> * 도메인 객체는 아래와 같이 활용할 수 있습니다.
+>   * 목적지 도메인의 IP 주소가 여러개일 때 자동으로 IP를 수집하여 허용 또는 차단(수집 주기: 5분)
 
 ### 수정
 * **수정**을 클릭해 객체를 수정할 수 있습니다.
@@ -260,6 +313,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
     * 자동으로 Network Firewall에서 생성한 객체는 수정이나 삭제할 수 없습니다.
 
 >[주의]
+> 
 >정책에서 사용 중인 객체는 삭제 후 ALL 객체로 변경됩니다.
 
 ### 인스턴스 객체 추가
@@ -267,7 +321,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
 
 > [참고]
 >
-> * 인스턴스와 관계없이 단순히 인스턴스의 이름과 사설 IP 주소만 참고하여 객체를 생성합니다.(생성 후에는 객체 탭에서 관리)
+> 인스턴스와 관계없이 단순히 인스턴스의 이름과 사설 IP 주소만 참고하여 객체를 생성합니다.(생성 후에는 객체 탭에서 관리)
 
 
 ### 객체 일괄 다운로드
@@ -391,6 +445,7 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
  >   * 빨간색: 설정 또는 통신 상태 등의 문제로 피어 VPN 장비 간 연결이 실패된 상태
  >   * 회색: 연결 대기 상태(새로 생성된 터널)
  >   * 주황색: **중지** 버튼을 클릭해 피어 VPN 장비와 연결이 중지된 상태
+> * 터널 생성이 완료된 이후 피어 장비의 종류와 설정에 따라 연결 버튼을 클릭하지 않아도 터널이 연결될 수 있습니다.
 
 ### 터널 수정
 
@@ -464,15 +519,20 @@ IP와 포트는 아래의 타입과 프로토콜을 추가할 수 있습니다.
     * 트래픽: NHN Cloud 내부 통신에 사용하는 이더넷(피어링 통신 포함)
     * NAT: 외부 통신에 사용하는 이더넷
 
-> [참고] 
+> [참고]
+> 
 > 트래픽, NAT 이더넷의 기본 MTU 크기는 1450Byte입니다.
 
-* SSL VPN 설정: 외부에서 NHN Cloud(공공기관용) 인스턴스 접속이 필요할 경우 사용하는 SSL VPN 서비스와 Network Firewall을 연동하는 옵션을 제공합니다.
+* 연동 설정: NHN Cloud(공공기관용) 에서 제공하는 SSL VPN, 백신, 백업 서비스를 Network Firewall과 연동하는 옵션을 제공합니다.
+    * 사용 시 **정책** 탭에서 ACL 허용과 라우트 설정이 필요하며, 설정에 필요한 IP와 포트 정보는 각 서비스 별 콘솔 사용 가이드를 참조하세요.
+        * [SSL VPN](https://docs.gov-nhncloud.com/ko/Security/SSL%20VPN/ko/console-guide/)
+        * [백신](https://docs.gov-nhncloud.com/ko/Security/Vaccine/ko/console-guide-gov/)
+        * [백업](https://docs.gov-nhncloud.com/ko/Storage/Backup/ko/console-guide-gov/)
 
 > [참고]
 > 
-> * 해당 옵션을 사용할 경우 NHN Cloud(공공기관용)에서 인스턴스 접속 시 사용하는 Private Network의 사설 VPN Network IP를 Network Firewall의 NAT 탭에서 설정할 수 있습니다.
-> 옵션 사용 시 SSL VPN 연결 후 인스턴스에 접근할 때 Network Firewall을 통해 접근하게 되며 정책에서 통신을 허용해야만 인스턴스 접근이 가능합니다.
+> * SSL VPN 서비스를 연동하여 사용할 경우 NHN Cloud(공공기관용)에서 인스턴스 접속 시 사용하는 전용 Floating IP를 콘솔에서 생성 해야 하며, Network Firewall의 **NAT** 탭에서 해당 Floating IP를 설정한 후 인스턴스에 접속할 수 있습니다. (전용 Floating IP를 인스턴스에 직접 할당하지 않음)
+
 
 * Network Firewall 구성: 단일 또는 이중화로 Network Firewall의 구성 방식을 설정할 수 있습니다.
 
