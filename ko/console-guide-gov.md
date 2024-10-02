@@ -69,7 +69,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
     <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/create.png" height="60%" />
 
 
-> [참고]
+> [생성 전 참고 사항]
 >* 생성된 Network Firewall은 사용자의 프로젝트에 노출되지 않습니다. 
 >* 서브넷, NAT, 외부 전송에 사용하는 서브넷은 모두 다른 서브넷으로 선택해야 합니다.
 >   * 가급적 NHN Cloud 콘솔에서 생성할 수 있는 최소 단위(28비트)로 생성할 것을 권장합니다.
@@ -255,14 +255,14 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 ![policy-route.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/policy-route.png)
 
 > [참고]
-> * Network Firewall의 기본 게이트웨이는 NAT 이더넷이며, 수정이나 삭제할 수 없습니다.
-> * 라우트 설정이 변경될 경우 통신에 문제가 있을수 있으므로 유의하여 설정하세요.  
+> * Network Firewall의 기본 게이트웨이는 NAT 이더넷이며, 수정하거나 삭제할 수 없습니다.
+> * 라우트 설정이 변경될 경우 통신에 문제가 있을 수 있으므로 유의하여 설정하세요.  
 
 ### 추가
 
 * **추가**를 클릭해 이더넷을 선택하고, 목적지와 게이트웨이를 입력합니다. 
     * 목적지: 서브넷 형식으로 입력
-    * 이더넷: NAT, TRAFFIC, VPN(IPSec VPN 기능 사용시) 중 선택
+    * 이더넷: NAT, TRAFFIC, VPN(IPSec VPN 기능 사용 시) 중 선택
     * 게이트웨이: 호스트 형식으로 입력
 
 > [참고]
@@ -297,9 +297,9 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
     * 객체는 IP, 포트, 도메인의 3가지 형태로 추가할 수 있습니다.
 
 > [참고]
-> * 그룹 객체 생성시 그룹 객체는 추가할 수 없습니다. (단일이나 범위 객체만 선택하여 추가 가능)
+> * 그룹 객체 생성 시 그룹 객체는 추가할 수 없습니다(단일이나 범위 객체만 선택하여 추가 가능).
 > * 도메인 객체는 아래와 같이 활용할 수 있습니다.
->   * 목적지 도메인의 IP 주소가 여러개일 때 자동으로 IP를 수집하여 허용 또는 차단(수집 주기: 5분)
+>   * 목적지 도메인의 IP 주소가 여러 개일 때 자동으로 IP를 수집하여 허용 또는 차단(수집 주기: 5분)
 
 ### 수정
 * **수정**을 클릭해 객체를 수정할 수 있습니다.
@@ -318,7 +318,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 * Network Firewall이 생성된 프로젝트 내에 있는 인스턴스를 활용하여 객체를 추가할 수 있습니다.
 
 > [참고]
-> 인스턴스와 관계없이 단순히 인스턴스의 이름과 사설 IP 주소만 참고하여 객체를 생성합니다.(생성 후에는 객체 탭에서 관리)
+> 인스턴스와 관계없이 단순히 인스턴스의 이름과 사설 IP 주소만 참고하여 객체를 생성합니다. 생성한 객체는 **객체** 탭에서 관리합니다.
 
 
 ### 객체 일괄 다운로드
@@ -350,7 +350,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 >[참고]
 > * 옵션 - SSL VPN 설정에서 사용으로 설정했을 경우에만 타입이 노출됩니다.
 > * 타입의 선택에 따라 아래의 NAT 전 공인 IP가 노출됩니다.
->   * Network Firewall: **Network > Floating IP**에서 Public Network 로 생성된 Floating IP
+>   * Network Firewall: **Network > Floating IP**에서 Public Network로 생성된 Floating IP
 >   * SSL VPN: **Network > Floating IP**에서 VPN Network로 생성된 Floating IP
 > * 인스턴스 접속은 NAT를 추가하면서 설정한 NAT 전 공인 IP로 접속 가능합니다. (인스턴스에 직접 Floating IP 연결 불필요)
 
@@ -429,7 +429,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 
 ### 터널 연결
 
-* 터널 생성이 완료되면 연결 대기 상태로 생성되며, 생성된 터널을 **연결** 버튼을 클릭해 피어 VPN 장비와 연결합니다.
+* 터널은 연결 대기 상태로 생성되며, **연결**을 클릭하여 생성된 터널과 피어 VPN 장비를 연결합니다.
 
 > [참고]
 > * **상태** 열에서 색상별로 터널의 상태를 확인할 수 있습니다.
@@ -437,7 +437,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
  >   * 빨간색: 설정 또는 통신 상태 등의 문제로 피어 VPN 장비 간 연결이 실패된 상태
  >   * 회색: 연결 대기 상태(새로 생성된 터널)
  >   * 주황색: **중지** 버튼을 클릭해 피어 VPN 장비와 연결이 중지된 상태
-> * 터널 생성이 완료된 이후 피어 장비의 종류와 설정에 따라 연결 버튼을 클릭하지 않아도 터널이 연결될 수 있습니다.
+> * 터널 생성이 완료된 이후 피어 장비의 종류와 설정에 따라 **연결**을 클릭하지 않아도 터널이 연결될 수 있습니다.
 
 ### 터널 수정
 
@@ -515,14 +515,14 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 
 <br>
 
-* 연동 설정: NHN Cloud(공공기관용) 에서 제공하는 SSL VPN, 백신, 백업 서비스를 Network Firewall과 연동하는 옵션을 제공합니다.
-    * 사용 시 **정책** 탭에서 ACL 허용과 라우트 설정이 필요하며, 설정에 필요한 IP와 포트 정보는 각 서비스 별 콘솔 사용 가이드를 참조하세요.
+* 연동 설정: NHN Cloud(공공기관용)에서 제공하는 SSL VPN, 백신, 백업 서비스를 Network Firewall과 연동하는 옵션을 제공합니다.
+    * 사용 시 **정책** 탭에서 ACL 허용과 라우트 설정이 필요하며, 설정에 필요한 IP와 포트 정보는 각 서비스별 콘솔 사용 가이드를 참조하세요.
         * [SSL VPN](https://docs.gov-nhncloud.com/ko/Security/SSL%20VPN/ko/console-guide/)
         * [백신](https://docs.gov-nhncloud.com/ko/Security/Vaccine/ko/console-guide-gov/)
         * [백업](https://docs.gov-nhncloud.com/ko/Storage/Backup/ko/console-guide-gov/)
 
 > [참고]
-> * SSL VPN 서비스를 연동하여 사용할 경우 NHN Cloud(공공기관용)에서 인스턴스 접속 시 사용하는 전용 Floating IP를 콘솔에서 생성 해야 하며, Network Firewall의 **NAT** 탭에서 해당 Floating IP를 설정한 후 인스턴스에 접속할 수 있습니다. (전용 Floating IP를 인스턴스에 직접 할당하지 않음)
+> * SSL VPN 서비스를 연동하여 사용할 경우 NHN Cloud(공공기관용)에서 인스턴스 접속 시 사용하는 전용 Floating IP를 콘솔에서 생성해야 하며, Network Firewall의 **NAT** 탭에서 해당 Floating IP를 설정한 후 인스턴스에 접속할 수 있습니다(전용 Floating IP를 인스턴스에 직접 할당하지 않음).
 
 <br>
 
