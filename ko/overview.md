@@ -4,7 +4,7 @@ Network Firewall은 NHN Cloud에서 사용하는 인프라 자산들을 안전�
 NHN Cloud에 특화된 접근 제어를 적용할 수 있고, 별도의 방화벽 제품을 사용하지 않아도 간편하게 방화벽 기능을 사용할 수 있습니다.
 
 
-> Netowork Firewall 서비스는 한국(판교) 리전의 경우 신규 네트워크 환경에서만 이용할 수 있습니다.
+> Network Firewall 서비스는 한국(판교) 리전의 경우 신규 네트워크 환경에서만 이용할 수 있습니다.
 > 한국(판교) 리전에서 2022년 3월 7일 이전에 생성한 프로젝트는 개선하기 전의 네트워크 환경이므로 Network Firewall 서비스를 이용하려면 프로젝트를 새로 생성해야 합니다.
 
 ## 주요 기능
@@ -21,26 +21,25 @@ NHN Cloud에 특화된 접근 제어를 적용할 수 있고, 별도의 방화�
 서비스는 아래의 5가지 형태로 구성할 수 있습니다.
 
 ### 1개의 프로젝트
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/23.12.19/Architecture1.png" height="70%">
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/Architecture1.png" height="70%">
 
 ### 1개 이상의 프로젝트
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/23.12.19/Architecture2.png" height="70%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/Architecture2.png" height="70%" />
 
 
 ### 다른 리전 간 프로젝트
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/23.12.19/Architecture3.png" height="70%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/Architecture3.png" height="70%" />
 
 
 ### 1개의 프로젝트 내 2개의 Spoke VPC
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/23.12.19/Architecture5.png" height="50%">
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/Architecture4.png" height="50%" />
 
 
 ### 1개의 VPC 내 여러 개의 서브넷
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/23.12.19/Architecture4.png" height="50%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/Architecture5.png" height="50%" />
 
 
 > [참고]
-> 
 > * 위의 구성도는 일반적인 구성이며, 고객의 환경에 따라 Network Firewall을 제외한 WEB, WAS, Load Balancer 등의 구성이 다를 수 있습니다.
 > 
 > * 다른 리전의 프로젝트 환경에서는 같은 프로젝트만 구성 가능합니다. 자세한 내용은 [사용자 가이드](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/)를 참조하세요.
