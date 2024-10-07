@@ -1,5 +1,16 @@
 ## Security > Network Firewall > Release Notes
 
+## October 15, 2024
+
+### Added Features
+
+* Added the route feature
+* Added domain to object items
+
+### Feature Updates
+
+* Improved so that you can select an availability zone when creating Network Firewall 
+
 ## July 23, 2024
 
 ### Added Features
