@@ -5,7 +5,6 @@
 ### Added Features
 
 * Added the route feature
-* Added domain to object items
 
 ### Feature Updates
 
