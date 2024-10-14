@@ -304,17 +304,15 @@ On the **Route** tab, specify the path of communication through the Network Fire
 
 ## Object
 
-In the **Object** tab, create and manage IPs, ports, and domains to use when creating policies.
+In the **Object** tab, create and manage IPs and ports to use when creating policies.
 
 ### Add
 
 * Create an object by entering the required fields.
-    * Objects can be added in three forms: IP, port, and domain.
+    * Objects can be added in two forms: IP and port.
 
 > [Note]
 > * Group objects cannot be added when creating a group object (only single or range objects can be added by selecting them).
-> * Domain objects can be utilized as follows
->   * Automatically collect IPs to allow or block when the destination domain has multiple IP addresses (collection interval: 5 minutes)
 
 ### Modify
 
