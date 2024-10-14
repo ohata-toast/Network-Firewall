@@ -21,21 +21,21 @@ NHN Cloudに特化したアクセス制御を適用することができ、別�
 サービスは下記の5つの形で構成できます。
 
 ### 1つのプロジェクト
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/Architecture1.png" height="70%">
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/24.10.10/Architecture1.png" height="70%">
 
 ### 1つ以上のプロジェクト
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/Architecture2.png" height="70%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/24.10.10/Architecture2.png" height="70%" width="100%" />
 
 
 ### 他のリージョン間のプロジェクト
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/Architecture3.png" height="70%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/24.10.10/Architecture3.png" height="70%" width="100%" />
 
 ### 1つのプロジェクト内の2つのSpoke VPC
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/Architecture4.png" height="50%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/24.10.10/Architecture4.png" height="70%" width="100%" />
 
 
 ### 1つのVPC内の複数のサブネット
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/Architecture5.png" height="50%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/24.10.10/Architecture5.png" height="50%" width="100%" />
 
 
 > [参考]

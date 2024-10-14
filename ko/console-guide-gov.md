@@ -289,17 +289,15 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 
 ## 객체
 
-**객체** 탭에서는 정책을 생성할 때 사용할 IP, 포트, 도메인을 생성하고 관리합니다.
+**객체** 탭에서는 정책을 생성할 때 사용할 IP, 포트를 생성하고 관리합니다.
 
 ### 추가
 
 * 필수 항목을 입력하여 객체를 생성합니다.
-    * 객체는 IP, 포트, 도메인의 3가지 형태로 추가할 수 있습니다.
+    * 객체는 IP, 포트의 2가지 형태로 추가할 수 있습니다.
 
 > [참고]
-> * 그룹 객체 생성 시 그룹 객체는 추가할 수 없습니다(단일이나 범위 객체만 선택하여 추가 가능).
-> * 도메인 객체는 아래와 같이 활용할 수 있습니다.
->   * 목적지 도메인의 IP 주소가 여러 개일 때 자동으로 IP를 수집하여 허용 또는 차단(수집 주기: 5분)
+> 그룹 객체 생성 시 그룹 객체는 추가할 수 없습니다(단일이나 범위 객체만 선택하여 추가 가능).
 
 ### 수정
 * **수정**을 클릭해 객체를 수정할 수 있습니다.
@@ -515,15 +513,10 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 
 <br>
 
-* 연동 설정: NHN Cloud(공공기관용)에서 제공하는 SSL VPN, 백신, 백업 서비스를 Network Firewall과 연동하는 옵션을 제공합니다.
-    * 사용 시 **정책** 탭에서 ACL 허용과 라우트 설정이 필요하며, 설정에 필요한 IP와 포트 정보는 각 서비스별 콘솔 사용 가이드를 참조하세요.
-        * [SSL VPN](https://docs.gov-nhncloud.com/ko/Security/SSL%20VPN/ko/console-guide/)
-        * [백신](https://docs.gov-nhncloud.com/ko/Security/Vaccine/ko/console-guide-gov/)
-        * [백업](https://docs.gov-nhncloud.com/ko/Storage/Backup/ko/console-guide-gov/)
+* SSL VPN 설정: 외부에서 NHN Cloud(공공기관용) 인스턴스 접속이 필요할 경우 사용하는 SSL VPN 서비스와 Network Firewall을 연동하는 옵션을 제공합니다.
 
 > [참고]
-> * SSL VPN 서비스를 연동하여 사용할 경우 NHN Cloud(공공기관용)에서 인스턴스 접속 시 사용하는 전용 Floating IP를 콘솔에서 생성해야 하며, Network Firewall의 **NAT** 탭에서 해당 Floating IP를 설정한 후 인스턴스에 접속할 수 있습니다(전용 Floating IP를 인스턴스에 직접 할당하지 않음).
-> * SSL VPN 연동 설정 시와 VM 인스턴스에 IP 할당 시에 동일한 서브넷을 중복하여 설정할 경우 통신에 문제가 있을 수 있습니다. VM 인스턴스 접속을 위한 서브넷은 별도로 생성하여 사용하세요.
+> * 해당 옵션을 사용할 경우 NHN Cloud(공공기관용)에서 인스턴스 접속 시 사용하는 Private Network의 사설 VPN Network IP를 Network Firewall의 NAT 탭에서 설정할 수 있습니다. 옵션 사용 시 SSL VPN 연결 후 인스턴스에 접근할 때 Network Firewall을 통해 접근하게 되며 정책에서 통신을 허용해야만 인스턴스 접근이 가능합니다. 
 
 <br>
 

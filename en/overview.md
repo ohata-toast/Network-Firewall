@@ -21,22 +21,22 @@ You can easily use access control specialized for NHN Cloud and the firewall fea
 You can configure the service in the following five forms.
 
 ### 1 Project
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/Architecture1.png" height="70%">
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/24.10.10/Architecture1.png" height="70%">
 
 ### 1 or More Projects
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/Architecture2.png" height="70%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/24.10.10/Architecture2.png" height="70%" width="100%" />
 
 
 ### Projects Between Different Regions
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/Architecture3.png" height="70%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/24.10.10/Architecture3.png" height="70%" width="100%" />
 
 
 ### 2 Spoke VPCs in 1 Project
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/Architecture4.png" height="50%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/24.10.10/Architecture4.png" height="70%" width="100%" />
 
 
 ### Multiple Subnets in a Single VPC
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/Architecture5.png" height="50%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Architectures/24.10.10/Architecture5.png" height="50%" width="100%" />
 
 
 > [Note]
