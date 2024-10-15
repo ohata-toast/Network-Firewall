@@ -53,8 +53,9 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 * VPC의 Routing에 연결된 인터넷 게이트웨이
 
 > [참고]
->* 위의 서비스 자원은 [Network] 카테고리에서 생성 가능합니다.
->* Network Firewall 생성은 프로젝트당 1개씩만 생성 가능합니다.
+> 
+> * 위의 서비스 자원은 [Network] 카테고리에서 생성 가능합니다.
+> * Network Firewall 생성은 프로젝트당 1개씩만 생성 가능합니다.
 
 ### Network Firewall 생성
 
@@ -70,15 +71,16 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 
 
 > [생성 전 참고 사항]
->* 생성된 Network Firewall은 사용자의 프로젝트에 노출되지 않습니다. 
->* 서브넷, NAT, 외부 전송에 사용하는 서브넷은 모두 다른 서브넷으로 선택해야 합니다.
->   * 가급적 NHN Cloud 콘솔에서 생성할 수 있는 최소 단위(28비트)로 생성할 것을 권장합니다.
->* Network Firewall이 속할 VPC의 라우팅 테이블에 인터넷 게이트웨이가 연결되어 있어야 생성 가능합니다.
->* Network Firewall 서비스는 가용 영역을 분리하여 이중화를 기본으로 제공합니다.
->* Security Groups와는 별개의 서비스이므로 Network Firewall을 사용하면 두 서비스를 모두 허용해야 인스턴스에 접근할 수 있습니다.
->* Network Firewall이 소유하고 있는 CIDR 대역과 연결이 필요한 CIDR 대역은 중복되지 않아야 합니다.
->* **Network > Network Interface**에서 Virtual_IP 타입으로 생성되어 있는 IP는 Network Firewall에서 이중화 용도로 사용 중이므로 삭제할 경우 통신이 차단될 수 있습니다.
->* 단일 또는 이중화 구성을 선택하여 Network Firewall을 생성한 뒤 변경이 필요할 경우 **옵션** 탭에서 구성을 변경할 수 있습니다. 하지만 가용성 영역은 변경이 불가능하므로 이중화 구성의 경우 가급적 가용성 영역을 분리하여 구성하세요.
+> 
+> * 생성된 Network Firewall은 사용자의 프로젝트에 노출되지 않습니다. 
+> * 서브넷, NAT, 외부 전송에 사용하는 서브넷은 모두 다른 서브넷으로 선택해야 합니다.
+>    * 가급적 NHN Cloud 콘솔에서 생성할 수 있는 최소 단위(28비트)로 생성할 것을 권장합니다.
+> * Network Firewall이 속할 VPC의 라우팅 테이블에 인터넷 게이트웨이가 연결되어 있어야 생성 가능합니다.
+> * Network Firewall 서비스는 가용 영역을 분리하여 이중화를 기본으로 제공합니다.
+> * Security Groups와는 별개의 서비스이므로 Network Firewall을 사용하면 두 서비스를 모두 허용해야 인스턴스에 접근할 수 있습니다.
+> * Network Firewall이 소유하고 있는 CIDR 대역과 연결이 필요한 CIDR 대역은 중복되지 않아야 합니다.
+> * **Network > Network Interface**에서 Virtual_IP 타입으로 생성되어 있는 IP는 Network Firewall에서 이중화 용도로 사용 중이므로 삭제할 경우 통신이 차단될 수 있습니다.
+> * 단일 또는 이중화 구성을 선택하여 Network Firewall을 생성한 뒤 변경이 필요할 경우 **옵션** 탭에서 구성을 변경할 수 있습니다. 하지만 가용성 영역은 변경이 불가능하므로 이중화 구성의 경우 가급적 가용성 영역을 분리하여 구성하세요.
 
 ### 연결 설정
 > [예시]
@@ -177,6 +179,7 @@ Network Firewall을 생성하고 연결 설정을 모두 완료한 후 Network F
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/instance-access.png" height="65%" />
 
 > [설정 방법]
+>
 > * **Network Firewall > NAT** 탭으로 이동
 > * **추가** 버튼 클릭 후 NAT 설정
 >   * 설정 전 **객체** 탭에서 목적지 IP 객체 생성과 여분의 플로팅 IP 필요 
@@ -194,6 +197,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 ![policy-default.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/policy-default.png)
 
 > [참고]
+> 
 > * default-deny는 필수 정책이며, 수정하거나 삭제할 수 없습니다.
 > * default-deny 정책을 통해 차단된 로그는 **옵션** 탭의 **기본 차단 정책 로그 설정**을 **사용**으로 변경한 후 **로그** 탭에서 확인 가능합니다.
 
@@ -255,6 +259,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 ![policy-route.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/policy-route.png)
 
 > [참고]
+> 
 > * Network Firewall의 기본 게이트웨이는 NAT 이더넷이며, 수정하거나 삭제할 수 없습니다.
 > * 라우트 설정이 변경될 경우 통신에 문제가 있을 수 있으므로 유의하여 설정하세요.  
 
@@ -266,6 +271,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
     * 게이트웨이: 호스트 형식으로 입력
 
 > [참고]
+> 
 > * 이더넷을 VPN으로 선택할 경우 게이트웨이는 지정하지 않아도 됩니다.
 > * IPSec VPN과 연동된 사설 IP 대역에 대한 라우트 설정은 반드시 이더넷을 VPN으로 설정하세요.
 > * 목적지 서브넷 입력 시 아래와 같은 유효성 메시지가 노출될 경우 서브넷 범위를 사전에 확인하여 서브넷의 시작 IP로 입력하세요.
@@ -328,6 +334,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 **NAT**(네트워크 주소 변환) 탭에서는 외부에서 접속할 인스턴스와 전용으로 사용할 공인 IP를 선택하여 연결합니다.
 
 >[참고]
+> 
 > * NAT는 목적지 기반 및 1:1 방식만 제공합니다.
 > * 포트 기반의 NAT는 제공하지 않습니다.
 > * NAT를 생성한 뒤 **정책** 탭에 허용 정책을 추가해야만 공인 통신이 가능합니다.
@@ -346,6 +353,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 ![nat_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/nat_add.png)
 
 >[참고]
+> 
 > * 옵션 - SSL VPN 설정에서 사용으로 설정했을 경우에만 타입이 노출됩니다.
 > * 타입의 선택에 따라 아래의 NAT 전 공인 IP가 노출됩니다.
 >   * Network Firewall: **Network > Floating IP**에서 Public Network로 생성된 Floating IP
@@ -372,6 +380,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 ![gw_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/gw_add.png)
 
 > [참고]
+> 
 > * VPC와 서브넷은 수정할 수 없습니다.
 > * 게이트웨이는 최대 10개까지 생성 가능합니다.
 
@@ -410,6 +419,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
     * IPSec VPN 터널을 생성하기 위해 필요한 설정 정보를 입력합니다.
 
  > [설정 시 주의 사항]
+ > 
  > * 모든 설정은 피어 VPN 장비와 동일하게 설정합니다.
  > * 로컬 ID는 피어 VPN 장비의 설정 방식에 따라 선택적으로 설정합니다.
  > * Phase 2 추가는 최대 3개까지 가능합니다.
@@ -430,6 +440,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 * 터널은 연결 대기 상태로 생성되며, **연결**을 클릭하여 생성된 터널과 피어 VPN 장비를 연결합니다.
 
 > [참고]
+> 
 > * **상태** 열에서 색상별로 터널의 상태를 확인할 수 있습니다.
  >   * 녹색: 피어 VPN 장비와 정상적으로 연결 중인 상태
  >   * 빨간색: 설정 또는 통신 상태 등의 문제로 피어 VPN 장비 간 연결이 실패된 상태
@@ -456,6 +467,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 * 피어 장비와의 터널 연결 시 발생하는 이벤트 로그를 검색할 수 있습니다.
 
 > [참고]
+> 
 > * 이벤트에서는 터널에 대한 이벤트 로그만 검색할 수 있습니다.
 > * VPN 터널을 통한 통신 로그 또는 터널 생성과 삭제 등의 감사 로그는 **로그** 탭에서 확인하세요.
 
@@ -516,13 +528,14 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 * SSL VPN 설정: 외부에서 NHN Cloud(공공기관용) 인스턴스 접속이 필요할 경우 사용하는 SSL VPN 서비스와 Network Firewall을 연동하는 옵션을 제공합니다.
 
 > [참고]
-> * 해당 옵션을 사용할 경우 NHN Cloud(공공기관용)에서 인스턴스 접속 시 사용하는 Private Network의 사설 VPN Network IP를 Network Firewall의 NAT 탭에서 설정할 수 있습니다. 옵션 사용 시 SSL VPN 연결 후 인스턴스에 접근할 때 Network Firewall을 통해 접근하게 되며 정책에서 통신을 허용해야만 인스턴스 접근이 가능합니다. 
+> 해당 옵션을 사용할 경우 NHN Cloud(공공기관용)에서 인스턴스 접속 시 사용하는 Private Network의 사설 VPN Network IP를 Network Firewall의 NAT 탭에서 설정할 수 있습니다. 옵션 사용 시 SSL VPN 연결 후 인스턴스에 접근할 때 Network Firewall을 통해 접근하게 되며 정책에서 통신을 허용해야만 인스턴스 접근이 가능합니다. 
 
 <br>
 
 * Network Firewall 구성: 단일 또는 이중화로 Network Firewall의 구성 방식을 설정할 수 있습니다.
 
 > [참고]
+> 
 > * 구성 방식 변경 시 몇 분 정도의 시간이 소요되며, 구성 변경이 완료되기 전까지 서비스에 영향이 있을 수 있습니다.
 > * 정책, NAT 등 Network Firewall 변경 작업은 구성 방식 변경이 완료된 뒤 진행할 것을 권장합니다.
 
@@ -541,6 +554,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 **프로젝트 관리 > 이용 중인 서비스**에서 Network Firewall 서비스를 비활성화할 수 있습니다.
 
 > [참고]
+> 
 > * Network Firewall 서비스 비활성화는 한국(판교) 리전과 한국(평촌) 리전에 모두 적용됩니다.
 > 예를 들어 Network Firewall 서비스를 동일한 프로젝트의 한국(판교) 리전과 한국(평촌) 리전에 모두 활성화한 경우 두 리전 중 하나의 Network Firewall 서비스만 비활성화할 수 없습니다.
 > * 비활성화하려면 한국(판교) 리전과 한국(평촌) 리전에서 각각 Network Firewall을 삭제한 뒤 진행하세요.
