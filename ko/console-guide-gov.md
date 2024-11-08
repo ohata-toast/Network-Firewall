@@ -98,7 +98,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 > Spoke VPC의 위치에 따라 알맞은 피어링을 생성합니다.
 > * Spoke VPC가 같은 프로젝트라면 피어링을 생성합니다.
 > * Spoke VPC가 다른 프로젝트라면 프로젝트 피어링을 생성합니다.
-> * poke VPC가 다른 리전이라면 리전 피어링을 생성합니다.
+> * Spoke VPC가 다른 리전이라면 리전 피어링을 생성합니다.
 
 <br>
 
@@ -130,9 +130,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings8.png" height="50%" />
 
 위의 라우팅 설정이 완료되면 Spoke VPC에 있는 인스턴스가 Network Firewall을 경유하여 공인 통신을 할 수 있습니다. (<strong>Network Firewall > NAT</strong> 탭에서 NAT 추가 필요)
-<br>
 
-***
 <br>
 
 **만약 Spoke VPC의 서브넷이 2개 이상이고, Network Firewall을 통해 서브넷 간 트래픽 제어가 필요한 경우** 아래의 라우팅을 추가합니다.
@@ -147,9 +145,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 <br>
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings10.png" height="65%" />
 위의 라우팅 설정이 완료되면 Spoke VPC 안에 있는 서브넷 간 Network Firewall을 경유하여 사설 통신을 할 수 있습니다. (<strong>Network Firewall > 정책</strong> 탭에서 정책 추가 필요)
-<br>
 
-***
 <br>
 
 **만약 Spoke VPC가 2개 이상**이라면 아래의 라우팅을 추가합니다.
@@ -170,15 +166,25 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 > [참고]
 > **연결 설정**의 **4**와 같이 Spoke VPC2-Hub 간 VPC 피어링에도 라우트 추가 설정이 필요합니다.
 
-위의 라우팅 설정이 완료되면 서로 다른 Spoke VPC 간 Network Firewall을 경유하여 사설 통신을 할 수 있습니다. (<strong>Network Firewall > 정책</strong> 탭에서 ACL 추가 필요)
-Network Firewall 서비스 구성도를 참고하여 고객의 환경에 맞게 연결을 설정하세요.
 <br>
 
-**만약 같은 VPC에서 Spoke 서브넷을 구성할 경우** 새로운 라우팅 테이블을 생성하여 서브넷을 연결하고 라우팅을 추가합니다. 
-* **Network > Routing**에서 라우팅 테이블을 생성합니다.
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/routetable_create.png" height="65%" width="100%" />
+**만약 같은 VPC에서 Spoke 서브넷을 구성할 경우** 새로운 라우팅 테이블을 생성하여 서브넷을 연결하고 라우트를 추가합니다. 
+* **Network > Routing**에서 라우팅 테이블을 생성하고 라우트를 추가합니다.
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/routetable_create.png" height="65%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/route_create.png" height="65%" />
 
-* Network Firewall과 겹치지 않는 서브넷을 새로 생성합니다.
+<br>
+
+* **Network > Subnet**에서 Network Firewall과 겹치지 않는 서브넷을 새로 생성하고 라우팅 테이블을 연결합니다.
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/subnet_create.png" height="65%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/routetable_connect.png" height="65%" />
+
+<br>
+
+위의 라우팅 설정이 완료되면 서로 다른 Spoke VPC 간 통신과 같은 VPC 내 서브넷 간 통신을 Network Firewall을 경유하여 사설 통신을 할 수 있습니다. (<strong>Network Firewall > 정책</strong> 탭에서 ACL 추가 필요)
+Network Firewall 서비스 구성도를 참고하여 고객의 환경에 맞게 연결을 설정하세요.
+
+***
 
 ## 인스턴스 접속
 Network Firewall을 생성하고 연결 설정을 모두 완료한 후 Network Firewall을 경유하여 인스턴스에 접속할 수 있습니다.
@@ -299,8 +305,6 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 ### 삭제
 
 * **삭제**를 클릭해 라우트를 삭제할 수 있습니다.
-
-***
 
 ## 객체
 
@@ -521,6 +525,8 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
     * Syslog: 최대 2개의 원격지 주소로 로그를 전송
         * 2개의 원격지는 개별적으로 설정 가능(IP주소, 프로토콜, 포트 번호)
     * Object Storage: NHN Cloud에서 제공하는 Object Storage 서비스로 로그를 전송
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/OBS_Setting.png" height="65%" />
+        * 엑세스 키: 
     * Log & Crash Search: NHN Cloud에서 제공하는 Log & Crash Search 서비스로 로그를 전송
 
 ### 일반 설정
@@ -535,9 +541,20 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 <br>
 
 * SSL VPN 설정: 외부에서 NHN Cloud(공공기관용) 인스턴스 접속이 필요할 경우 사용하는 SSL VPN 서비스와 Network Firewall을 연동하는 옵션을 제공합니다.
+    * 먼저, Network Firwall에서 사용중인 VPC와 SSL VPN에서 사용중인 VPC간 피어링을 설정합니다.
+        * 피어링 설정 후 라우트를 추가합니다.
+            * 대상 CIDR: 0.0.0.0/0
+            * 게이트웨이: NetworkFirewall\_INF\_TRAFFIC\_VIP
+    * Network Firewall에 할당된 서브넷과 인스턴스에 할당된 서브넷이 겹치지 않도록 설정해야 합니다.
+       * 예를 들어, Network Firewall에 할당된 서브넷이 172.20.0.0/24일 경우 인스턴스에 할당 가능한 서브넷은 172.20.0.0/24가 아닌 새로운 서브넷을 생성하여 인스턴스에 할당합니다.
+    * 새로운 서브넷은 라우팅 테이블을 분리하여 연결하고 라우트 설정을 추가합니다.    
+        * 대상 CIDR: 0.0.0.0/0
+        * 게이트웨이: 피어링 연결 후 추가된 피어링 타입의 게이트웨이
 
 > [참고]
-> 해당 옵션을 사용할 경우 NHN Cloud(공공기관용)에서 인스턴스 접속 시 사용하는 Private Network의 사설 VPN Network IP를 Network Firewall의 NAT 탭에서 설정할 수 있습니다. 옵션 사용 시 SSL VPN 연결 후 인스턴스에 접근할 때 Network Firewall을 통해 접근하게 되며 정책에서 통신을 허용해야만 인스턴스 접근이 가능합니다. 
+> 
+> * 해당 옵션을 사용할 경우 NHN Cloud(공공기관용)에서 인스턴스 접속 시 사용하는 Private Network의 사설 VPN Network IP를 **Network Firewall > NAT**에서 설정할 수 있습니다.
+> * 옵션 사용 시 SSL VPN 연결 후 인스턴스에 접근할 때 Network Firewall을 통해 접근하게 되며 **정책**에서 통신을 허용해야만 인스턴스 접근이 가능합니다.
 
 <br>
 
