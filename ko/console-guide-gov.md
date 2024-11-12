@@ -525,9 +525,15 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
     * Syslog: 최대 2개의 원격지 주소로 로그를 전송
         * 2개의 원격지는 개별적으로 설정 가능(IP주소, 프로토콜, 포트 번호)
     * Object Storage: NHN Cloud에서 제공하는 Object Storage 서비스로 로그를 전송
-    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/OBS_Setting.png" height="65%" />
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/OBS_Setting.png" height="65%" width="70%"/>
         * 엑세스 키: 
+        * 비밀 키: 
+        * 버킷 이름: 
+        * 엔드포인트: 
+        * 리전: 
     * Log & Crash Search: NHN Cloud에서 제공하는 Log & Crash Search 서비스로 로그를 전송
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/lncs.png" height="65%"/>
+        * AppKey: Log&crash Search 서비스를 활성화 후 생성된 AppKey를 입력하여 검증
 
 ### 일반 설정
 
