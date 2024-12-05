@@ -525,18 +525,20 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
     * Syslog: 최대 2개의 원격지 주소로 로그를 전송
         * 2개의 원격지는 개별적으로 설정 가능(IP주소, 프로토콜, 포트 번호)
     * Object Storage: NHN Cloud에서 제공하는 Object Storage 서비스로 로그를 전송
-    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/OBS_Setting.png" height="65%" width="65%"/>
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/OBS.png" height="65%" />
         * 엑세스 키 / 비밀 키: Object Storage 서비스에서 S3 API 자격 증명 등록 시 확인 가능한 Access Key 정보를 입력
-            <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/S3%20API.png" height="65%" width="63%"/>
         * 버킷 이름: Object Storage 서비스에서 생성한 컨테이너의 이름을 입력
         * 엔드포인트: 리전 별 엔드포인트를 확인 후 위치에 맞게 엔드포인트를 입력
         * 리전: 리전 별 이름을 확인 후 리전 위치에 맞게 이름을 입력
     * Log & Crash Search: NHN Cloud에서 제공하는 Log & Crash Search 서비스로 로그를 전송
-    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/lncs.png" height="65%" width="65%" />
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/LNCS.png" height="65%" />
         * AppKey: Log&crash Search 서비스를 활성화 후 생성된 AppKey를 입력
 
 > [참고]
-> Object Storage 설정 시 [사용자 가이드](https://docs.gov-nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide-gov/#aws-sdk)를 참고하여 입력하세요.
+> * Object Storage 설정 시 [사용자 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#aws-sdk)를 참고하여 입력하세요.
+> * Log&crash Search 서비스를 사용 시 로그 알람 설정 기능을 활용하여 이상 행위를 탐지할 수 있습니다.
+예를 들어, Network Firewall에 특정 목적지로 향하는 SSH 통신에 대한 ACL 차단정책을 추가한 후 해당 정책에서 발생되는 로그에 대한 알람 조건을 설정합니다.(예: 1분 동안 SSH 접속 시도 로그가 20회 이상 발생)
+사용자가 설정한 조건을 만족 시 알람을 수신할 수 있습니다.
 
 <br>
 
@@ -552,20 +554,13 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 <br>
 
 * SSL VPN 설정: 외부에서 NHN Cloud(공공기관용) 인스턴스 접속이 필요할 경우 사용하는 SSL VPN 서비스와 Network Firewall을 연동하는 옵션을 제공합니다.
-    * 먼저, Network Firwall에서 사용중인 VPC와 SSL VPN에서 사용중인 VPC간 피어링을 설정합니다.
-        * 피어링 설정 후 라우트를 추가합니다.
-            * 대상 CIDR: 0.0.0.0/0
-            * 게이트웨이: NetworkFirewall\_INF\_TRAFFIC\_VIP
-    * Network Firewall에 할당된 서브넷과 인스턴스에 할당된 서브넷이 겹치지 않도록 설정해야 합니다.
-       * 예를 들어, Network Firewall에 할당된 서브넷이 172.20.0.0/24일 경우 인스턴스에 할당 가능한 서브넷은 172.20.0.0/24가 아닌 새로운 서브넷을 생성하여 인스턴스에 할당합니다.
-    * 새로운 서브넷은 라우팅 테이블을 분리하여 연결하고 라우트 설정을 추가합니다.    
-        * 대상 CIDR: 0.0.0.0/0
-        * 게이트웨이: 피어링 연결 후 추가된 피어링 타입의 게이트웨이
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/SSLVPN.png" height="65%" />
 
 > [참고]
 > 
 > * 해당 옵션을 사용할 경우 NHN Cloud(공공기관용)에서 인스턴스 접속 시 사용하는 Private Network의 사설 VPN Network IP를 **Network Firewall > NAT**에서 설정할 수 있습니다.
 > * 옵션 사용 시 SSL VPN 연결 후 인스턴스에 접근할 때 Network Firewall을 통해 접근하게 되며 **정책**에서 통신을 허용해야만 인스턴스 접근이 가능합니다.
+> * Network Firewall 연동 시 인스턴스는 SSL VPN 전용 이더넷을 추가로 할당하지 않아도 됩니다. (단, Network Firewall과 연동 하지 않을 시에는 이더넷을 할당해야 합니다.)
 
 <br>
 
@@ -582,7 +577,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
     * Network Firewall은 한국(판교) 리전과 한국(평촌) 리전에서 각각 삭제할 수 있습니다.
 
 > [삭제 시 주의 사항]
-> * 운영 중인 Network Firewall을 삭제할 경우 Network Firewall과 연결된 다른 서비스를 고려하여 진행하세요.
+> 운영 중인 Network Firewall을 삭제할 경우 Network Firewall과 연결된 다른 서비스를 고려하여 진행하세요.
 
 <br>
 
