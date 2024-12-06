@@ -181,7 +181,7 @@ Network Firewall 생성에 필요한 최소 네트워크 서비스 자원은 아
 
 <br>
 
-* **Network > Subnet**에서 Network Firewall과 겹치지 않는 서브넷을 새로 생성하고 라우팅 테이블을 연결합니다.
+* **Network > Subnet**에서 Network Firewall과 겹치지 않는 Spoke 서브넷을 새로 생성하고 라우팅 테이블을 연결합니다.
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/subnet_create.png" height="65%" />
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/routetable_connect.png" height="65%" />
 
