@@ -59,7 +59,8 @@ Network Firewallの作成に必要な最小ネットワークサービスリソ�
 * 1個のVPC
 * 3つのHubサブネット
     * トラフィック(内部)サブネット、 NAT(外部)サブネット、外部転送サブネット
-* 最低1つのSpokeサブネット
+* Hubサブネットと重複しない最低1つのSpokeサブネット。
+* Spokeサブネットに接続するルーティングテーブル
 * VPCのRoutingに接続されたインターネットゲートウェイ
 
 
@@ -94,30 +95,27 @@ Network Firewallの作成に必要な最小ネットワークサービスリソ�
 
 > [例]
 > Network Firewallが使用するVPC(Hub)は10.0.0.0/24で、Network Firewallと接続が必要なVPC(Spoke)は172.16.0.0/24の場合
-1. <strong>Network > Routing</strong> に移動し、Spoke VPCを選択した後、ルーティングテーブルを変更します。
-    * Spoke VPCを選択した後、<strong>ルーティングテーブルの変更</strong>をクリックして中央集中型ルーティング(CVR)方式に変更します。
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings1.png" height="65%" />
-<br>
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings2.png" height="50%" />
-<br>
-
-2. <strong>Network > Peering Gateway</strong> に移動してピアリングを作成します。
-    * Spoke VPCが別のプロジェクトの場合、プロジェクトピアリングを作成します。
-    * Spoke VPCが別のリージョンの場合、リージョンピアリングを作成します。
-    * Spoke VPCが同じプロジェクトの場合、ピアリングを作成します。
-        * ピアリングゲートウェイ接続の詳細については、 [ユーザーガイド](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/)を参照してください。
+1. <strong>Network > Peering Gateway</strong> に移動してピアリングを作成します。
+    * ピアリングゲートウェイ接続の詳細については、 [ユーザーガイド](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/)を参照してください。
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings3.png" height="65%" />
 <br>
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings4.png" height="65%" />
 <br>
 
-3. <strong>Network > Routing</strong> に移動してHub VPCを選択した後、下記のルーティングを設定します。
+> [参考]
+> 
+> Spoke VPCの位置に応じて適切なピアリングを作成します。
+> * Spoke VPCが同じプロジェクトであれば、ピアリングを作成します。
+> * Spoke VPCが他のプロジェクトの場合、プロジェクトピアリングを作成します。
+> * Spoke VPCが異なるリージョンの場合、リージョンピアリングを作成します。
+
+2. <strong>Network > Routing</strong> に移動してHub VPCを選択した後、下記のルーティングを設定します。
     * 対象CIDR: 172.16.0.0/24
     * ゲートウェイ:ピアリング接続後に追加されたピアリングタイプのゲートウェイ
     <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings5.png" height="65%" />
 <br>
 
-4. <strong>Network > Routing</strong> に移動してSpoke VPCを選択した後、下記のルーティングを設定します。
+3. <strong>Network > Routing</strong> に移動してSpoke VPCを選択した後、下記のルーティングを設定します。
     * 対象CIDR: 0.0.0.0/0
     * ゲートウェイ：ピアリング接続後に追加したピアリングタイプのゲートウェイ
     <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings6.png" height="65%" />
@@ -133,9 +131,7 @@ Network Firewallの作成に必要な最小ネットワークサービスリソ�
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings8.png" height="50%" />
 
 上記のルーティング設定が完了すると、Spoke VPCにあるインスタンスがNetwork Firewallを経由して公認通信をすることができます。 (<strong>Network Firewall > NAT</strong> タブでNATを追加する必要があります)
-<br>
 
-***
 <br>
 
 **Spoke VPCのサブネットが2つ以上あり、Network Firewallを介してサブネット間のトラフィック制御が必要な場合、**以下のルーティングを追加します。
@@ -150,9 +146,7 @@ Network Firewallの作成に必要な最小ネットワークサービスリソ�
 <br>
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings10.png" height="65%" />
 上記のルーティング設定が完了したら、Spoke VPC内にあるサブネット間のNetwork Firewallを経由してプライベート通信をすることができます。 (<strong>Network Firewall > Policy</strong> タブでポリシーを追加する必要があります)
-<br>
 
-***
 <br>
 
 **Spoke VPCが2つ以上**ある場合は、以下のルーティングを追加します。
@@ -170,11 +164,24 @@ Network Firewallの作成に必要な最小ネットワークサービスリソ�
 
 
 > [参考]
-> **接続設定**の**5**のようにSpoke VPC2-Hub間のVPCピアリングにもルートの追加設定が必要です。
+> **接続設定**の**4**のようにSpoke VPC2-Hub間のVPCピアリングにもルートの追加設定が必要です。
+
+<br>
+
+**同じVPCでSpokeサブネットを構成する場合、**新しいルーティングテーブルを作成してサブネットを接続し、ルートを追加します。
+* **Network > Routing**でルーティングテーブルを作成し、ルートを追加します。
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/routetable_create.png" height="65%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/route_create.png" height="65%" />
+
+<br>
+
+* **Network > Subnet**でNetwork Firewallと重ならないSpokeサブネットを新規作成し、ルーティングテーブルを接続します。
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/subnet_create.png" height="65%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/routetable_connect.png" height="65%" />
+
 上記のルーティング設定が完了すると、異なるSpoke VPC間のNetwork Firewallを経由してプライベート通信を行うことができます。 (<strong>Network Firewall > ポリシー</strong>タブでポリシーの追加が必要)
 Network Firewallサービス構成図を参考にして、お客様の環境に合わせて接続を設定してください。
 
-<br>
 
 ***
 
@@ -493,7 +500,22 @@ Network Firewallを作成すると、**ポリシー**タブに移動します。
     * Syslog:最大2つの遠隔地アドレスにログを保存
         * 2つの遠隔地は 個別に設定可能(IPアドレス、プロトコル、ポート番号)
     * Object Storage: NHN Cloudで提供するObject Storageサービスでログを転送
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/OBS_5.png" height="65%" />
+        * アクセスキー / 秘密鍵: Object StorageサービスでS3 API認証情報を登録する際に確認可能なアクセスキー情報を入力
+        * バケット名: Object Storageサービスで作成したコンテナ名を入力
+        * エンドポイント:リージョン別のエンドポイントを確認した後、位置に合わせてエンドポイントを入力
+        * リージョン:リージョン別の名前を確認した後、リージョンの位置に合わせて名前を入力
     * Log & Crash Search: NHN Cloudで提供するLog & Crash Searchサービスでログを転送
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/LNCS_2.png" height="65%" />
+        * AppKey: Log & Crash Searchサービスを有効にした後、作成されたAppKeyを入力
+
+> [参考]
+> * Object Storage設定時、[ユーザーガイド](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#aws-sdk)を参考にして入力してください。
+> * Log & Crash Searchサービスを使用すると、ログアラーム設定機能を活用して異常行為を検出できます。
+例えば、Network Firewallに特定の目的地に向かうSSH通信に対するACLブロックポリシーを追加した後、そのポリシーで発生するログに対するアラーム条件を設定します。 (例：1分間、SSH接続試行ログが20回以上発生)
+ユーザーが設定した条件を満たした場合、アラームを受信できます。
+
+<br>
 
 ### 一般設定
 
@@ -516,6 +538,8 @@ Network Firewallを作成すると、**ポリシー**タブに移動します。
 
 > [削除時の注意事項]
 > * 運営中のNetwork Firewallを削除する場合、Network Firewallと接続されている他のサービスを考慮して実行してください。     
+
+<br>
 
 ## サービスの無効化
 
