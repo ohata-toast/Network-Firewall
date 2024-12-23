@@ -60,11 +60,13 @@ The minimum network service resources needed to create a Network Firewall are as
 * 1 VPC
 * 3 Hub Subnets
     * Traffic (internal) subnet, NAT (external) subnet, external transit subnet
-* At least one spoke subnet
+* At least one spoke subnet that does not overlap the hub subnet
+* Routing table to connect to the spoke subnet
 * Internet gateway connected to Routing in the VPC
 
 
 > [Note]
+>
 >* The above service resources can be created in the [Network] category. 
 >* Only one network firewall can be created per project.
 
@@ -82,6 +84,7 @@ The minimum network service resources needed to create a Network Firewall are as
 
 
 > [Notes before Creation]
+>
 >* The created Network Firewall is not exposed in users’ projects. 
 >* The subnets used for subnet, NAT, and external transmission must all be selected as different subnets.
 >   * It is recommended to create subnets in the minimum unit (28 bits) that can be created in the NHN Cloud console.
@@ -94,38 +97,42 @@ The minimum network service resources needed to create a Network Firewall are as
 ### Connection Settings
 
 > [Example]
-When the VPC (Hub) used by Network Firewall is 10.0.0.0/24, and the VPC (Spoke) that needs to be connected to the Network Firewall is 172.16.0.0/24.
+> When the VPC (Hub) used by Network Firewall is 10.0.0.0/24, and the VPC (Spoke) that needs to be connected to the Network Firewall is 172.16.0.0/24.
 
-1. Go to <strong>Network > Routing</strong>, select the Spoke VPC, and change the routing table.
-    * After selecting Spoke VPC, click <strong>Change Routing Table</strong> to change to the Centralized Virtual Routing (CVR) method.
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings1.png" height="65%" />
-<br>
-<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings2.png" height="50%" />
-<br>
-
-2. Go to <strong>Network > Peering Gateway</strong> to create a peering.
-    * If the Spoke VPC is a different project, create a project peering.
-    * If the Spoke VPC is in a different region, create a region peering.
-    * If the spoke VPCs are the same project, create a peering.
-        * For more information on connecting a peering gateway, please see the [User Guide](https://docs.nhncloud.com/ko/Network/Peering%20Gateway/ko/console-guide/).
+1. Go to <strong>Network > Peering Gateway</strong> to create a peering.
+    * For more information on connecting a peering gateway, please see the [User Guide]
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings3.png" height="65%" />
 <br>
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings4.png" height="65%" />
+
+> [Note]
+> 
+> Create a peering according to the location of the Spoke VPC.
+> * If the spoke VPCs are the same project, create a peering.
+> * If the Spoke VPC is a different project, create a project peering.
+> * If the Spoke VPC is in a different region, create a region peering.
+
 <br>
 
-3. Go to <strong>Network > Routing</strong>, select a Hub VPC, and set up the routing as follows.
+2. Go to <strong>Network > Routing</strong>, select a Hub VPC, and set up the routing as follows.
     * Destination CIDR: 172.16.0.0/24
     * Gateway: Gateway of peering type added after peering connection
     <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings5.png" height="65%" />
 <br>
 
-4. Go to <strong>Network > Routing</strong>, select a Spoke VPC, and set up the routing as follows.
+3. Go to <strong>Network > Routing</strong>, select a Spoke VPC, and set up the routing as follows.
     * Destination CIDR: 0.0.0.0/0
     * Gateway: Gateway of peering type added after peering connection
     <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings6.png" height="65%" />
+
+> [Note]
+> 
+> * By setting up routing as above, all communication from the Spoke VPCs will pass through the Network Firewall.
+>   * If you need to branch communications, explicitly set a destination that is not 0.0.0.0/0.
+
 <br>
 
-5. Go to <strong>Network > Peering Gateway > Project Peering</strong>.
+4. Go to <strong>Network > Peering Gateway > Project Peering</strong>.
     * Select the created peering and go to the **Route** tab.
     * Click the **Peer** or **Change Local Route** to set up routing as follows.
         * Destination CIDR: 0.0.0.0/0
@@ -135,9 +142,7 @@ When the VPC (Hub) used by Network Firewall is 10.0.0.0/24, and the VPC (Spoke) 
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings8.png" height="50%" />
 
 Once the above routing settings are complete, instances in the Spoke VPC will be able to communicate publicly through the Network Firewall. (Requires adding NAT in <strong>Network Firewall > NAT</strong>)
-<br>
 
-***
 <br>
 
 **If the Spoke VPC has two or more subnets and traffic control between subnets is required through Network Firewall**, add the routing as follows.
@@ -152,9 +157,7 @@ When the subnets of Spoke VPC (172.16.0.0/24) are 172.16.0.0/25 and 172.16.0.128
 <br>
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings10.png" height="65%" />
 Once the above routing settings are complete, private communication between subnets within the Spoke VPC can be made through the Network Firewall. (Requires adding a policy in<strong>Network Firewall > Policies</strong> tab)
-<br>
 
-***
 <br>
 
 **If there are two or more spoke VPCs**, add the routing as follows.
@@ -173,13 +176,25 @@ With Spoke VPC1 (172.16.0.0/24) and Spoke VPC2 (192.168.0.0/24)
 
 
 > [Note]
-VPC peering between Spoke VPC2-Hub also requires the Add Route setting, as shown in **5****in Connection Settings**.
+> VPC peering between Spoke VPC2-Hub also requires the Add Route setting, as shown in **4in Connection Settings**.
+
+<br>
+
+If you **configure spoke subnets in the same VPC**, create a new routing table to associate the subnets and add routes. 
+* In **Network > Routing**, create a routing table and add routes.
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/routetable_create.png" height="65%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/route_create.png" height="65%" />
+
+<br>
+
+* In **Network > Subnet**, create a new spoke subnet that does not overlap the Network Firewall and associate a routing table with it.
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/subnet_create.png" height="65%" />
+<img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/routetable_connect.png" height="65%" />
 
 <br>
 
 After the above routing settings are completed, communication between different Spoke VPCs can be private through Network Firewall.(Requires adding a policy in <strong>Network Firewall > Policy</strong>)
 Please refer to the Network Firewall service configuration diagram to set up the connection according to your environment.
-<br>
 
 ***
 
@@ -192,6 +207,7 @@ For example, if you configure 3 subnets with 2 Spoke VPCs in 1 project and need 
 .png" height="65%" />
 
 > [How to set up]
+>
 > * Go to **Network Firewall > NAT** tab
 > * Click **Add** and set up NAT
 >   * Create a Destination IP object on the **Objects** tab before setup and need a spare floating IP 
@@ -209,6 +225,7 @@ After creating Network Firewall, go to the **Policies** tab.
 ![policy-default.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/policy-default.png)
 
 > [Note]
+>
 > * The default-deny policy is a required policy and cannot be modified or deleted.
 > * Logs blocked through the default-deny policy can be viewed on the **Log** tab after changing the **Default blocking policy log setting** to **Enable** on the **Options** tab.
 
@@ -271,6 +288,7 @@ On the **Route** tab, specify the path of communication through the Network Fire
 ![policy-route.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/policy-route.png)
 
 > [Note]
+>
 > * The default gateway for Network Firewall is NAT Ethernet, which cannot be modified or deleted.
 > * If the route settings change, there may be communication issues, so set them carefully.  
 
@@ -282,6 +300,7 @@ On the **Route** tab, specify the path of communication through the Network Fire
     * Gateway: Enter in host format
 
 > [Note]
+>
 > * If you select Ethernet as VPN, you don't need to specify a gateway.
 > * For setting up routes for private IP bands associated with an IPSec VPN, must set Ethernet to VPN.
 > * If you see a validation message like the one below when entering the destination subnet, pre-check the subnet range and enter it as the starting IP of the subnet.
@@ -343,6 +362,7 @@ In the **Object** tab, create and manage IPs and ports to use when creating poli
 In the **NAT** (Network Address Translation) tab, select and connect a dedicated public IP with the instance to be accessed from the outside.
 
 >[Note]
+>
 > * NAT offers only destination-based and 1:1 methods.
 > * Port-based NAT is not provided.
 > * After creating a NAT, you must add an allow policy to enable authorized communication.
@@ -380,6 +400,7 @@ The **VPN** tab enables secure, private communication over an encrypted tunnel b
 ![gw_add.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.05.27/gw_add.png)
 
 > [Note]
+>
 > * VPCs and subnets cannot be modified.
 > * You can create up to 10 gateways.
 
@@ -418,6 +439,7 @@ The **VPN** tab enables secure, private communication over an encrypted tunnel b
     * Enter the necessary setup information to create an IPSec VPN tunnel.
 
  > [Precautions for Setup]
+ >
  > * Set all settings identically to the peer VPN equipment.
  > * The local ID is optional, depending on how the peer VPN equipment is set up.
  > * You can add up to three Phase 2s.
@@ -437,6 +459,7 @@ The **VPN** tab enables secure, private communication over an encrypted tunnel b
 * When the tunnel is created, it will be created as a pending connection, and you can click **Connect** to connect the created tunnel to the peer VPN equipment.
 
 > [Note]
+>
 > * In the **Status** column, you can see the status of the tunnel by color.
  >   * Green: Healthy connection with the peer VPN equipment
  >   * Red: Connection between peer VPN devices fails due to issues with settings or communication status.
@@ -463,6 +486,7 @@ The **VPN** tab enables secure, private communication over an encrypted tunnel b
 * You can search event logs that occur during tunnel connections with peer VPN devices.
 
 > [Note]
+>
 > * Under Events, you can only search the event log for the tunnel.
 > * Check the **Log** tab for logs of communication over the VPN tunnel or audit logs, such as tunnel creation and deletion.
 
@@ -508,7 +532,22 @@ In the **Options** tab, set options required for operation of Network Firewall.
     * Syslog: Send logs with up to 2 remote addresses
         * Two remote locations can be configured individually (IP address, protocol, port number)
     * Object Storage: Send logs with the Object Storage service provided by NHN Cloud
-    * Log & Crash Search: Send logs with the Log&Crash Search service provided by NHN Cloud
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/OBS_5.png" height="65%" />
+      * Access key/secret key: Enter the access key information that can be verified when registering S3 API credentials in the Object Storage service.
+      * Bucket name: Enter the name of the container created by the Object Storage service
+      * Endpoint: Check the endpoints by region and enter the endpoint according to your location.
+      * Region: Check the region-specific name and enter the name according to the region location.
+  * Log & Crash Search: Send logs to the Log &amp; Crash Search service provided by NHN Cloud.
+ <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/LNCS_2.png" height="65%" />
+      * AppKey: Enter the AppKey generated after activating the Log &amp; Crash Search service.
+  
+> [Note]
+> * Refer to the [user guide](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#aws-sdk) when setting up Object Storage.
+> * When using the Log & Crash Search service, you can leverage the log alarm setting feature to detect abnormal behavior.
+For example, you can add an ACL blocking policy for SSH communications to a specific destination to Network Firewall, and then set an alarm condition for logs generated by that policy. (For example, 20 or more SSH connection attempts logs in a one-minute period.)
+You can receive an alarm when the conditions you set are met.  
+
+<br>
 
 ### General Settings
 
@@ -524,6 +563,7 @@ In the **Options** tab, set options required for operation of Network Firewall.
 * Network Firewall configuration: You can set how Network Firewall is configured: single or redundant.
 
 > [Note]
+>
 > * Changing your configuration takes a few minutes and may impact your service until the configuration change is complete.
 > * It is recommended to make changes to Network Firewall, such as changing policies and NAT after configuration changes are complete.
 
@@ -535,11 +575,14 @@ In the **Options** tab, set options required for operation of Network Firewall.
 > [Precautions when deleting]
 > * If you are deleting a running Network Firewall, consider other services associated with the Network Firewall before proceeding.     
 
+<br>
+
 ## Disable Service
 
 You can disable the Network Firewall service in **Project Management > Services in Use**.
 
-> [Notes]
+> [Note]
+>
 > * Disabling the Network Firewall service applies to both the Pangyo and Pyeongchon regions.
 > For example, if you enable the Network Firewall service for both the Pangyo and Pyeongchon regions of the same project, you cannot disable the Network Firewall service for only one of the two regions. 
 > * To disable, delete Network Firewall from the Korea (Pangyo) region and Korea (Pyeongchon) region before proceeding.

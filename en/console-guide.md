@@ -99,7 +99,7 @@ The minimum network service resources needed to create a Network Firewall are as
 > [Example]
 > When the VPC (Hub) used by Network Firewall is 10.0.0.0/24, and the VPC (Spoke) that needs to be connected to the Network Firewall is 172.16.0.0/24.
 
-1. Go to <strong>Network > Peering Gateway<strong> to create a peering.
+1. Go to <strong>Network > Peering Gateway</strong> to create a peering.
     * For more information on connecting a peering gateway, please see the [User Guide]
 <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.12.19/ConnectionSettings3.png" height="65%" />
 <br>
@@ -176,7 +176,7 @@ With Spoke VPC1 (172.16.0.0/24) and Spoke VPC2 (192.168.0.0/24)
 
 
 > [Note]
-> VPC peering between Spoke VPC2-Hub also requires the Add Route setting, as shown in **4****in Connection Settings**.
+> VPC peering between Spoke VPC2-Hub also requires the Add Route setting, as shown in **4in Connection Settings**.
 
 <br>
 
