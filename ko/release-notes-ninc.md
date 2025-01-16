@@ -1,4 +1,5 @@
 ## Security > Network Firewall > 릴리스 노트
 
 ## 2025. 01. 21.
-* Network Firewall 서비스 출시
+
+### 신규 서비스 출시
