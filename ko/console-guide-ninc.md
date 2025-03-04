@@ -540,7 +540,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
         * 리전: 리전별 이름을 확인한 뒤 리전 위치에 맞게 이름을 입력
 
 > [참고]
-> Object Storage 설정 시 [사용자 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#aws-sdk)를 참고하여 입력하세요.
+> Object Storage 설정 시 [사용자 가이드](https://docs.ninc.go.kr/ko/Storage/Object%20Storage/ko/s3-api-guide-ninc/#aws-sdk)를 참고하여 입력하세요.
 
 <br>
 
