@@ -560,6 +560,15 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 
 <br>
 
+* 미러링 설정: Network Firewall에서 제공하는 기능 중 미러링의 사용여부를 선택할 수 있습니다.
+    * 사용선택 시 필요한 서브넷은 Network Firewall 생성에 사용했던 서브넷을 사용합니다.
+
+> [참고]
+> * ACL 설정에 필요한 미러링 인터페이스의 IP 정보는 **Network - Network Interface**에서 확인 가능합니다.
+>   * 인터페이스 이름: NetworkFirewall_INF_MIRRORING_S_NAT_VIP
+
+<br>
+
 * Network Firewall 구성: 단일 또는 이중화로 Network Firewall의 구성 방식을 설정할 수 있습니다.
 
 > [참고]
