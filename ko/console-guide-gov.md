@@ -397,7 +397,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 
 ## 미러링
 
-**미러링** 탭에서는 Network Firewall를 통과하는 네트워크 패킷을 IDS/IPS, SIEM, NDR 등의 위협 탐지 및 분석 솔루션으로 미러링하여, 네트워크 위협을 실시간으로 탐지하고 대응할 수 있도록 합니다.
+**미러링** 탭에서는 Network Firewall를 통과하는 네트워크 패킷을 IDS/IPS, SIEM, NDR 등의 위협 탐지 및 분석 솔루션으로 복사하여, 네트워크 위협을 실시간으로 탐지하고 대응할 수 있도록 합니다.
 
 > [참고]
 > **옵션 - 미러링 설정**에서 **사용**으로 설정하여 활성화 후 사용할 수 있습니다. (활성화까지 약 30초 소요)
@@ -408,23 +408,18 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 
 ### 미러링 룰
 
-* 이곳에서 미러링 룰을 추가하여 미러링 패킷을 대상 단말로 전송하도록 설정할 수 있습니다.
-    ![Mirroring_Rule_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Mirroring_Rule_900.png)
-
-<br>
-
-### 항목 설명
+* 미러링 룰을 추가하여 복사한 패킷을 원하는 대상 단말로 전송합니다.
 ![Mirroring_Rule_Contents_Explain_1_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Mirroring_Rule_Contents_Explain_1_900.png)
-* 이름: 설정한 이름을 표시합니다.
-* 방향: 설정한 방향을 표시합니다.
-* 미러 지정 인터페이스: 선택한 Network Firewall의 인터페이스를 표시합니다.
-* 미러링 송신 IP: 미러링 인터페이스의 IP를 표시합니다.
-* 미러링 대상 IP: 미러링 패킷을 보낼 목적지 IP를 표시합니다.
-* 필터 그룹: 선택한 필터 그룹을 표시합니다.
-* 상태: 해당 미러링 룰의 활성화 상태 배지를 표시합니다.
-    * Active: 활성화 상태
-    * Inactive: 비활성화 상태
-* 자세히 보기: 해당 미러링 룰의 자세한 설정과 필터 그룹 정보를 확인합니다.
+    * 이름: 설정한 이름을 표시합니다.
+    * 방향: 설정한 방향을 표시합니다.
+    * 미러 지정 인터페이스: 선택한 Network Firewall의 인터페이스를 표시합니다.
+    * 미러링 송신 IP: 미러링 인터페이스의 IP를 표시합니다.
+    * 미러링 대상 IP: 미러링 패킷을 보낼 목적지 IP를 표시합니다.
+    * 필터 그룹: 선택한 필터 그룹을 표시합니다.
+    * 상태: 해당 미러링 룰의 상태를 배지를 통해 표시합니다.
+        * Active: 활성화 
+        * Inactive: 비활성화
+    * 자세히 보기: 설정한 미러링 룰의 상세정보를 확인합니다.
 
 <br>
 
@@ -432,25 +427,26 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 
 * **추가**를 클릭해 미러링 룰을 추가할 수 있습니다.
     ![Mirroring_Rule_Add_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Mirroring_Rule_Add_900.png)
-    * 상태: 미러링 룰의 미러링 기능 실행 여부를 설정합니다.
-    * 방향: 미러 지정 인터페이스에서 미러링 할 수신/송신 패킷을 설정합니다. 해당 설정으로 특정 방향의 트래픽만 미러링할 수 있습니다.
+    * 상태: 미러링 룰의 활성화 여부를 설정합니다.
+    * 방향: 미러 지정 인터페이스에서 미러링 할 수신/송신 패킷을 설정합니다. 해당 설정을 통해 특정 방향의 패킷만 미러링할 수 있습니다.
         * 수신(Rx): 미러 지정 인터페이스에서 수신하는 패킷
         * 송신(Tx): 미러 지정 인터페이스에서 송신하는 패킷
     * 미러 지정 인터페이스: Network Firewall의 아래 인터페이스 중에서 선택합니다.
-        * NetworkFirewall\_INF\_NAT: Network Firewall의 NAT 서브넷에 위치한 외부 제어용 상단 인터페이스
-        * NetworkFirewall\_INF\_TRAFFIC: Network Firewall의 기본 서브넷에 위치한 내부 제어용 하단 인터페이스
+        * NetworkFirewall\_INF\_NAT: Network Firewall의 외부 제어용 상단 인터페이스
+        * NetworkFirewall\_INF\_TRAFFIC: Network Firewall의 내부 제어용 하단 인터페이스
     * 미러링 송신 IP: 외부 전송 서브넷의 미러링 인터페이스가 기본으로 설정됩니다.
     * 미러링 대상 IP: 미러링 패킷을 수신 받을 대상의 사설 IP를 입력합니다.
-    * VNI: Virtual Network Identifier(VNI)의 약자로, Network Firewall은 VXLAN 터널을 통해 미러링 패킷을 송신하므로, 이에 필요한 VNI를 입력해야 합니다. VNI는 상대 수신 장비와 동일하게 설정해야 하며 24비트(1\~16,777,215) 범위의 정수여야 합니다.
+    * VNI(virtual network identifier): VNI를 입력합니다.
 
 > [참고]
 >
-> * 미러링 대상 단말이 VXLAN 패킷을 수신할 수 있도록 경로상 정책(보안 그룹 및 방화벽 등)에서 미러링 송신 IP와 UDP포트 4789번에 대한 접속 허용 설정이 필요합니다.
+> * 미러링 대상 단말이 VXLAN 패킷을 수신할 수 있도록 정책(보안 그룹 및 방화벽 등)에서 미러링 송신 IP와 UDP포트 4789번에 대한 접속 허용 설정이 필요합니다.
 > * 미러링 룰은 최대 3개까지 생성할 수 있습니다.
-> * 미러링은 많은 통신 데이터를 발생시킬 수 있으므로, 미러링 대상 IP 정보를 정확하게 입력해야 합니다.
+> * 미러링 룰을 적용할 때 고객의 환경에 따라 많은 통신 데이터를 발생시킬 수 있으므로, 미러링 대상 IP 정보를 정확하게 입력해야 합니다.
+> * Network Firewall은 VXLAN 터널을 통해 미러링 패킷을 송신하므로 VNI 설정이 필요합니다. VNI 값은 1\~16,777,215 사이의 숫자로 입력하고, 미러링 대상 장비와 동일하게 설정해야 합니다.
 
 * **필터 그룹**을 선택합니다.
-    * 기존에 추가한 필터 그룹이 없으면 **필터 그룹 추가**를 클릭하여 이곳에서 필터 그룹을 바로 추가할 수 있습니다.
+    * 이전에 추가한 필터 그룹이 없으면 **필터 그룹 추가**를 클릭하여 필터 그룹을 추가할 수 있습니다.
     * 자세한 사항은 [필터 그룹 설명](#%ED%95%84%ED%84%B0%20%EA%B7%B8%EB%A3%B9)을 참고하세요.
         ![Mirroring_Rule_Filter_Group_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Mirroring_Rule_Filter_Group_900.png)
 
@@ -469,26 +465,19 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 <br>
 
 ### 삭제
-* **삭제**를 클릭해 미러링 룰을 삭제할 수 있습니다.
 
+* **삭제**를 클릭해 미러링 룰을 삭제할 수 있습니다.
 
 <br>
 
 ### 필터 그룹
 
-* 이곳에서 미러링 룰에 적용할 필터 그룹을 설정할 수 있습니다.
-* 필터 그룹 설정을 통해 전송할 패킷을 선별할 수 있습니다.
-    ![Filter_Group_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Filter_Group_900.png)
-
-<br>
-
-### 항목 설명
+* **필터 그룹**을 통해 미러링 룰에 적용할 필터를 설정하면 사용자가 원하는 패킷만 선별하여 전송할 수 있습니다.
 ![Filter_Group_Contents_Explain_1_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Filter_Group_Contents_Explain_1_900.png)
-
-* 이름: 설정한 이름을 표시합니다.
-* 연결된 미러링 룰: 해당 필터 그룹을 사용하는 미러링 룰을 표시합니다.
-* 설명: 설명을 표시합니다.
-* 필터 규칙 보기: 해당 필터 그룹의 규칙을 확인합니다.
+    * 이름: 설정한 이름을 표시합니다.
+    * 연결된 미러링 룰: 해당 필터 그룹을 사용하는 미러링 룰을 표시합니다.
+    * 설명: 설명을 표시합니다.
+    * 필터 규칙 보기: 해당 필터 그룹에 설정된 규칙을 확인합니다.
 
 <br>
 
@@ -497,24 +486,24 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
     ![Filter_Group_Add_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Filter_Group_Add_900.png)
     * 필터 규칙 정의
         * 우선순위: 작은 숫자일수록 우선 순위가 높습니다. 높은 우선순위 순으로 규칙을 적용하여 미러링 패킷을 전송합니다.
-        * 프로토콜: ALL 혹은 IP 프로토콜을 지정합니다.
-            * ALL: 모든 프로토콜을 지정합니다. 선택 시 출발지/목적지 관련 설정이 비활성화 됩니다.
+        * 프로토콜: 프로토콜을 지정합니다.
+            * ALL: 모든 프로토콜을 지정합니다. 선택 시 출발지/목적지 설정이 비활성화 됩니다.
             * TCP: TCP를 지정합니다.
             * UDP: UDP를 지정합니다.
             * ICMP: ICMP를 지정합니다. 선택 시 출발지/목적지 포트 설정이 비활성화 됩니다.
         * 출발지/목적지 CIDR: 출발지와 목적지 CIDR을 설정합니다.
         * 출발지/목적지 포트: ALL, 포트, 포트 범위를 선택하여 설정합니다.
             * ALL: 모든 포트를 지정합니다.
-            * 포트**: 1\~65535 범위의 포트 하나를 지정합니다.
+            * 포트: 1\~65535 범위의 포트 하나를 지정합니다.
             * 포트 범위: 1\~65535 범위 내에 포트 범위를 지정합니다.
         * 전송 여부: 해당 규칙에 부합하는 패킷의 전송 여부를 설정합니다.
-            * 전송: 본 규칙에 맞는 패킷을 전송합니다.
-            * 미전송: 본 규칙에 맞는 패킷을 전송하지 않습니다.
+            * 전송: 규칙에 맞는 패킷을 전송합니다.
+            * 미전송: 규칙에 맞는 패킷을 전송하지 않습니다.
 
 > [참고]
 >
-> * 각 규칙의 우측에 [ － ], [ ＋ ] 버튼으로 규칙을 삭제, 추가할 수 있습니다.
-> * 각 규칙의 좌측에 위, 아래 버튼으로 규칙의 우선순위를 변경할 수 있습니다.
+> * 각 규칙의 오른쪽에 [ － ], [ ＋ ] 버튼으로 규칙을 삭제, 추가할 수 있습니다.
+> * 각 규칙의 왼쪽에 위, 아래 버튼으로 규칙의 우선순위를 변경할 수 있습니다.
 >     ![Filter_Rule_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Filter_Rule_900.png)
 > * 필터 그룹은 default 필터 그룹을 포함하여 최대 10개까지 설정 가능합니다.
 > * 필터 규칙은 최대 30개까지 설정 가능합니다.
@@ -533,7 +522,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 > [참고]
 > default 필터 그룹은 삭제할 수 없습니다.
 
-<br> 
+<br>
 
 ## VPN
 
