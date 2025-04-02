@@ -217,7 +217,7 @@ Network Firewall을 생성하고 연결 설정을 모두 완료한 후 Network F
 
 위와 같이 설정 후 출발지 IP를 보안 그룹에서 허용하면 인스턴스에 접속 가능합니다.
 
-***
+<br>>
 
 ## 정책
 Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
@@ -229,6 +229,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 > * default-deny는 필수 정책이며, 수정하거나 삭제할 수 없습니다.
 > * default-deny 정책을 통해 차단된 로그는 **옵션** 탭의 **기본 차단 정책 로그 설정**을 **사용**으로 변경한 후 **로그** 탭에서 확인 가능합니다.
 
+<br>
 
 ## ACL
 **ACL** 탭에서는 Network Firewall과 연결된 VPC 간 트래픽과 인바운드/아웃바운드 트래픽을 제어할 수 있습니다.
@@ -280,6 +281,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 
 ![acl_batch.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_batch_1.png)
 
+<br>
 
 ## 라우트
 
@@ -319,7 +321,7 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 
 * **삭제**를 클릭해 라우트를 삭제할 수 있습니다.
 
-***
+<br>
 
 ## 객체
 
@@ -357,6 +359,8 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 
 * **객체** 탭에 생성되어 있는 IP와 포트 객체 전체를 각각 한 번에 다운로드할 수 있습니다.
 
+<br>
+
 ## NAT
 
 **NAT**(네트워크 주소 변환) 탭에서는 외부에서 접속할 인스턴스와 전용으로 사용할 공인 IP를 선택하여 연결합니다.
@@ -389,6 +393,8 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 
 * **삭제**를 클릭해 생성된 NAT를 삭제합니다.
 
+<br>
+
 ## VPN
 
 **VPN** 탭에서는 사이트간 암호화된 터널을 통해 안전한 사설 통신을 지원합니다.
@@ -404,11 +410,11 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 > * VPC와 서브넷은 수정할 수 없습니다.
 > * 게이트웨이는 최대 10개까지 생성 가능합니다.
 
-### 게이트웨이 수정
+### 수정
 
 * **수정** 버튼을 클릭해 게이트웨이를 수정합니다.
 
-### 게이트웨이 삭제
+### 삭제
 
 * **삭제** 버튼을 클릭해 게이트웨이를 삭제합니다.
     * 게이트웨이에 연결된 터널이 있을 경우 삭제가 되지 않습니다.
@@ -531,16 +537,21 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 * 로그 원격 전송 설정: 원격지로 트래픽 로그를 저장할 수 있는 옵션을 선택합니다.
     * Syslog: 최대 2개의 원격지 주소로 로그를 전송
         * 2개의 원격지는 개별적으로 설정 가능(IP 주소, 프로토콜, 포트 번호)
-        <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/syslog.png" height="65%" />
     * Object Storage: NHN Cloud에서 제공하는 Object Storage 서비스로 로그를 전송
-    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/OBS.png" height="65%" />
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/OBS_5.png" height="65%" />
         * 액세스 키 / 비밀 키: Object Storage 서비스에서 S3 API 자격 증명 등록 시 확인 가능한 액세스 키 정보를 입력
         * 버킷 이름: Object Storage 서비스에서 생성한 컨테이너의 이름을 입력
         * 엔드포인트: 리전별 엔드포인트를 확인한 뒤 위치에 맞게 엔드포인트를 입력
         * 리전: 리전별 이름을 확인한 뒤 리전 위치에 맞게 이름을 입력
+    * Log & Crash Search: NHN Cloud에서 제공하는 Log & Crash Search 서비스로 로그를 전송
+    <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.11.07/LNCS_2.png" height="65%" />
+        * AppKey: Log & Crash Search 서비스를 활성화 후 생성된 AppKey를 입력
 
 > [참고]
-> Object Storage 설정 시 [사용자 가이드](https://docs.ngsc.go.kr/ko/Storage/Object%20Storage/ko/s3-api-guide-ngsc/#aws-sdk)를 참고하여 입력하세요.
+> * Object Storage 설정 시 [사용자 가이드](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#aws-sdk)를 참고하여 입력하세요.
+> * Log & Crash Search 서비스를 사용 시 로그 알람 설정 기능을 활용하여 이상 행위를 탐지할 수 있습니다.
+예를 들어, Network Firewall에 특정 목적지로 향하는 SSH 통신에 대한 ACL 차단 정책을 추가한 뒤 해당 정책에서 발생되는 로그에 대한 알람 조건을 설정합니다. (예: 1분 동안 SSH 접속 시도 로그가 20회 이상 발생)
+사용자가 설정한 조건을 만족 시 알람을 수신할 수 있습니다.  
 
 <br>
 
