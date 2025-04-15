@@ -202,7 +202,7 @@ Network Firewallを作成し、接続設定を全て完了した後、Network Fi
 > <img src="https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/24.09.12/access_acl.png" height="65%" />  
 上記のように設定後、送信元IPをセキュリティグループで許可すると、インスタンスに接続可能です。
 
-<br>>
+***
 
 ## ポリシー
 Network Firewallを作成すると、**ポリシー**タブに移動します。
@@ -213,8 +213,6 @@ Network Firewallを作成すると、**ポリシー**タブに移動します。
 
 > * default-denyは必須ポリシーであり、修正または削除できません。
 > * default-denyポリシーでブロックされたログは、**オプション**タブの**基本ブロックポリシーログ設定**を**使用**に変更した後、**ログ**タブで確認できます。
-
-<br>
 
 ## ACL
 **ACL**タブでは、Network Firewallと接続されたVPC間のトラフィックとインバウンド/アウトバウンドトラフィックを制御できます。
@@ -267,7 +265,6 @@ Network Firewallを作成すると、**ポリシー**タブに移動します。
 
 ![acl_batch.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_batch_1.png)
 
-<br>
 
 ## ルート
 
@@ -303,7 +300,7 @@ Network Firewallを作成すると、**ポリシー**タブに移動します。
 
 * **削除**をクリックしてルートを削除できます。
 
-<br>
+***
 
 ## オブジェクト
 
@@ -342,8 +339,6 @@ Network Firewallを作成すると、**ポリシー**タブに移動します。
 
 * **オブジェクト**タブに作成されているIPとポートオブジェクト全体をそれぞれ一度にダウンロードできます。
 
-<br>
-
 ## NAT
 
 **NAT**(ネットワークアドレス変換)タブでは、外部から接続するインスタンスと専用に使用するグローバルIPを選択して接続します。
@@ -374,131 +369,6 @@ Network Firewallを作成すると、**ポリシー**タブに移動します。
 
 * **削除**をクリックして作成されたNATを削除します。
 
-<br>
-
-## ミラーリング
-
-**ミラーリング**タブでは、Network Firewallを通過するネットワークパケットをIDS/IPS、SIEM、NDRなどの脅威検出及び分析ソリューションにコピーして、ネットワークの脅威をリアルタイムで検出し、対応できるようにします。
-
-> [参考]
-> **オプション - ミラーリング設定**で**使用**に設定して有効化した後、使用できます。 (有効化まで約30秒かかります)
-<br>
->     ![Mirorring_Config_Activation_800.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Mirorring_Config_Activation_800.png)
-<br>
-
-### ミラーリングルール
-
-* ミラーリングルールを追加してコピーしたパケットを希望の対象端末に送信します。
-![Mirroring_Rule_Contents_Explain_1_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Mirroring_Rule_Contents_Explain_1_900.png)
-    * 名前：設定した名前を表示します。
-    * 方向：設定した方向を表示します。
-    * ミラー指定インターフェイス：選択したNetwork Firewallのインターフェイスを表示します。
-    * ミラーリング送信IP：ミラーリングインターフェイスのIPを表示します。
-    * ミラーリング対象IP：ミラーリングパケットを送信する宛先IPを表示します。
-    * フィルタグループ：選択したフィルタグループを表示します。
-    * 状態：該当ミラーリングルールの状態をバッジで表示します。
-        * Active：有効化
-        * Inactive：無効
-    * 詳細表示：設定したミラーリングルールの詳細情報を確認します。
-
-<br>
-
-### 追加
-
-* **追加**をクリックしてミラーリングルールを追加できます。
-    ![Mirroring_Rule_Add_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Mirroring_Rule_Add_900.png)
-    * 状態：ミラーリングルールの有効/無効を設定します。
-    * 方向：ミラー指定インターフェイスでミラーリングする受信/送信パケットを設定します。該当設定により、特定方向のパケットのみミラーリングできます。
-        * 受信(Rx)：ミラー指定インターフェイスで受信するパケット
-        * 送信(Tx)：ミラー指定インターフェイスから送信するパケット
-    * ミラー指定インターフェイス：Network Firewallの以下のインターフェイスの中から選択します。
-        * NetworkFirewall\_INF\_NAT: Network Firewallの外部制御用の上部インターフェイス
-        * NetworkFirewall\_INF\_TRAFFIC: Network Firewallの内部制御用の下部インターフェイス
-    * ミラーリング送信IP：外部送信サブネットのミラーリングインターフェイスがデフォルトで設定されます。
-    * ミラーリング対象IP：ミラーリングパケットを受信する対象のプライベートIPを入力します。
-    * VNI(virtual network identifier)：VNIを入力します。
-
-> [参考]
->
-> * ミラーリング対象端末がVXLANパケットを受信できるようにポリシー(セキュリティグループ及びファイアウォールなど)でミラーリング送信IPとUDPポート4789番への接続許可設定が必要です。
-> * ミラーリングルールは最大3つまで作成できます。
-> * ミラーリングルールを適用する際、お客様の環境によって多くの通信データが発生する可能性があるため、ミラーリング対象IP情報を正確に入力する必要があります。
-> * Network FirewallはVXLANトンネルを介してミラーリングパケットを送信するため、VNI設定が必要です。VNI値は1～16,777,215の間の数字で入力し、ミラーリング対象機器と同じに設定する必要があります。
-* **フィルタグループ**を選択します。
-    * 以前に追加したフィルタグループがない場合は、**フィルタグループ追加**をクリックしてフィルタグループを追加できます。
-    * 詳細については、 [フィルタグループの説明](#%ED%95%84%ED%84%B0%20%EA%B7%B8%EB%A3%B9)を参照してください。
-        ![Mirroring_Rule_Filter_Group_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Mirroring_Rule_Filter_Group_900.png)
-
-> [参考]
-> フィルタグループはルールごとに1つだけ適用可能です。
-<br>
-
-### 修正
-
-* **修正**をクリックしてミラーリングルールを修正できます。
-
-> [参考]
-> 名前、説明、状態、フィルタグループのみ修正可能です。
-<br>
-
-### 削除
-
-* **削除**をクリックしてミラーリングルールを削除できます。
-
-<br>
-
-### フィルタグループ
-
-* **フィルタグループ**を通じてミラーリングルールに適用するフィルタを設定すると、ユーザーが希望するパケットだけを選別して送信できます。
-![Filter_Group_Contents_Explain_1_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Filter_Group_Contents_Explain_1_900.png)
-    * 名前:設定した名前を表示します。
-    * 接続されたミラーリングルール：該当フィルタグループを使用するミラーリングルールを表示します。
-    * 説明：説明を表示します。
-    * フィルタルール表示：該当フィルタグループに設定されたルールを確認します。
-
-<br>
-
-### 追加
-* **追加**をクリックしてフィルタグループを追加できます。
-    ![Filter_Group_Add_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Filter_Group_Add_900.png)
-    * フィルタルール定義
-        * 優先順位：数字が小さいほど優先度が高く、優先度の高いものからルールを適用してミラーリングパケットを送信します。
-        * プロトコル：プロトコルを指定します。
-            * ALL：全てのプロトコルを指定します。選択すると出発地/目的地設定が無効になります。
-            * TCP： TCPを指定します。
-            * UDP： UDPを指定します。
-            * ICMP： ICMPを指定します。選択すると出発地/目的地ポート設定が無効になります。
-        * 出発地/目的地CIDR：出発地と目的地CIDRを設定します。
-        * 出発地/宛先ポート： ALL、ポート、ポート範囲を選択して設定します。
-            * ALL：全てのポートを指定します。
-            * ポート： 1～65535の範囲のポートを1つ指定します。
-            * ポート範囲： 1～65535の範囲のポート範囲を指定します。
-        * 送信するかどうか：該当ルールに合致するパケットを送信するかどうかを設定します。
-            * 送信：ルールに合致するパケットを送信します。
-            * 未送信：ルールに合致するパケットを送信しません。
-
-> [参考]
->
-> * 各ルールの[－]、[＋]ボタンをクリックして削除または追加できます。
-> * 各ルールの上、下ボタンをクリックして、ルールの優先順位を変更できます。
->     ![Filter_Rule_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Filter_Rule_900.png)
-> * フィルタグループはdefaultフィルタグループを含めて最大10個まで設定可能です。
-> * フィルタルールは最大30個まで設定可能です。
-> * フィルタルールは優先順位が高い順から低い順に適用されます。したがって、未送信ルールに既に適用されたパケットは、次の優先順位のルールには適用されません。
-<br>
-
-### 修正
-* **修正**をクリックしてフィルタグループを修正できます。
-
-<br>
-
-### 削除
-* **削除**をクリックしてフィルタグループを削除できます。
-
-> [参考]
-> defaultフィルタグループは削除できません。
-<br>
-
 ## VPN
 
 **VPN**タブでは、サイト間の暗号化されたトンネルを通じて安全なプライベート通信をサポートします。
@@ -512,12 +382,11 @@ Network Firewallを作成すると、**ポリシー**タブに移動します。
 > [参考]
 > * VPCとサブネットは修正できません。
 > * ゲートウェイは最大10個まで作成可能です。
-
-### 修正
+### ゲートウェイの修正
 
 * **修正**ボタンをクリックしてゲートウェイを修正します。
 
-### 削除
+### ゲートウェイの削除
 
 * **削除**ボタンをクリックしてゲートウェイを削除します。
     * ゲートウェイに接続されたトンネルがある場合、削除されません。
@@ -657,14 +526,6 @@ Network Firewallを作成すると、**ポリシー**タブに移動します。
 > [参考] 
 > トラフィック、 NATイーサネットの基本MTUサイズは1450Byteです。
 
-<br>
-
-* ミラーリング設定： Network Firewallが提供する機能のうち、ミラーリングの使用有無を選択できます。
-    * 使用選択時に必要なサブネットはNetwork Firewall作成に使用したサブネットを使用します。
-
-> [参考]
-> * ACL設定に必要なミラーリングインターフェイスのIP情報は**Network - Network Interface**で確認できます。
->   * インターフェイス名： NetworkFirewall_INF_MIRRORING_S_NAT_VIP
 <br>
 
 * Network Firewall構成：単一または冗長化でNetwork Firewallの構成方法を設定できます。
