@@ -1,5 +1,11 @@
 ## Security > Network Firewall > Release Notes
 
+## April 29, 2025
+
+### Added Features
+
+* Added a mirroring feature
+
 ## October 15, 2024
 
 ### Added Features
