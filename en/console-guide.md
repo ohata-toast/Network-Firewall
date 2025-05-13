@@ -217,7 +217,7 @@ For example, if you configure 3 subnets with 2 Spoke VPCs in 1 project and need 
 > 
 After setting up as above, you can access the instance if the departure IP is allowed in the security groups.
 
-***
+<br>>
 
 ## Policy
 After creating Network Firewall, go to the **Policies** tab.
