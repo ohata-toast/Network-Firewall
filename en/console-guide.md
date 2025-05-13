@@ -229,6 +229,7 @@ After creating Network Firewall, go to the **Policies** tab.
 > * The default-deny policy is a required policy and cannot be modified or deleted.
 > * Logs blocked through the default-deny policy can be viewed on the **Log** tab after changing the **Default blocking policy log setting** to **Enable** on the **Options** tab.
 
+<br>
 
 ## ACL
 On the **ACLs** tab, you can control inbound and outbound traffic and traffic between the Network Firewall and the associated VPCs.
@@ -320,6 +321,7 @@ On the **Route** tab, specify the path of communication through the Network Fire
 * Delete a route by clicking **Delete**.
 
 ***
+<br>
 
 ## Object
 
@@ -357,6 +359,8 @@ In the **Object** tab, create and manage IPs and ports to use when creating poli
 
 * Download all IPs and port objects created in the **Object** tab at once.
 
+<br>
+
 ## NAT
 
 In the **NAT** (Network Address Translation) tab, select and connect a dedicated public IP with the instance to be accessed from the outside.
@@ -388,6 +392,137 @@ In the **NAT** (Network Address Translation) tab, select and connect a dedicated
 ### Delete
 
 * Click **Delete** to delete the created NAT.
+ 
+ <br>
+
+ ## Mirroring
+ 
+ The **Mirroring** tab allows you to copy network packets that pass through the Network Firewall to threat detection and analysis solutions such as IDS/IPS, SIEM, NDR, and others, so that you can detect and respond to network threats in real time.
+ 
+ > [Note]
+ **Options -** **Enable****in Mirroring settings**to **enable**and use after activation (takes about 30 seconds to activate)
+ <br>
+ >     ![Mirorring_Config_Activation_800.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Mirorring_Config_Activation_800.png)
+ 
+ <br>
+ 
+ ### Mirroring rules
+ 
+ * Add a mirroring rule to send the copied packets to the desired destination terminal.
+ ![Mirroring_Rule_Contents_Explain_1_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Mirroring_Rule_Contents_Explain_1_900.png)
+     * Name: Displays the name you set.
+     * Orientation: Displays the orientation you set.
+     * Mirror specified interface: Displays the interface of the selected Network Firewall.
+     * Mirroring transmit IP: Displays the IP of the mirroring interface.
+     * Mirroring target IP: Displays the destination IP to send mirroring packets to.
+     * Filter group: Displays the selected filter groups.
+     * Status: Displays the status of this mirroring rule via a badge.
+         * Active: Active 
+         * Inactive: Inactive
+     * View Details: Views the details of the mirroring rule you set up.
+ 
+ <br>
+ 
+ ### Add
+ 
+ * You can add a mirroring rule by clicking **Add**.
+ ![Mirroring_Rule_Add_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Mirroring_Rule_Add_900.png)
+     * Status: Sets whether the mirroring rule is active or not.
+     * Direction: Sets the incoming/outgoing packets to be mirrored on the mirroring interface. This setting allows you to mirror only packets in a specific direction.
+         * Receive (Rx): Packets received on the mirror-designated interface
+         * Transmit (Tx): Packets outgoing from the mirror-designated interface.
+     * Mirror specified interface: Choose from the interfaces below on the Network Firewall.
+         * NetworkFirewall_INF_NAT: Top interface for external control of Network Firewall
+         * NetworkFirewall_INF_TRAFFIC: Bottom interface for internal control of Network Firewall
+     * Mirroring egress IP: The mirroring interface on the external egress subnet is set to default.
+     * Mirror destination IP: Enter the private IP of the destination that will receive mirroring packets.
+     * Virtual network identifier (VNI): Type the VNI.
+ 
+ > [Note]
+ >
+ > * Policies (such as security groups and firewalls) need to allow access to the mirroring egress IP and UDP port 4789 in order for the mirroring target terminal to receive VXLAN packets.
+ > * You can create up to three mirroring rules.
+ > * When applying mirroring rules, make sure to enter the mirroring destination IP information correctly because it can generate a lot of communication data depending on your environment.
+ > * Network Firewall sends mirroring packets over a VXLAN tunnel, which requires a VNI setting. The VNI value can be entered as a number between 1 and 16,777,215 and must be the same as the device being mirrored.
+ 
+ * Select a **filter group**.
+     * If you haven't added a filter group before, you can add one by clicking **Add filter group**.
+     * See the [filter group description](#%ED%95%84%ED%84%B0%20%EA%B7%B8%EB%A3%B9) for more information.
+ ![Mirroring_Rule_Filter_Group_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Mirroring_Rule_Filter_Group_900.png)
+ 
+ > [Note]
+ Only one filter group can be applied per rule.
+ 
+ <br>
+ 
+ ### Modify
+ 
+ * You can modify the mirroring rule by clicking **Modify**.
+ 
+ > [Note]
+ Only the name, description, status, and filter group can be modified.
+ 
+ <br>
+ 
+ ### Delete
+ 
+ * You can delete a mirroring rule by clicking **Delete**.
+ 
+ <br>
+ 
+ ### Filter Group
+ 
+ * **Filter group** allow you to set filters to apply to mirroring rules so that only the packets you want are sent.
+ ![Filter_Group_Contents_Explain_1_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Filter_Group_Contents_Explain_1_900.png)
+     * Name: Displays the name you set.
+     * Associated mirroring rules: Displays mirroring rules that use this filter group.
+     * Description: Displays a description.
+     * View filter rules: View the rules set for that filter group.
+ 
+ <br>
+ 
+ ### Add
+ * You can add a filter group by clicking **Add**.
+ ![Filter_Group_Add_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Filter_Group_Add_900.png)
+     * Define filter rules
+         * Priority: The smaller the number, the higher the priority. Apply the rule to send mirroring packets starting with the highest priority.
+         * Protocol: Specifies the protocol.
+             * ALL: Specifies all protocols. When selected, the From/Destination setting is disabled.
+             * TCP: Specifies TCP.
+             * UDP: Specifies UDP.
+             * ICMP: Specifies ICMP. When selected, the From/Destination port setting is disabled.
+         * Origin/destination CIDRs: Set the origin and destination CIDRs.
+         * From/Destination Port: Set by selecting ALL, Port, or Port Range.
+             * ALL: Specifies all ports.
+             * Port: Specifies one port in the range 1-65535.
+             * Port range: Specify a range of ports within the range 1-65535.
+         * Send or not: Sets whether packets that match the rule are sent or not.
+             * Send: Send packets that match the rule.
+             * Unsent: No packets matching the rule are sent.
+ 
+ > [Note]
+ >
+ > * You can delete or add rules by clicking the [-], [＋] buttons for each rule.
+ > * You can change the priority of the rule by clicking the up and down buttons on each rule.
+ ![Filter_Rule_900.png](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/Mirroring/25.03.06/Filter_Rule_900.png)
+ > * You can set up to 10 filter groups, including the default filter group.
+ > * You can set up to 30 filter rules.
+ > * Filter rules are applied from highest priority to lowest priority, so packets that have already been applied to a do not send rule will not be applied to the next priority rule.
+ 
+ <br>
+ 
+ ### Modify
+ * You can modify the filter group by clicking **Edit**.
+ 
+ <br>
+ 
+ ### Delete
+ * You can delete a filter group by clicking **Delete**.
+ 
+ > [Note]
+ You cannot delete the default filter group.
+ 
+ <br>
 
 ## VPN
 
@@ -404,11 +539,11 @@ The **VPN** tab enables secure, private communication over an encrypted tunnel b
 > * VPCs and subnets cannot be modified.
 > * You can create up to 10 gateways.
 
-### Modify Gateway
+### Modify
 
 * Click **Modify** to modify gateways.
 
-### Delete Gateway
+### Delete
 
 * Click **Delete** to delete gateways.
     * If there is a tunnel connected to gateways, it will not be deleted.
@@ -557,6 +692,15 @@ You can receive an alarm when the conditions you set are met.
 
 > [Note]
 > The default MTU size for traffic, NAT Ethernet is 1450 bytes.
+
+<br>
+
+* Mirroring settings: You can choose whether to enable mirroring among the features provided by Network Firewall.
+    * When you select Use, the required subnet is the subnet that was used to create the Network Firewall.
+
+> [Note]
+> * The IP information of the mirroring interface required for ACL settings can be found **in Network - Network Interface**.
+>   * Interface name: NetworkFirewall_INF_MIRRORING_S_NAT_VIP
 
 <br>
 
