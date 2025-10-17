@@ -238,10 +238,14 @@ Network Firewall을 생성하면 **정책** 탭으로 이동합니다.
 ### 복사
 
 * **복사**를 클릭해 정책을 복사할 수 있습니다.
-    * 복사된 정책은 비활성화됩니다.
+    * 복사: 복사하고자 하는 정책과 동일한 정책을 복사
+    * 역방향 복사: 복사하고자 하는 정책의 출발지와 목적지를 변경하여 복사
 
 ![acl_copy.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_copy_1.png)
 
+> [참고]
+> 
+> 복사된 정책은 비활성화됩니다. 사용이 필요할 경우 **수정**을 클릭해 정책을 활성화한 뒤 사용하세요.
 
 ### 수정
 
