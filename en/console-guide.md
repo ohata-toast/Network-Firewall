@@ -247,9 +247,14 @@ On the **ACLs** tab, you can control inbound and outbound traffic and traffic be
 ### Copy
 
 * Click **Copy**to copy the policy.
-    * Copied policies will be disabled.
+    * Copy: Copy the same policy as the one you want to copy
+    * Reverse copy: Copy by changing the source and destination of the policy you want to copy
 
 ![acl_copy.PNG](https://kr1-api-object-storage.nhncloudservice.com/v1/AUTH_2acdfabf4efe4efc8a04c00b348110c9/cdn_origin/prod_nfw/23.09.07/acl_copy_1.png)
+
+> [Note]
+> 
+> The copied policy will be disabled. If you have to use it, click **Modify** to enable the policy to use.
 
 
 ### Modify
