@@ -1,5 +1,18 @@
 ## Security > Network Firewall > Release Notes
 
+## October 28, 2025
+
+### Feature Updates
+
+* Improved two-way policy copy
+
+### Removed Features
+
+* Deleted encryption and integrity algorithms
+    * Target: DES, MD5, SHA1
+* Deleted DH Groups
+    * Target: 1, 2, 5
+
 ## April 29, 2025
 
 ### Added Features
